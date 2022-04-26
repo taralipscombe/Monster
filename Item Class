@@ -1,3 +1,4 @@
+
 public class Item {
 	private String name, property;
 	private int propertyChange, usage;
@@ -36,6 +37,8 @@ public class Item {
 	public String toString() {
 		if(getIncreaseOrDecrease()) {
 			return "Item: "+name+"\nIncreases "+property+" by "+propertyChange;
+		} else {
+			return "Item: "+name+"\nDecreases "+property+" by "+(propertyChange*-1);
 		}
 		
 		
