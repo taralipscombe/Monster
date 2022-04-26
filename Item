@@ -1,0 +1,43 @@
+public class Item {
+	private String name, property;
+	private int propertyChange, usage;
+	
+	public Item(String itemName, String propertyName, int change) {
+		name = itemName;
+		property = propertyName;
+		propertyChange = change;
+		usage = 100;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public String getProperty() {
+		return property;
+	}
+	
+	public int getChange() {
+		return propertyChange;
+	}
+	
+	public boolean getIncreaseOrDecrease() {
+		if(propertyChange>0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public int getUsage() {
+		return usage;
+	}
+	
+	public String toString() {
+		if(getIncreaseOrDecrease()) {
+			return "Item: "+name+"\nIncreases "+property+" by "+propertyChange;
+		}
+		
+		
+	}
+}
