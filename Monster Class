@@ -54,10 +54,14 @@ public class Monster {
 	}
 	
 	public void heal() {
-		currentHealth = currentHealth + 50;
+		currentHealth = currentHealth + healAmount;
 		if (currentHealth > maxHealth) {
 			currentHealth = maxHealth;
 		}
+	}
+	
+	public String toString() {
+		return "The monster's name is " + name + " , it's max Health is " + maxHealth + " but it's current Health is " + currentHealth +". It attacks with "+ damage + " units of power and heals " + healAmount + "units every night.";
 	}
 	
 	
