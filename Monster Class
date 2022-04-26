@@ -1,0 +1,65 @@
+
+public class Monster {
+	
+	public String name;
+	public int maxHealth;
+	public int damage;
+	public int healAmount;
+	public int currentHealth;
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String monsterName) {
+		name = monsterName;
+	}
+
+	public int getMaxHealth() {
+		return maxHealth;
+	}
+	
+	public void setMaxHealth(int monsterMaxHealth) {
+		maxHealth = monsterMaxHealth;
+	}
+	
+	public int getDamage() {
+		return damage;
+	}
+	
+	public void setDamage(int monsterDamage) {
+		damage = monsterDamage;
+	}
+	
+	public int getHealAmount() {
+		return healAmount;
+	}
+	
+	public void setHealAmount(int monsterHealAmount) {
+		healAmount = monsterHealAmount;
+	}
+	
+	public int getCurrentHealth() {
+		return currentHealth;
+	}
+	
+	public void setCurrentHealth(int monsterCurrentHealth) {
+		currentHealth = monsterCurrentHealth;
+	}
+	
+	public void attack(Monster monsterOpponent) {
+		int opponentHealth = monsterOpponent.getCurrentHealth();
+		opponentHealth = opponentHealth - damage;
+		monsterOpponent.setCurrentHealth(opponentHealth);
+	}
+	
+	public void heal() {
+		currentHealth = currentHealth + 50;
+		if (currentHealth > maxHealth) {
+			currentHealth = maxHealth;
+		}
+	}
+	
+	
+	
+}
