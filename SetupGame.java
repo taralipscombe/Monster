@@ -47,6 +47,15 @@ public class SetupGame {
 	public boolean validName() {
 	    return inputName.matches("[a-zA-Z]+");
 	}
+	public String getName() {
+		return name;
+	}
+	public String getDifficulty() {
+		return gameDifficulty;
+	}
+	public int getTime() {
+		return gameTime;
+	}
 	
 	private void initialize() {
 		frmSetUpGame = new JFrame();
