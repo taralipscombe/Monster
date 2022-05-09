@@ -1,4 +1,5 @@
 import java.awt.EventQueue;
+import javax.swing.JOptionPane;
 
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
@@ -14,7 +15,7 @@ public class SetupGame {
 
 	private JFrame frmSetUpGame;
 	private JTextField textField;
-	private String name, gameDifficulty;
+	private String name, gameDifficulty, inputName;
 	private int gameTime;
 
 	/**
@@ -43,6 +44,10 @@ public class SetupGame {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	public boolean validName() {
+	    return inputName.matches("[a-zA-Z]+");
+	}
+	
 	private void initialize() {
 		frmSetUpGame = new JFrame();
 		frmSetUpGame.setTitle("Set up Game");
@@ -63,7 +68,7 @@ public class SetupGame {
 		textField = new JTextField();
 		textField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				name = textField.getText();
+				inputName = textField.getText();
 			}
 		});
 		textField.setBounds(157, 68, 130, 26);
@@ -125,6 +130,22 @@ public class SetupGame {
 		frmSetUpGame.getContentPane().add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("Continue");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(gameDifficulty == null || inputName == null) {
+					JOptionPane.showMessageDialog(frmSetUpGame, "Please enter a name and choose a difficulty");
+				}
+				if(inputName.length()>3 && inputName.length()<15) {
+					if(validName() == true) {
+						name = inputName;
+					}
+					} else {
+						JOptionPane.showMessageDialog(frmSetUpGame, "Please enter a valid name between 3-15 letters");
+					}
+				//continue
+			}
+		});
 		btnNewButton_3.setBounds(159, 401, 117, 29);
 		frmSetUpGame.getContentPane().add(btnNewButton_3);
 	}
