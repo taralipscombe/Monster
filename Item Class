@@ -1,4 +1,5 @@
 
+
 public class Item {
 	private String name, property;
 	private int propertyChange, usage;
@@ -40,7 +41,13 @@ public class Item {
 		} else {
 			return "Item: "+name+"\nDecreases "+property+" by "+(propertyChange*-1);
 		}
-		
-		
 	}
+	
+	public void printAttributes() {
+		System.out.println("Item name: " + name);
+		System.out.println("Item's Property: " + property);
+		System.out.println("Item's current usage: " + usage);
+	}
+	
+	
 }
