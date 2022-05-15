@@ -5,9 +5,11 @@ import java.util.regex.Pattern;
 public class MainScreen {
 	
 	private static Player player;
+	private static Shop shop;
 	
 	public MainScreen(Player thePlayer) {
 		player = thePlayer;
+		shop = new Shop(player);
 	}
 	
 	public static void displayOptions() {
@@ -107,6 +109,4 @@ public class MainScreen {
 		
 
 	}
-	
-
 }
