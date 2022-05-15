@@ -6,13 +6,23 @@ public class Monster {
 	public int damage;
 	public int healAmount;
 	public int currentHealth;
+	public int lives;
 	
-	public Monster(String givenName, int maximumHealth, int givenDamage, int heal, int curHealth) {
+	public Monster() {
+		
+	}
+	
+	public Monster(String givenName, int givenDamage, int heal) {
 		name = givenName;
-		maxHealth = maximumHealth;
+		maxHealth = 100;
 		damage = givenDamage;
 		healAmount = heal;
-		currentHealth = curHealth;
+		currentHealth = 100;
+		lives = 3;
+	}
+	
+	public int getLives() {
+		return lives;
 	}
 	
 	public String getName() {
@@ -77,8 +87,9 @@ public class Monster {
 	}
 	
 	public String toString() {
-		return "The monster's name is " + name + " , it's max Health is " + maxHealth + " but it's current Health is " + currentHealth +". It attacks with "+ damage + " units of power and heals " + healAmount + "units every night.";
+		return "The monster's name is " + name + ". It attacks with "+ damage + " units of power and heals " + healAmount + " units every night.";
 	}
 	
+	
+	
 }
-
