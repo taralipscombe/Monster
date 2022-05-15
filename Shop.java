@@ -7,11 +7,10 @@ import java.util.regex.Pattern;
 public class Shop {
 	private ArrayList<Item> shopItems=new ArrayList<Item>();
 	Player player;
-	Scanner scanner;
+
 	
-	public Shop(Player incomingPlayer, Scanner incomingScanner) {
+	public Shop(Player incomingPlayer) {
 		player = incomingPlayer;
-		scanner = incomingScanner;
 		Item attackPotion = new Item("Magic attack potion" , "damage", 15, 3, 60);
 		Item healingPotion = new Item("Magic healing potion" , "heal amount" , 10, 3, 45);
 		Item extraLife = new Item("Extra Life", "lives", 1, 1, 70);
@@ -33,9 +32,9 @@ public class Shop {
 				System.out.println("Item or Monster?");
 				String choice = input.nextLine();
 				if(choice.equals("item")) {
-					this.buy();
+					this.buy(input);
 				} else if (choice.equals("monster")) {
-					this.buyMonster();
+					this.buyMonster(input);
 				} else {
 					System.out.println("Please enter item or monster");
 				}
@@ -44,10 +43,10 @@ public class Shop {
 				System.out.println("Item or Monster?");
 				String choice = input.nextLine();
 				if(choice.equals("item")) {
-					this.sell();
+					this.sell(input);
 				} else if (choice.equals("monster")) {
 					System.out.println("Warning: You can't get this monster back!");
-					this.sellMonster();
+					this.sellMonster(input);
 				} else {
 					System.out.println("Please enter item or monster");
 				}
