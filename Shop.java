@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class Shop {
 	private ArrayList<Item> shopItems=new ArrayList<Item>();
-	Player player;
+	private Player player;
 
 	
 	public Shop(Player incomingPlayer) {
@@ -92,7 +92,7 @@ public class Shop {
 				if(player.getgold() < purchasedItem.getPurchasePrice()) {
 					System.out.println("Not enough gold");
 				} else {
-					player.gold -= purchasedItem.getPurchasePrice();
+					player.changeGold(-purchasedItem.getPurchasePrice());
 					if(purchasedItem.getName() == "Lucky Dip") {
 						Random rndm = new Random();
 						int randomInt = rndm.nextInt(arrlength);
@@ -102,7 +102,7 @@ public class Shop {
 						purchasedItem = shopItems.get(randomInt);
 					}
 					player.addItem(purchasedItem);
-				
+					player.changeGold(-purchasedItem.getPurchasePrice());
 					System.out.println("You have successfully bought "+purchasedItem.getName());
 				}}}
 		}
@@ -110,7 +110,7 @@ public class Shop {
 	public void sell(Scanner input) {
 		System.out.println("Your current gold:"+player.getgold());
 		int i = 1;
-		for (Item item:player.items) {
+		for (Item item:player.getItems()) {
 			System.out.format("Option "+i+": "+item+"\n");
 			System.out.println("Sell for: "+item.getsellbackPrice());
 			i+=1;
@@ -127,8 +127,8 @@ public class Shop {
 		}else if(correctNum || number > arrlength || number < 1) {
 			System.out.println("Error: Invalid number, returning to shop");		//move????	
 		} else {
-			Item sellingItem = player.items.get(number-1);
-			player.gold += sellingItem.getsellbackPrice();
+			Item sellingItem = player.getItems().get(number-1);
+			player.changeGold(sellingItem.getsellbackPrice());
 				shopItems.add(sellingItem);
 				player.removeItem(sellingItem);
 				System.out.println("You have successfully sold "+sellingItem.getName());
@@ -159,7 +159,7 @@ public class Shop {
 		} else {
 			Monster sellingMonster = player.getTeam().get(number-1);
 			int sellingPrice = sellingMonster.getLives()/3 * sellingMonster.getPrice();
-			player.gold += sellingPrice;
+			player.changeGold(sellingPrice);
 			player.removeTeamMate(sellingMonster);
 				System.out.println("You have successfully sold "+sellingMonster.getName());
 			}
@@ -192,8 +192,8 @@ public class Shop {
 			if(player.getgold() < purchasedMonster.getPrice()) {
 				System.out.println("Not enough gold");
 			} else {
-				player.gold -= purchasedMonster.getPrice();
-				player.monsterTeam.add(purchasedMonster);
+				player.changeGold(-purchasedMonster.getPrice());
+				player.addTeamMate(purchasedMonster);
 				System.out.println("You have successfully bought "+purchasedMonster.getName());
 		}
 		
