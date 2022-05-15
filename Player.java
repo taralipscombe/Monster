@@ -9,7 +9,6 @@ public class Player {
 	public ArrayList<Monster> monsterTeam = new ArrayList<Monster>();
 	public int currentDay;
 	public int finishDay;
-	public int points=0;
 	
 
 	public Player(String playerName2, String difficulty, Monster startingMonster, int numDays) {
@@ -21,17 +20,6 @@ public class Player {
 		setGold();
 	}
 
-	
-	public int getPoints() {
-		return points;
-	}
-	
-	public void increasePoints(int number) {
-		points += number;
-	}
-	
-	
-	
 	public ArrayList<Item> getItems(){
 		return items;
 	}
@@ -40,6 +28,9 @@ public class Player {
 		items.add(newestItem);
 	}
 	
+	public void removeItem(Item newestItem) {
+		items.remove(newestItem);
+	}
 	public void setGold() {
 		if (chosenDifficulty == "Easy") {
 			gold = 200;
@@ -54,11 +45,6 @@ public class Player {
 		return gold;
 	}
 	
-	
-	public void increaseGold(int increase) {
-		gold += increase;
-	}
-	
 	public ArrayList<Monster> getTeam(){
 		return monsterTeam;
 	}
@@ -66,7 +52,9 @@ public class Player {
 	public void addTeamMate(Monster newestMonster) {
 		monsterTeam.add(newestMonster);
 	}
-	
+	public void removeTeamMate(Monster newestMonster) {
+		monsterTeam.remove(newestMonster);
+	}
 	// same as sleeping so will need to add how the monsters heal over night
 	public void incrementDay() {
 		currentDay = currentDay + 1;
@@ -87,6 +75,9 @@ public class Player {
 	}
 	
 	public void printCurrentTeam() {
+		if(this.getTeam().size()==0) {
+			System.out.println("Your team is empty. Buy a monster at the shop!");
+		}
 		for(Monster monster : monsterTeam) {
 			System.out.println();
 			monster.commandLineToString();
@@ -100,6 +91,4 @@ public class Player {
 		}
 	}
 	
-	
-
 }
