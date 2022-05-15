@@ -2,13 +2,13 @@ import java.util.ArrayList;
 
 public class Player {
 	
-	public String playerName;
-	public String chosenDifficulty;
-	public int gold;
-	public ArrayList<Item> items = new ArrayList<Item>();
-	public ArrayList<Monster> monsterTeam = new ArrayList<Monster>();
-	public int currentDay;
-	public int finishDay;
+	private String playerName;
+	private String chosenDifficulty;
+	private int gold;
+	private ArrayList<Item> items = new ArrayList<Item>();
+	private ArrayList<Monster> monsterTeam = new ArrayList<Monster>();
+	private int currentDay;
+	private int finishDay;
 	
 
 	public Player(String playerName2, String difficulty, Monster startingMonster, int numDays) {
@@ -19,7 +19,16 @@ public class Player {
 		currentDay = 0;
 		setGold();
 	}
-
+	public int getDay() {
+		return this.currentDay;
+	}
+	public int getFinishDay() {
+		return this.finishDay;
+	}
+	
+	public String getName() {
+		return playerName;
+	}
 	public ArrayList<Item> getItems(){
 		return items;
 	}
@@ -89,6 +98,9 @@ public class Player {
 			System.out.println();
 			item.printAttributes();
 		}
+	}
+	public void changeGold(int num) {
+		this.gold+=num;
 	}
 	
 }
