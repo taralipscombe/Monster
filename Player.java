@@ -9,6 +9,7 @@ public class Player {
 	public ArrayList<Monster> monsterTeam = new ArrayList<Monster>();
 	public int currentDay;
 	public int finishDay;
+	public int points=0;
 	
 
 	public Player(String playerName2, String difficulty, Monster startingMonster, int numDays) {
@@ -20,6 +21,17 @@ public class Player {
 		setGold();
 	}
 
+	
+	public int getPoints() {
+		return points;
+	}
+	
+	public void increasePoints(int number) {
+		points += number;
+	}
+	
+	
+	
 	public ArrayList<Item> getItems(){
 		return items;
 	}
@@ -40,6 +52,11 @@ public class Player {
 	
 	public int getgold() {
 		return gold;
+	}
+	
+	
+	public void increaseGold(int increase) {
+		gold += increase;
 	}
 	
 	public ArrayList<Monster> getTeam(){
@@ -83,4 +100,6 @@ public class Player {
 		}
 	}
 	
+	
+
 }
