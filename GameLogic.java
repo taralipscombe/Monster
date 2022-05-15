@@ -66,10 +66,10 @@ public class GameLogic {
 	// to change the characteristics of the first monster options?
 	static void setStartingMonster(Scanner input) {
 		while (startingMonster == null) {
-			Monster monsterOptionOne = new Monster("Harry", 100, 10, 10, 100);
-			Monster monsterOptionTwo = new Monster("Louis", 100, 10, 10, 100);
-			Monster monsterOptionThree = new Monster("Niall", 100, 10, 10, 100);
-			Monster monsterOptionFour = new Monster("Liam", 100, 10, 10, 100);
+			Monster monsterOptionOne = new Monster("Harry", 33, 20, 53);
+			Monster monsterOptionTwo = new Monster("Louis", 45, 4, 49);
+			Monster monsterOptionThree = new Monster("Niall", 19, 35, 54);
+			Monster monsterOptionFour = new Monster("Liam", 13, 10, 23);
 			System.out.println("Please select your Starting Monster:");
 			System.out.println("Option '1': ");
 			monsterOptionOne.commandLineToString();
