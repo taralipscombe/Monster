@@ -176,7 +176,7 @@ public class MainScreen {
 	
 	//Implement the overnight random events - maybe new random event class?
 	public static void sleep() {
-		for (Monster monster : player.monsterTeam) {
+		for (Monster monster : player.getTeam()) {
 			monster.heal();
 		}
 		player.incrementDay();
@@ -190,7 +190,7 @@ public class MainScreen {
 	
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		while (player.currentDay < player.finishDay) {
+		while (player.getDay() < player.getFinishDay()) {
 			displayOptions();
 			nextMove(input);
 		}
