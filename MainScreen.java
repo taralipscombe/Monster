@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -32,11 +33,12 @@ public class MainScreen {
 		Pattern pattern = Pattern.compile("[^1-8]");
 		Matcher matcher = pattern.matcher(num);
 		boolean correctNum = matcher.find();
-		if(correctNum || Integer.parseInt(num) > 8 || Integer.parseInt(num) < 1) {
+		if(num.length()==0) {
+			System.out.println("Error: Please enter a number between 1 and 8");
+		} else if(correctNum || Integer.parseInt(num) > 8 || Integer.parseInt(num) < 1) {
 			System.out.println("Error: Please enter a valid move between 1 and 8");		//move????	
 		} else {
 			int number = Integer.parseInt(num);
-			System.out.println(num.getClass().getName());
 				if (number == 1) {
 					viewAttributes();
 				} else if (number == 2) {
@@ -46,7 +48,7 @@ public class MainScreen {
 				} else if (number == 4) {
 					viewBattles();
 				} else if (number == 5) {
-					battle();
+					battle(input);
 				} else if (number == 6) {
 					visitShop(input);
 				} else if (number == 7) {
@@ -136,7 +138,9 @@ public class MainScreen {
 			Pattern pattern = Pattern.compile("[^1-3]");
 			Matcher matcher = pattern.matcher(num);
 			boolean correctNum = matcher.find();
-			if (correctNum || Integer.parseInt(num) > 3 || Integer.parseInt(num) < 1) {
+			if(num.length()==0) {
+				System.out.println("Error: Please enter a number between 1 and 3");
+			}else if (correctNum || Integer.parseInt(num) > 3 || Integer.parseInt(num) < 1) {
 				System.out.println("Error: Please enter a valid move between 1 and 3");	
 			} else {
 				selected = false;
