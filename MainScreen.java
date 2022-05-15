@@ -6,6 +6,9 @@ public class MainScreen {
 	
 	private static Player player;
 	private static Shop shop;
+	private static ArrayList<Monster> enemyTeamOne = null;
+	private static ArrayList<Monster> enemyTeamTwo = null;
+	private static ArrayList<Monster> enemyTeamThree = null;
 	
 	public MainScreen(Player thePlayer) {
 		player = thePlayer;
@@ -73,12 +76,90 @@ public class MainScreen {
 	
 	public static void viewBattles() {
 		//currently not implemented, use Battle generator class to randomise battles
-		System.out.println("TO BE IMPLEMENTED");
+		BattleGenerator battles = new BattleGenerator(player);
+		int i = 0;
+		while (i < 3) {
+			if (i == 0 ) {
+				System.out.println("Battle '1': ");
+				if (enemyTeamOne == null) {
+				ArrayList<Monster> enemyTeam = BattleGenerator.generateTeam();
+				enemyTeamOne = enemyTeam;
+				} else {
+					System.out.println();
+					for (Monster monster : enemyTeamOne) {
+						System.out.println(monster.toString());
+						System.out.println();
+				}
+				}
+			} else if (i == 1 ) {
+				System.out.println("Battle '2': ");
+				if (enemyTeamTwo == null) { 
+				ArrayList<Monster> enemyTeam = BattleGenerator.generateTeam();
+				enemyTeamTwo = enemyTeam;
+				} else {
+					System.out.println();
+					for (Monster monster : enemyTeamTwo) {
+						System.out.println(monster.toString());
+						System.out.println();
+				}
+				}
+			} else if (i == 2) {
+				System.out.println("Battle '3': ");	
+				if (enemyTeamThree == null) {
+					ArrayList<Monster> enemyTeam = BattleGenerator.generateTeam();
+					enemyTeamThree = enemyTeam;
+				} else {
+					System.out.println();
+					for (Monster monster : enemyTeamThree) {
+						System.out.println(monster.toString());
+						System.out.println();
+				}
+				}
+			}
+			i += 1;
+		}
+
 	}
 	
-	public static void battle() {
-		//maybe calls view battles so player can select which battle, then go to battle class and fight ig
-		System.out.println("TO BE IMPLEMENTED");
+	public static void battle(Scanner input) {
+		// first check if teams have been generated, if not generate that team so there is at three options
+		// once selected, remove the team from the attribute - battles can only be played once - consider the heal feature?
+		// will have to generate while loop so continues to ask if not correct input
+		
+		
+		System.out.println("Select Enemy Team to Battle: ");
+		boolean selected = true;
+		while (selected) {
+			System.out.println();
+			viewBattles();
+			String num = input.nextLine();
+			Pattern pattern = Pattern.compile("[^1-3]");
+			Matcher matcher = pattern.matcher(num);
+			boolean correctNum = matcher.find();
+			if (correctNum || Integer.parseInt(num) > 3 || Integer.parseInt(num) < 1) {
+				System.out.println("Error: Please enter a valid move between 1 and 3");	
+			} else {
+				selected = false;
+				System.out.println("TIME TO BATTLE!");
+				if (num.equals("1")) {
+					ArrayList<Monster> battlingTeam = enemyTeamOne;
+					Battle battle = new Battle(player, battlingTeam);
+					Battle.fight();
+					enemyTeamOne = null;
+				} else if (num.equals("2")) {
+					ArrayList<Monster> battlingTeam = enemyTeamTwo;
+					Battle battle = new Battle(player, battlingTeam);
+					Battle.fight();
+					enemyTeamTwo = null;
+				} else {
+					ArrayList<Monster> battlingTeam = enemyTeamThree;
+					Battle battle = new Battle(player, battlingTeam);
+					Battle.fight();
+					enemyTeamThree = null;
+				}
+			}
+			}
+		
 	}
 	
 	public static void visitShop(Scanner input) {
@@ -91,6 +172,9 @@ public class MainScreen {
 	
 	//Implement the overnight random events - maybe new random event class?
 	public static void sleep() {
+		for (Monster monster : player.monsterTeam) {
+			monster.heal();
+		}
 		player.incrementDay();
 	}
 	
@@ -106,7 +190,7 @@ public class MainScreen {
 			displayOptions();
 			nextMove(input);
 		}
-		
+		//finish game
 
 	}
 }
