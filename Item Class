@@ -1,18 +1,27 @@
 
-
 public class Item {
 	private String name, property;
 	private int propertyChange, usage;
+	private int purchasePrice, sellbackPrice;
 	
-	public Item(String itemName, String propertyName, int change) {
+	public Item(String itemName, String propertyName, int change, int itemUsage, int price) {
 		name = itemName;
 		property = propertyName;
 		propertyChange = change;
-		usage = 100;
+		usage = itemUsage;
+		purchasePrice = price;
+		sellbackPrice = price;
 	}
-	
+
 	public String getName() {
 		return name;
+	}
+	public int getPurchasePrice() {
+		return purchasePrice;
+	}
+	
+	public int getsellbackPrice() {
+		return sellbackPrice;
 	}
 	
 	public String getProperty() {
@@ -36,6 +45,9 @@ public class Item {
 	}
 	
 	public String toString() {
+		if(name == "Lucky Dip") {
+			return "Lucky Dip gives you a randomly generated item from the shop! Try your luck!";
+		}
 		if(getIncreaseOrDecrease()) {
 			return "Item: "+name+"\nIncreases "+property+" by "+propertyChange;
 		} else {
