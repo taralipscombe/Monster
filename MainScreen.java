@@ -45,7 +45,7 @@ public class MainScreen {
 				} else if (number == 5) {
 					battle();
 				} else if (number == 6) {
-					visitShop();
+					visitShop(input);
 				} else if (number == 7) {
 					sleep();
 				} else {
@@ -81,10 +81,10 @@ public class MainScreen {
 		System.out.println("TO BE IMPLEMENTED");
 	}
 	
-	public static void visitShop() {
+	public static void visitShop(Scanner input) {
 		//go to shop class? print out all available items, will need to be able to purchase, or re sell current items, will need to call view inventory for that
 		//have set items, potentially unlock new items with monster (i.e. buy new monster, can now get new item or maybe hard idk tbd
-		System.out.println("TO BE IMPLEMENTED");
+		shop.enterStore(input);
 		
 	}
 	
