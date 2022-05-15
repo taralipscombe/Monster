@@ -25,11 +25,11 @@ public class Shop {
 			Scanner input = new Scanner(System.in);
 			System.out.println("Welcome to the shop! Would you like to buy or sell?");
 			String action = input.nextLine();
-			if(action == "buy") {
+			if(action.equals("buy")) {
 				this.buy();
-			} else if(action == "sell") {
+			} else if(action.equals("sell")) {
 				this.sell();
-			} else if(action == "exit"){
+			} else if(action.equals("exit")){
 				actionRecieved = true;
 			} else {
 				System.out.println("Please enter 'buy' or 'sell'.");
@@ -40,7 +40,7 @@ public class Shop {
 	public void buy() {
 		int i = 1;
 		for (Item item:shopItems) {
-			System.out.format("Option "+i+": "+item);
+			System.out.format("Option "+i+": "+item+"\n");
 			i+=1;
 		}
 		Scanner input = new Scanner(System.in);
@@ -49,7 +49,7 @@ public class Shop {
 		Matcher matcher = pattern.matcher(num);
 		boolean correctNum = matcher.find();
 		int number = Integer.parseInt(num);
-		int arrlength = player.getItems().size();
+		int arrlength = shopItems.size();
 		if(correctNum || number > arrlength || number < 1) {
 			System.out.println("Error: Please enter a number of an item");		//move????	
 		} else {
@@ -67,7 +67,7 @@ public class Shop {
 	public void sell() {
 		int i = 1;
 		for (Item item:player.items) {
-			System.out.format("Option "+i+": "+item);
+			System.out.format("Option "+i+": "+item+"\n");
 			i+=1;
 		}
 		Scanner input = new Scanner(System.in);
@@ -88,3 +88,4 @@ public class Shop {
 		}
 		
 	}
+
