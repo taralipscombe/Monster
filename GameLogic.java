@@ -4,11 +4,11 @@ import java.util.regex.Pattern;
 
 
 public class GameLogic {
-	public static String playerName=null;
-	public static int numDays=0;
-	public static String difficulty=null;
-	public static Monster startingMonster=null;
-	public static Player player;
+	private static String playerName=null;
+	private static int numDays=0;
+	private static String difficulty=null;
+	private static Monster startingMonster=null;
+	private static Player player;
 	
 	static void setName(Scanner input) {
 		while (playerName == null) {
@@ -34,7 +34,9 @@ public class GameLogic {
 			Pattern pattern = Pattern.compile("[^0-9]");
 			Matcher matcher = pattern.matcher(num);
 			boolean correctNum = matcher.find();
-			if(correctNum || Integer.parseInt(num) >15 || Integer.parseInt(num)<5) {
+			if(num.length()==0) {
+				System.out.println("Error: Please enter a number between 5 and 15");
+			} else if(correctNum || Integer.parseInt(num) >15 || Integer.parseInt(num)<5) {
 				System.out.println("Error: Please enter a number between 5 and 15");			
 			} else {
 					numDays = Integer.parseInt(num);	
@@ -54,7 +56,9 @@ public class GameLogic {
 			Pattern pattern = Pattern.compile("[^1-3]");
 			Matcher matcher = pattern.matcher(num);
 			boolean correctNum = matcher.find();
-			if(correctNum || Integer.parseInt(num) > 3 || Integer.parseInt(num) < 1) {
+			if(num.length()==0) {
+				System.out.println("Error: Please enter a number between 1 and 3");
+			} else if(correctNum || Integer.parseInt(num) > 3 || Integer.parseInt(num) < 1) {
 				System.out.println("Error: Please enter a valid difficulty level between 1 and 3");			
 			} else {
 					difficulty = num;
@@ -86,7 +90,9 @@ public class GameLogic {
 			Pattern pattern = Pattern.compile("[^1-4]");
 			Matcher matcher = pattern.matcher(num);
 			boolean correctNum = matcher.find();
-			if(correctNum || Integer.parseInt(num) > 4 || Integer.parseInt(num) < 1) {
+			if(num.length()==0) {
+				System.out.println("Error: Please enter a valid monster option number");
+			}else if(correctNum || Integer.parseInt(num) > 4 || Integer.parseInt(num) < 1||num.length()==0) {
 				System.out.println("Error: Please enter a valid Monster between 1 and 4");			
 			} else {
 				if (Integer.parseInt(num) == 1) {
