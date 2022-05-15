@@ -53,7 +53,7 @@ public class Shop {
 		if(correctNum || number > arrlength || number < 1) {
 			System.out.println("Error: Please enter a number of an item");		//move????	
 		} else {
-			Item purchasedItem = shopItems.get(number);
+			Item purchasedItem = shopItems.get(number-1);
 			if(player.getgold() < purchasedItem.getPurchasePrice()) {
 				System.out.println("Not enough gold");
 			} else {
@@ -80,7 +80,7 @@ public class Shop {
 		if(correctNum || number > arrlength || number < 1) {
 			System.out.println("Error: Please enter a number of an item");		//move????	
 		} else {
-			Item sellingItem = player.items.get(number);
+			Item sellingItem = player.items.get(number-1);
 			player.gold += sellingItem.getsellbackPrice();
 				shopItems.add(sellingItem);
 				System.out.println("You have successfully sold "+sellingItem.getName());
