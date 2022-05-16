@@ -1,4 +1,3 @@
-//hello hello
 public class Item {
 	private String name, property;
 	private int propertyChange, usage;
@@ -6,12 +5,31 @@ public class Item {
 	
 	public Item(String itemName, String propertyName, int change, int itemUsage, int price) {
 		name = itemName;
-		property = propertyName;
-		propertyChange = change;
+		property = propertyName; //damage or heal or lives
+		propertyChange = change; // amount by
 		usage = itemUsage;
 		purchasePrice = price;
 		sellbackPrice = price;
 	}
+	
+	public void useItem(Monster monster) {
+		if (property.equals("damage")) {
+			int damage = monster.getDamage();
+			monster.setDamage(damage + propertyChange);
+
+		}else if (property.equals("heal amount")) {
+			int healAmount = monster.getHealAmount();
+			monster.setHealAmount(healAmount + propertyChange);
+			
+		}else if (property.equals("lives")) {
+			monster.addLife();
+		}
+		int decrease = sellbackPrice / usage;
+		usage = usage - 1;
+		sellbackPrice = sellbackPrice - decrease;
+		
+	}
+	
 
 	public String getName() {
 		return name;
@@ -32,13 +50,6 @@ public class Item {
 		return propertyChange;
 	}
 	
-	public boolean getIncreaseOrDecrease() {
-		if(propertyChange>0) {
-			return true;
-		} else {
-			return false;
-		}
-	}
 	
 	public int getUsage() {
 		return usage;
@@ -48,11 +59,7 @@ public class Item {
 		if(name == "Lucky Dip") {
 			return "Lucky Dip gives you a randomly generated item from the shop! Try your luck!";
 		}
-		if(getIncreaseOrDecrease()) {
-			return "Item: "+name+"\nIncreases "+property+" by "+propertyChange;
-		} else {
-			return "Item: "+name+"\nDecreases "+property+" by "+(propertyChange*-1);
-		}
+		return "Item: "+name+"\nIncreases "+property+" by "+propertyChange;
 	}
 	
 	public void printAttributes() {
@@ -63,4 +70,3 @@ public class Item {
 	
 	
 }
-
