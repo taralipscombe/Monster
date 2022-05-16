@@ -42,7 +42,7 @@ public class MainScreen {
 				} else if (number == 2) {
 					viewTeam();
 				} else if (number == 3) {
-					viewInventory();
+					viewInventory(input);
 				} else if (number == 4) {
 					viewBattles();
 				} else if (number == 5) {
@@ -69,9 +69,78 @@ public class MainScreen {
 		player.printCurrentTeam();
 	}
 	
-	public static void viewInventory() {
+	public static void viewInventory(Scanner input) {
 		System.out.println("Your current Inventory: ");
 		player.printInventory();
+		System.out.println("Would you like to use an item on a Monster? (please enter 'yes' or 'no', or 'exit' to exit)");
+		boolean selected = true;
+		while (selected) {
+			String yesOrNo = input.nextLine();
+			Pattern pattern = Pattern.compile("[^a-zA-Z]");
+			Matcher matcher = pattern.matcher(yesOrNo);
+			boolean correctInput = matcher.find();
+			if (yesOrNo.equals("exit")) {
+				selected = false;
+			} if (correctInput) {
+				System.out.println("Error: Please enter 'yes' or 'no'");	
+			} else if (yesOrNo.equals("yes") || yesOrNo.equals("Yes")){
+				applyItem(input);
+				selected = false;
+				
+			} else if (yesOrNo.equals("no") || yesOrNo.equals("No")) {
+				selected = false;
+			} else {
+				System.out.println("Error: Please enter 'yes' or 'no'");	
+			}
+		
+		}
+	}
+	
+	public static void applyItem(Scanner input) {
+		boolean selected = true;
+		boolean exited = false;
+		while (selected && !exited) {
+			System.out.println("Please enter the number of the item you would like to apply: (or enter 'exit' to exit)");
+			player.printInventory();
+			String num = input.nextLine();
+			Pattern pattern = Pattern.compile("[^1-9]");
+			Matcher matcher = pattern.matcher(num);
+			boolean correctInput = matcher.find();
+			if (num.equals("exit")){
+				exited = true;
+			} else if (correctInput || Integer.parseInt(num) < 1 || Integer.parseInt(num) > player.getItems().size() ) {
+				System.out.println("Error: Please enter a number between 1 and " + player.getItems().size() + " (inclusive) (or enter 'exit' to exit). ");	
+			} else {
+				int numberItem = Integer.parseInt(num) - 1;
+				while (selected && !exited) {
+					System.out.println("Please enter the number of the Monster you would like to apply the item too: (or enter 'exit' to exit)");
+					player.printCurrentTeam();
+					String numTwo = input.nextLine();
+					Pattern patternTwo = Pattern.compile("[^1-9]");
+					Matcher matcherTwo = patternTwo.matcher(numTwo);
+					boolean correctInputTwo = matcherTwo.find();
+					if (num.equals("exit")){
+						exited = true;
+					} else if (correctInputTwo || Integer.parseInt(numTwo) < 1 || Integer.parseInt(numTwo) > player.getTeam().size() ) {
+						System.out.println("Error: Please enter a number between 1 and " + player.getTeam().size() + " (inclusive) (or enter 'exit' to exit).");	
+					} else {
+						selected = false;
+						int numberMonster = Integer.parseInt(num) - 1;
+						Monster appliedMonster = player.getTeam().get(numberMonster);
+						Item appliedItem = player.getItems().get(numberItem);
+						appliedItem.useItem(appliedMonster);
+				
+			}
+		}
+			}
+		}
+		
+		
+
+
+		
+		
+		
 	}
 	
 	public static void viewBattles() {
@@ -83,39 +152,52 @@ public class MainScreen {
 				System.out.println("Battle '1': ");
 				if (enemyTeamOne == null) {
 				ArrayList<Monster> enemyTeam = BattleGenerator.generateTeam();
+				int winnings = BattleGenerator.getWinnings(enemyTeam);
+				System.out.println("Winning this battle will award you with "+ winnings + " gold.");
 				enemyTeamOne = enemyTeam;
 				} else {
 					System.out.println();
 					for (Monster monster : enemyTeamOne) {
 						System.out.println(monster.toString());
 						System.out.println();
+					int winnings = BattleGenerator.getWinnings(enemyTeamOne);
+					System.out.println("Winning this battle will award you with "+ winnings + " gold.");
 				}
 				}
 			} else if (i == 1 ) {
 				System.out.println("Battle '2': ");
 				if (enemyTeamTwo == null) { 
 				ArrayList<Monster> enemyTeam = BattleGenerator.generateTeam();
+				int winnings = BattleGenerator.getWinnings(enemyTeam);
+				System.out.println("Winning this battle will award you with "+ winnings + " gold.");
 				enemyTeamTwo = enemyTeam;
 				} else {
 					System.out.println();
 					for (Monster monster : enemyTeamTwo) {
 						System.out.println(monster.toString());
 						System.out.println();
+					int winnings = BattleGenerator.getWinnings(enemyTeamTwo);
+					System.out.println("Winning this battle will award you with "+ winnings + " gold.");
 				}
 				}
 			} else if (i == 2) {
 				System.out.println("Battle '3': ");	
 				if (enemyTeamThree == null) {
 					ArrayList<Monster> enemyTeam = BattleGenerator.generateTeam();
+					int winnings = BattleGenerator.getWinnings(enemyTeam);
+					System.out.println("Winning this battle will award you with "+ winnings + " gold.");
 					enemyTeamThree = enemyTeam;
 				} else {
 					System.out.println();
 					for (Monster monster : enemyTeamThree) {
 						System.out.println(monster.toString());
 						System.out.println();
+					int winnings = BattleGenerator.getWinnings(enemyTeamThree);
+					System.out.println("Winning this battle will award you with "+ winnings + " gold.");
 				}
 				}
 			}
+		    System.out.println("");
 			i += 1;
 		}
 
@@ -135,7 +217,7 @@ public class MainScreen {
 			String num = input.nextLine();
 			Pattern pattern = Pattern.compile("[^1-3]");
 			Matcher matcher = pattern.matcher(num);
-			boolean correctNum = matcher.find();
+			boolean correctNum = matcher.find(); 
 			if (correctNum || Integer.parseInt(num) > 3 || Integer.parseInt(num) < 1) {
 				System.out.println("Error: Please enter a valid move between 1 and 3");	
 			} else {
@@ -172,7 +254,7 @@ public class MainScreen {
 	
 	//Implement the overnight random events - maybe new random event class?
 	public static void sleep() {
-		for (Monster monster : player.monsterTeam) {
+		for (Monster monster : player.getTeam()) {
 			monster.heal();
 		}
 		player.incrementDay();
@@ -189,7 +271,7 @@ public class MainScreen {
 	
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		while (player.currentDay < player.finishDay) {
+		while (player.getDay() < player.getFinishDay()) {
 			displayOptions();
 			nextMove(input);
 		}
