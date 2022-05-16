@@ -33,9 +33,7 @@ public class MainScreen {
 		Pattern pattern = Pattern.compile("[^1-8]");
 		Matcher matcher = pattern.matcher(num);
 		boolean correctNum = matcher.find();
-		if(num.length()==0) {
-			System.out.println("Error: Please enter a number between 1 and 8");
-		} else if(correctNum || Integer.parseInt(num) > 8 || Integer.parseInt(num) < 1) {
+		if(correctNum || Integer.parseInt(num) > 8 || Integer.parseInt(num) < 1) {
 			System.out.println("Error: Please enter a valid move between 1 and 8");		//move????	
 		} else {
 			int number = Integer.parseInt(num);
@@ -138,9 +136,7 @@ public class MainScreen {
 			Pattern pattern = Pattern.compile("[^1-3]");
 			Matcher matcher = pattern.matcher(num);
 			boolean correctNum = matcher.find();
-			if(num.length()==0) {
-				System.out.println("Error: Please enter a number between 1 and 3");
-			}else if (correctNum || Integer.parseInt(num) > 3 || Integer.parseInt(num) < 1) {
+			if (correctNum || Integer.parseInt(num) > 3 || Integer.parseInt(num) < 1) {
 				System.out.println("Error: Please enter a valid move between 1 and 3");	
 			} else {
 				selected = false;
@@ -176,10 +172,13 @@ public class MainScreen {
 	
 	//Implement the overnight random events - maybe new random event class?
 	public static void sleep() {
-		for (Monster monster : player.getTeam()) {
+		for (Monster monster : player.monsterTeam) {
 			monster.heal();
 		}
 		player.incrementDay();
+		RandomEvent randomEvent = new RandomEvent(player);
+		RandomEvent.generate();
+		
 	}
 	
 	public static void endGame() {
@@ -190,7 +189,7 @@ public class MainScreen {
 	
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		while (player.getDay() < player.getFinishDay()) {
+		while (player.currentDay < player.finishDay) {
 			displayOptions();
 			nextMove(input);
 		}
