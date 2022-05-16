@@ -1,5 +1,5 @@
 //helllo tara
-//more 
+//more
 
 
 import java.util.Scanner;
