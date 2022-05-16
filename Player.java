@@ -97,9 +97,11 @@ public class Player {
 	}
 	
 	public void printAttributes() {
-		System.out.println("Current gold: "+gold);
-		System.out.println("Current Day: "+currentDay);
-		System.out.println("Days Remaining: "+(finishDay -currentDay));
+		System.out.println("Current gold: " + gold);
+		System.out.println("Current points: " + points);
+		System.out.println("Current Day: " + currentDay);
+		System.out.println("Days Remaining: " + (finishDay - currentDay));
+		
 		
 	}
 	
@@ -114,13 +116,31 @@ public class Player {
 	}
 	
 	public void printInventory() {
-		for(Item item : items) {
-			System.out.println();
-			item.printAttributes();
+		if (items.size() == 0) {
+			System.out.println("Your inventory is empty. Buy an item at the shop!");
+		} else {
+			int i = 1;
+			for(Item item : items) {
+				if (item.getUsage() == 0) {
+					this.removeItem(item);
+				}
+				System.out.println();
+				System.out.println("Item number " + i + ": ");
+				item.printAttributes();
+				i += 1;
+			}
 		}
+		
 	}
-	public void changeGold(int num) {
-		this.gold+=num;
+	
+	public void increaseGold(int num) {
+		gold += num;
 	}
+	
+	public void decreaseGold(int num) {
+		gold -= num;
+	}
+	
+	
 	
 }
