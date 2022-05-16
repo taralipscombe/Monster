@@ -15,8 +15,8 @@ public class BattleGenerator {
 	
 	public BattleGenerator(Player newPlayer) {
 		player = newPlayer;
-		monsterTeam = player.monsterTeam; //do i have to use getter/setter methods or no?
-		difficulty = player.chosenDifficulty;
+		monsterTeam = player.getTeam(); //do i have to use getter/setter methods or no?
+		difficulty = player.getDifficulty();
 		}
 	
 	
@@ -31,6 +31,16 @@ public class BattleGenerator {
 		clearTeam();
 		return team;
 	}
+	
+	public static int getWinnings(ArrayList<Monster> monsters) {
+		int average = 0;
+		for (Monster monster : monsters) {
+			average += monster.getDamage();
+		}
+		average = average / monsters.size();
+		return average;
+	}
+	
 	
 	public static void clearTeam() {
 		enemyTeam.clear();
