@@ -9,6 +9,7 @@ public class Player {
 	private ArrayList<Monster> monsterTeam = new ArrayList<Monster>();
 	private int currentDay;
 	private int finishDay;
+	private int points;
 	
 
 	public Player(String playerName2, String difficulty, Monster startingMonster, int numDays) {
@@ -17,7 +18,12 @@ public class Player {
 		monsterTeam.add(startingMonster);
 		finishDay = numDays;
 		currentDay = 0;
+		points = 0;
 		setGold();
+	}
+	
+	public String getDifficulty() {
+		return chosenDifficulty;
 	}
 	
 	public int getPoints() {
