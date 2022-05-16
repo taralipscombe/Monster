@@ -1,74 +1,146 @@
 import java.util.ArrayList;
 
-public class Battle {
+public class Player {
 	
-	private static Player player;
-	private static ArrayList<Monster> playersTeam;
-	private static ArrayList<Monster> enemyTeam;
+	private String playerName;
+	private String chosenDifficulty;
+	private int gold;
+	private ArrayList<Item> items = new ArrayList<Item>();
+	private ArrayList<Monster> monsterTeam = new ArrayList<Monster>();
+	private int currentDay;
+	private int finishDay;
+	private int points;
 	
-	
-	public Battle(Player thePlayer, ArrayList<Monster> enemy) {
-		player = thePlayer;
-		enemyTeam = enemy;
-		playersTeam = player.getTeam();
+
+	public Player(String playerName2, String difficulty, Monster startingMonster, int numDays) {
+		playerName = playerName2;
+		chosenDifficulty = difficulty;
+		monsterTeam.add(startingMonster);
+		finishDay = numDays;
+		currentDay = 0;
+		points = 0;
+		setGold();
 	}
 	
-	public static void fight() {
-		int numPlayerMonster = 0;
-		int numEnemyMonster = 0;
-		while  (numPlayerMonster < playersTeam.size() && numEnemyMonster < enemyTeam.size()) {
-			Monster playerMonster = playersTeam.get(numPlayerMonster);
-			Monster enemyMonster = enemyTeam.get(numEnemyMonster);
-			while (playerMonster.currentHealth > 0 && enemyMonster.currentHealth > 0 ) {
-				playerMonster.attack(enemyMonster);
-				if (enemyMonster.getCurrentHealth() > 0) {
-					enemyMonster.attack(playerMonster);
-				} 
-			}
-			if  (playerMonster.currentHealth <= 0) {
-				// reduce playermonster lives
-				System.out.println("Owwwww!");
-				System.out.println("Oh no! " + playerMonster.getName() + " has just died!");
-				numPlayerMonster += 1;
-			} 
-			if (enemyMonster.currentHealth <= 0) {
-				// reduce enemymonster lives nvm cause never used again
-				System.out.println("Wapow!");
-				System.out.println("Yay! " + playerMonster.getName() + " has just killed the enemy monster " + enemyMonster.getName() + " - you gained 25 points");
-				player.increasePoints(25);
-				numEnemyMonster += 1;
-			}
-		}
-		if (numPlayerMonster >= playersTeam.size() ) {
-			awardLoss();
+	public String getDifficulty() {
+		return chosenDifficulty;
+	}
+	
+	public int getPoints() {
+		return points;
+	}
+	
+	public void increasePoints(int morePoints) {
+		points += morePoints;
+	}
+	
+	public void decreasepoints(int lessPoints) {
+		points -= lessPoints;
+	}
+	
+	
+	public int getDay() {
+		return this.currentDay;
+	}
+	public int getFinishDay() {
+		return this.finishDay;
+	}
+	
+	public String getName() {
+		return playerName;
+	}
+	public ArrayList<Item> getItems(){
+		return items;
+	}
+	
+	public void addItem(Item newestItem) {
+		items.add(newestItem);
+	}
+	
+	public void removeItem(Item newestItem) {
+		items.remove(newestItem);
+	}
+	public void setGold() {
+		if (chosenDifficulty == "Easy") {
+			gold = 200;
+		} else if (chosenDifficulty == "Medium") {
+			gold = 150;
 		} else {
-			//enemy team lost
-			awardWin();
+			gold = 100;
 		}
-		
-		
+	}
+	
+	public int getgold() {
+		return gold;
+	}
+	
+	public ArrayList<Monster> getTeam(){
+		return monsterTeam;
+	}
+	
+	public void addTeamMate(Monster newestMonster) {
+		monsterTeam.add(newestMonster);
+	}
+	public void removeTeamMate(Monster newestMonster) {
+		monsterTeam.remove(newestMonster);
+	}
+	// same as sleeping so will need to add how the monsters heal over night
+	public void incrementDay() {
+		currentDay = currentDay + 1;
+		for (Monster monster : monsterTeam) {
+			monster.heal();
+		}
+	}
+	
+	public void endGame() {
+		currentDay = finishDay;
+	}
+	
+	public void printAttributes() {
+		System.out.println("Current gold: " + gold);
+		System.out.println("Current points: " + points);
+		System.out.println("Current Day: " + currentDay);
+		System.out.println("Days Remaining: " + (finishDay - currentDay));
 		
 		
 	}
 	
-	public static void awardWin() {
-		System.out.println("Congratulations on Winning the Battle!");
-		int average = 0;
-		for (Monster monster : enemyTeam) {
-			average += monster.getDamage();
+	public void printCurrentTeam() {
+		if(this.getTeam().size()==0) {
+			System.out.println("Your team is empty. Buy a monster at the shop!");
 		}
-		average = average / enemyTeam.size();
-		player.increaseGold(average);
-		player.increasePoints(50);
-		System.out.println("You have been awarded with " + average + " gold and 50 extra points!");
-		// could just be awarded the average power in enemy team - more enemy power = more reward
+		for(Monster monster : monsterTeam) {
+			System.out.println();
+			monster.commandLineToString();
+		}
+	}
+	
+	public void printInventory() {
+		if (items.size() == 0) {
+			System.out.println("Your inventory is empty. Buy an item at the shop!");
+		} else {
+			int i = 1;
+			for(Item item : items) {
+				if (item.getUsage() == 0) {
+					this.removeItem(item);
+				}
+				System.out.println();
+				System.out.println("Item number " + i + ": ");
+				item.printAttributes();
+				i += 1;
+			}
+		}
 		
 	}
 	
-	public static void awardLoss() {
-		System.out.println("Oh no! Your team was defeated and killed in Battle!");
-		
+	public void increaseGold(int num) {
+		gold += num;
 	}
-
+	
+	public void decreaseGold(int num) {
+		gold -= num;
+	}
+	
+	
+	
 }
-
