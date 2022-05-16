@@ -19,6 +19,20 @@ public class Player {
 		currentDay = 0;
 		setGold();
 	}
+	
+	public int getPoints() {
+		return points;
+	}
+	
+	public void increasePoints(int morePoints) {
+		points += morePoints;
+	}
+	
+	public void decreasepoints(int lessPoints) {
+		points -= lessPoints;
+	}
+	
+	
 	public int getDay() {
 		return this.currentDay;
 	}
