@@ -9,7 +9,7 @@ public class BattleGenerator {
 	private static ArrayList<Monster> enemyTeam = new ArrayList<Monster>();
 	private static ArrayList<String> potentialNames = new ArrayList<String>(Arrays.asList("Bewarewolf", "Lunatick", "Clawcerer", "Badboon", 
 			"Artichoker", "Hammer", "Assassin", "Coomba", "Bandit", "Bruiser", "Scythid", "CoffinMan", "Bubbles", "Sparkles", "Spiker"));
-	public static Player player;
+	private static Player player;
 	
 	
 	
@@ -60,19 +60,19 @@ public class BattleGenerator {
 			int damage = adjustDamageEasy();
 			int heal = adjustHealEasy();
 			String name = generateName();
-			Monster enemy = new Monster(name, damage, heal);
+			Monster enemy = new Monster(name, damage, heal, 0);
 			return enemy;
 		} else if (difficulty.equals("2")) {
 			int damage = adjustDamageMedium();
 			int heal = adjustHealMedium();
 			String name = generateName();
-			Monster enemy = new Monster(name, damage, heal);
+			Monster enemy = new Monster(name, damage, heal, 0);
 			return enemy;	
 		} else {
 			int damage = adjustDamageHard();
 			int heal = adjustHealHard();
 			String name = generateName();
-			Monster enemy = new Monster(name, damage, heal);
+			Monster enemy = new Monster(name, damage, heal, 0);
 			return enemy;
 		}
 	}
@@ -85,7 +85,7 @@ public class BattleGenerator {
 	    	int randomInt = rndm.nextInt(15);
 	    	potentialName = potentialNames.get(randomInt);
 	    	if (checkName(potentialName)) {
-	    		return potentialName;
+	    		generated = true;
 	    	} 
 	    }
 	    return potentialName;
