@@ -1,12 +1,13 @@
+
 public class Monster {
 	
-	public String name;
-	public int maxHealth;
-	public int damage;
-	public int healAmount;
-	public int currentHealth;
-	public int lives;
-	public int price;
+	private String name;
+	private int maxHealth;
+	private int damage;
+	private int healAmount;
+	private int currentHealth;
+	private int lives;
+	private int price;
 	
 	public Monster() {
 		
@@ -21,12 +22,22 @@ public class Monster {
 		lives = 3;
 		price = cost;
 	}
+	
+	
 	public int getPrice() {
 		return price;
 	}
 	
 	public int getLives() {
 		return lives;
+	}
+	
+	public void removeLife() {
+		lives = lives - 1;
+	}
+	
+	public void addLife() {
+		lives = lives + 1;
 	}
 	
 	public String getName() {
@@ -73,6 +84,10 @@ public class Monster {
 		int opponentHealth = monsterOpponent.getCurrentHealth();
 		opponentHealth = opponentHealth - damage;
 		monsterOpponent.setCurrentHealth(opponentHealth);
+		if (monsterOpponent.getCurrentHealth() < 0) {
+			monsterOpponent.setCurrentHealth(0);
+			monsterOpponent.removeLife();
+		}
 	}
 	
 	public void heal() {
@@ -83,17 +98,20 @@ public class Monster {
 	}
 	
 	public void commandLineToString() {
-		System.out.println("Name: "+name);
-		System.out.println("Max-Health: "+maxHealth);
-		System.out.println("Current Health: "+currentHealth);
-		System.out.println("Damage: "+damage);
-		System.out.println("Heal Amount: "+healAmount);
+		System.out.println("Name: " + name);
+		System.out.println("Max-Health: " + maxHealth);
+		System.out.println("Current Health: " + currentHealth);
+		System.out.println("Damage: " + damage);
+		System.out.println("Heal Amount: " + healAmount);
+		System.out.println("Lives Remaining: " + lives);
 	}
 	
 	public String toString() {
 		return "The monster's name is " + name + ". It attacks with "+ damage + " units of power and heals " + healAmount + " units every night.";
 	}
+
 	
 	
 	
 }
+
