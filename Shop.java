@@ -25,11 +25,11 @@ public class Shop {
 	public void enterStore(Scanner input) {
 		boolean actionRecieved = false;
 		while(actionRecieved == false) {
-			System.out.println("Welcome to the shop! Would you like to buy or sell? (Enter 'exit' to return to Homepage)");
-			System.out.println("Your current gold:"+player.getgold());
+			System.out.println("Welcome to the shop! Would you like to buy (enter 'buy') or sell (enter 'sell')? (Enter 'exit' to return to Homepage)");
+			System.out.println("Your current gold: " + player.getgold());
 			String action = input.nextLine();
 			if(action.equals("buy")||action.equals("Buy")) {
-				System.out.println("Item or Monster?");
+				System.out.println("Item (enter 'item') or Monster (enter 'monster')?");
 				String choice = input.nextLine();
 				if(choice.equals("item")||choice.equals("Item")) {
 					this.buy(input);
@@ -40,13 +40,13 @@ public class Shop {
 				}
 				
 			} else if(action.equals("sell")||action.equals("sell")) {
-				System.out.println("Item or Monster?");
+				System.out.println("Item (enter 'item') or Monster (enter 'monster')?");
 				String choice = input.nextLine();
 				if(choice.equals("item")||choice.equals("Item")) {
 					if(player.getItems().size() >0) {
 						this.sell(input);
 					} else {
-						System.out.println("Nothing to sell.");
+						System.out.println("You have nothing to sell - visit the Shop to purchase Items and Monsters! ");
 					}
 					
 				} else if (choice.equals("monster")||choice.equals("Monster")) {
@@ -58,20 +58,20 @@ public class Shop {
 					}
 					
 				} else {
-					System.out.println("Please enter item or monster");
+					System.out.println("Please enter 'item' or 'monster'");
 				}
 			} else if(action.equals("exit")||action.equals("Exit")){
 				actionRecieved = true;
 			} else {
-				System.out.println("Please enter 'buy' or 'sell' or 'exit' to go back.");
+				System.out.println("Please enter 'buy' or 'sell', or 'exit' to go back.");
 			}
 		}
 	}
 	
 	public void buy(Scanner input) {
-		System.out.println("Your current gold:"+player.getgold());
+		System.out.println("Your current gold: " + player.getgold());
 		int i = 1;
-		for (Item item:shopItems) {
+		for (Item item : shopItems) {
 			System.out.format("Option "+i+": "+item+"\n");
 			i+=1;
 		}
@@ -82,17 +82,17 @@ public class Shop {
 		boolean correctNum = matcher.find();
 		int arrlength = shopItems.size();
 		if(num.length()==0||correctNum) {
-			System.out.println("Error: Invalid number, returning to shop");
+			System.out.println("Error: Invalid input, returning to shop");
 		}else {
 			int number = Integer.parseInt(num);
 			if(correctNum||number > arrlength || number < 1) {
-				System.out.println("Error: Invalid number, returning to shop");		//move????	
+				System.out.println("Error: Invalid input, returning to shop");		//move????	
 			} else {
 				Item purchasedItem = shopItems.get(number-1);
 				if(player.getgold() < purchasedItem.getPurchasePrice()) {
-					System.out.println("Not enough gold");
+					System.out.println("You do not have enough gold to purchase this Item. You can earn more gold by battling!");
 				} else {
-					player.changeGold(-purchasedItem.getPurchasePrice());
+					player.decreaseGold(purchasedItem.getPurchasePrice());
 					if(purchasedItem.getName() == "Lucky Dip") {
 						Random rndm = new Random();
 						int randomInt = rndm.nextInt(arrlength);
@@ -102,20 +102,19 @@ public class Shop {
 						purchasedItem = shopItems.get(randomInt);
 					}
 					player.addItem(purchasedItem);
-					player.changeGold(-purchasedItem.getPurchasePrice());
-					System.out.println("You have successfully bought "+purchasedItem.getName());
+					System.out.println("You have successfully bought " + purchasedItem.getName());
 				}}}
 		}
 	
 	public void sell(Scanner input) {
-		System.out.println("Your current gold:"+player.getgold());
+		System.out.println("Your current gold: " + player.getgold());
 		int i = 1;
 		for (Item item:player.getItems()) {
-			System.out.format("Option "+i+": "+item+"\n");
-			System.out.println("Sell for: "+item.getsellbackPrice());
+			System.out.format("Option " + i + ": " + item+"\n");
+			System.out.println("Sell for: " + item.getsellbackPrice());
 			i+=1;
 		}
-		System.out.println("Select the number of the item you want to sell, or enter 'exit' to go back.");
+		System.out.println("Enter the number of the item you want to sell, or enter 'exit' to go back.");
 		String num = input.nextLine();
 		Pattern pattern = Pattern.compile("[^0-9]");
 		Matcher matcher = pattern.matcher(num);
@@ -123,45 +122,45 @@ public class Shop {
 		int number = Integer.parseInt(num);
 		int arrlength = player.getItems().size();
 		if(num.length()==0) {
-			System.out.println("Error: Invalid number, returning to shop");
+			System.out.println("Error: Invalid input, returning to shop");
 		}else if(correctNum || number > arrlength || number < 1) {
-			System.out.println("Error: Invalid number, returning to shop");		//move????	
+			System.out.println("Error: Invalid input, returning to shop");		//move????	
 		} else {
 			Item sellingItem = player.getItems().get(number-1);
-			player.changeGold(sellingItem.getsellbackPrice());
+			player.increaseGold(sellingItem.getsellbackPrice());
 				shopItems.add(sellingItem);
 				player.removeItem(sellingItem);
-				System.out.println("You have successfully sold "+sellingItem.getName());
+				System.out.println("You have successfully sold " + sellingItem.getName());
 			}
 		}
 	
 	public void sellMonster(Scanner input) {
-		System.out.println("Your current gold:"+player.getgold());
+		System.out.println("Your current gold: " + player.getgold());
 		int i = 1;
-		for (Monster monster:player.getTeam()) {
-			System.out.format("Option "+i+": "+monster.toString()+"\n");
+		for (Monster monster : player.getTeam()) {
+			System.out.format("Option " + i + ": " + monster.toString() + "\n");
 			int sellingPrice = monster.getLives()/3 * monster.getPrice();
-			System.out.println("Sell for: "+sellingPrice);
+			System.out.println("Sell for: " + sellingPrice);
 			i+=1;
 		}
-		System.out.println("Select the number of the monster you want to sell, or enter 'exit' to go back.");
+		System.out.println("Enter the number of the monster you want to sell, or enter 'exit' to go back.");
 		String num = input.nextLine();
 		Pattern pattern = Pattern.compile("[^0-9]");
 		Matcher matcher = pattern.matcher(num);
 		boolean correctNum = matcher.find();
 		if(num.length()==0) {
-			System.out.println("Error: Invalid number, returning to shop");
+			System.out.println("Error: Invalid input, returning to shop");
 		}
 		int number = Integer.parseInt(num);
 		int arrlength = player.getTeam().size();
 		if(correctNum || number > arrlength || number < 1) {
-			System.out.println("Error: Invalid number, returning to shop");		//move????	
+			System.out.println("Error: Invalid input, returning to shop");		//move????	
 		} else {
 			Monster sellingMonster = player.getTeam().get(number-1);
 			int sellingPrice = sellingMonster.getLives()/3 * sellingMonster.getPrice();
-			player.changeGold(sellingPrice);
+			player.increaseGold(sellingPrice);
 			player.removeTeamMate(sellingMonster);
-				System.out.println("You have successfully sold "+sellingMonster.getName());
+				System.out.println("You have successfully sold " + sellingMonster.getName());
 			}
 	}
 	
@@ -169,10 +168,10 @@ public class Shop {
 		
 		MonsterGenerator instanceMonster = new MonsterGenerator();
 		ArrayList<Monster> monstersForSale = instanceMonster.generator();
-		System.out.println("Your current gold:"+player.getgold());
+		System.out.println("Your current gold:" + player.getgold());
 		int i = 1;
 		for (Monster monster:monstersForSale) {
-			System.out.format("Option "+i+": "+monster.toString()+"\n");
+			System.out.format("Option " + i + ": " + monster.toString() + "\n");
 			i+=1;
 		}
 		System.out.println("Select the number of the monster you want to buy, or enter 'exit' to go back.");
@@ -182,23 +181,22 @@ public class Shop {
 		Matcher matcher = pattern.matcher(num);
 		boolean correctNum = matcher.find();
 		if(num.length()==0 ||correctNum) {
-			System.out.println("Error: Invalid number, returning to shop");
+			System.out.println("Error: Invalid input, returning to shop");
 		}
 		int number = Integer.parseInt(num);
 		if(number >4) {
-			System.out.println("Error: Invalid number, returning to shop");
+			System.out.println("Error: Invalid input, returning to shop");
 		}else if(number<=4 && number>=1) {
 			Monster purchasedMonster = monstersForSale.get(number-1);
 			if(player.getgold() < purchasedMonster.getPrice()) {
-				System.out.println("Not enough gold");
+				System.out.println("You do not have enough gold to purchase this Monster. You can earn more gold by battling!");
 			} else {
-				player.changeGold(-purchasedMonster.getPrice());
+				player.decreaseGold(purchasedMonster.getPrice());
 				player.addTeamMate(purchasedMonster);
-				System.out.println("You have successfully bought "+purchasedMonster.getName());
+				System.out.println("You have successfully bought " + purchasedMonster.getName());
 		}
 		
 	}
 		
 	}
 }
-
