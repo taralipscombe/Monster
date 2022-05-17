@@ -18,6 +18,21 @@ public class MainScreen {
 		shop = new Shop(player);
 	}
 	
+	public Player getPlayer() {
+		return player;
+	}
+	
+	public ArrayList<Monster> getEnemyTeam(int numTeam){
+		if (numTeam == 1) {
+			return enemyTeamOne;
+		}else if(numTeam == 2){
+			return enemyTeamTwo;
+		}else {
+			return enemyTeamThree;
+		}
+		
+	}
+	
 	public static void displayOptions() {
 		System.out.println("Please select your next move:");
 		System.out.println("Option (1): View your current attributes"); //not attributes but dont know other word
@@ -136,12 +151,6 @@ public class MainScreen {
 		}
 			}
 		}
-		
-		
-
-
-		
-		
 		
 	}
 	
@@ -262,13 +271,11 @@ public class MainScreen {
 		player.incrementDay();
 		RandomEvent randomEvent = new RandomEvent(player);
 		RandomEvent.generate();
-		
 	}
 	
 	public static void endGame() {
 		player.endGame();
 	}
-	
 	
 	
 	public static void main(String[] args) {
