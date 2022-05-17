@@ -61,8 +61,6 @@ public class SelectMonster {
 		btnNewButton.setBounds(23, 18, 39, 23);
 		frmChooseYourMonster.getContentPane().add(btnNewButton);
 		
-		//monsterOptionOne.commandLineToString()
-		
 		JButton btnNewButton_1 = new JButton("2");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -96,25 +94,25 @@ public class SelectMonster {
 		btnNewButton_3.setBounds(17, 142, 45, 35);
 		frmChooseYourMonster.getContentPane().add(btnNewButton_3);
 		
-		String optionOneString = monsterOptionOne.toString();
+		String optionOneString = monsterOptionOne.commandLineToString();
 		JTextArea optionOneDescription = new JTextArea(optionOneString);
 		optionOneDescription.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
 		optionOneDescription.setBounds(74, 20, 370, 21);
 		frmChooseYourMonster.getContentPane().add(optionOneDescription);
 		
-		String optionTwoString = monsterOptionTwo.toString();
+		String optionTwoString = monsterOptionTwo.commandLineToString();
 		JTextArea optionTwoDescription = new JTextArea(optionTwoString);
 		optionTwoDescription.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
 		optionTwoDescription.setBounds(74, 58, 370, 24);
 		frmChooseYourMonster.getContentPane().add(optionTwoDescription);
 		
-		String optionThreeString = monsterOptionThree.toString();
+		String optionThreeString = monsterOptionThree.commandLineToString();
 		JTextArea optionThreeDescription = new JTextArea(optionThreeString);
 		optionThreeDescription.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
 		optionThreeDescription.setBounds(74, 95, 370, 29);
 		frmChooseYourMonster.getContentPane().add(optionThreeDescription);
 		
-		String optionFourString = monsterOptionFour.toString();
+		String optionFourString = monsterOptionFour.commandLineToString();
 		JTextArea optionFourDescription = new JTextArea(optionFourString);
 		optionFourDescription.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
 		optionFourDescription.setBounds(74, 150, 370, 23);
