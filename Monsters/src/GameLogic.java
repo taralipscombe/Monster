@@ -1,10 +1,3 @@
-//helllo tara
-//more
-//thisb
-//qwedfrgh
-
-//werfgh
-
 
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -117,10 +110,6 @@ public class GameLogic {
 			}
 	}
 	
-	public static void setPlayer() {
-		Player newPlayer = new Player(playerName, difficulty, startingMonster, numDays);
-		player = newPlayer;
-	}
 	
 	//When do we close scanner?
 	public static void main(String[] args) {
@@ -131,7 +120,6 @@ public class GameLogic {
 		setNumDays(input);
 		setDifficulty(input);
 		setStartingMonster(input);
-		setPlayer();
 		System.out.println("Awesome work " + playerName +"! Looks like you are all set up to play - Enjoy the Game!");
 		//call Mainscreen here?
 		MainScreen mainScreen = new MainScreen(player); // need tho
@@ -142,3 +130,4 @@ public class GameLogic {
 	}
 
 }
+
