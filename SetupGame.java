@@ -5,6 +5,8 @@ import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
 import javax.swing.JSlider;
 import javax.swing.JButton;
@@ -75,11 +77,6 @@ public class SetupGame {
 		frmSetUpGame.getContentPane().add(txtrInputName);
 		
 		textField = new JTextField();
-		textField.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				inputName = textField.getText();
-			}
-		});
 		textField.setBounds(157, 68, 130, 26);
 		frmSetUpGame.getContentPane().add(textField);
 		textField.setColumns(10);
@@ -141,21 +138,26 @@ public class SetupGame {
 		JButton btnNewButton_3 = new JButton("Continue");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				if(gameDifficulty == null || inputName == null) {
+				inputName = textField.getText();
+				if(gameDifficulty == null || inputName.length()==0 ) {
 					JOptionPane.showMessageDialog(frmSetUpGame, "Please enter a name and choose a difficulty");
 				}
-				if(inputName.length()>3 && inputName.length()<15) {
-					if(validName() == true) {
-						name = inputName;
-					}
+				Pattern pattern = Pattern.compile("[^a-zA-Z]");
+				Matcher matcher = pattern.matcher(inputName);
+				boolean correctName = matcher.find();
+				if(correctName || inputName.length()<3 ||inputName.length()>15) {
+					JOptionPane.showMessageDialog(null,"Error: Please enter a valid name between 3-15 letters");			
 					} else {
-						JOptionPane.showMessageDialog(frmSetUpGame, "Please enter a valid name between 3-15 letters");
+						name = inputName;
+						frmSetUpGame.dispose();
+						SelectMonster monsterScreen = new SelectMonster();
+						monsterScreen.main(null);
 					}
-				//continue
+				
 			}
 		});
 		btnNewButton_3.setBounds(159, 401, 117, 29);
 		frmSetUpGame.getContentPane().add(btnNewButton_3);
 	}
 }
+
