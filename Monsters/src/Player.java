@@ -17,7 +17,7 @@ public class Player {
 		chosenDifficulty = difficulty;
 		monsterTeam.add(startingMonster);
 		finishDay = numDays;
-		currentDay = 0;
+		currentDay = 1;
 		points = 0;
 		setGold();
 	}
@@ -95,12 +95,22 @@ public class Player {
 	public void endGame() {
 		currentDay = finishDay;
 	}
+	public int getNumItems(String itemName) {
+		int i=0;
+		for(Item item : items) {
+			if(item.getName().equals(itemName)) {
+				i+=1;
+			}
+		}
+		return i;
+	}
 	
-	public void printAttributes() {
-		System.out.println("Current gold: " + gold);
-		System.out.println("Current points: " + points);
-		System.out.println("Current Day: " + currentDay);
-		System.out.println("Days Remaining: " + (finishDay - currentDay));
+	public String printAttributes() {
+		String goldStr = "Current gold: " + gold +"\n";
+		String pointsStr = "Current points: " + points +"\n";
+		String dayStr = "Current Day: " + currentDay+"\n";
+		String remainStr = "Days Remaining: " + (finishDay - currentDay)+"\n";
+		return goldStr+pointsStr+dayStr+remainStr;
 		
 		
 	}

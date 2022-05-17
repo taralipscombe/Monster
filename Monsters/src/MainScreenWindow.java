@@ -1,22 +1,25 @@
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class MainScreenWindow {
 
 	private JFrame frmMainscreen;
+	private Player player;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(Player incomingPlayer) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainScreenWindow window = new MainScreenWindow();
+					MainScreenWindow window = new MainScreenWindow(incomingPlayer);
 					window.frmMainscreen.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -28,14 +31,15 @@ public class MainScreenWindow {
 	/**
 	 * Create the application.
 	 */
-	public MainScreenWindow() {
-		initialize();
+	public MainScreenWindow(Player incomingPlayer) {
+		player = incomingPlayer;
+		initialize(player);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(Player player) {
 		frmMainscreen = new JFrame();
 		frmMainscreen.setTitle("Mainscreen");
 		frmMainscreen.setBounds(100, 100, 464, 423);
@@ -43,8 +47,10 @@ public class MainScreenWindow {
 		frmMainscreen.getContentPane().setLayout(null);
 		
 		JButton btnNewButton = new JButton("View current Game Stats");
+		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 10));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(frmMainscreen, "Your current Game Stats are:\n"+ player.printAttributes());
 				
 			}
 		});
@@ -52,6 +58,7 @@ public class MainScreenWindow {
 		frmMainscreen.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("View your team's properties");
+		btnNewButton_1.setFont(new Font("Dialog", Font.BOLD, 10));
 		btnNewButton_1.setBounds(112, 59, 204, 29);
 		frmMainscreen.getContentPane().add(btnNewButton_1);
 		

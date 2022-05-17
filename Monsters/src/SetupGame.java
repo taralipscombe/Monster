@@ -110,7 +110,7 @@ public class SetupGame {
 		JButton btnNewButton = new JButton("Easy");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gameDifficulty = "Easy";
+				gameDifficulty = "1";
 				
 			}
 		});
@@ -120,7 +120,7 @@ public class SetupGame {
 		JButton btnNewButton_1 = new JButton("Medium");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gameDifficulty = "Medium";
+				gameDifficulty = "2";
 			}
 		});
 		btnNewButton_1.setBounds(157, 304, 117, 29);
@@ -129,7 +129,7 @@ public class SetupGame {
 		JButton btnNewButton_2 = new JButton("Hard");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gameDifficulty = "Hard";
+				gameDifficulty = "3";
 			}
 		});
 		btnNewButton_2.setBounds(287, 304, 117, 29);
@@ -150,8 +150,7 @@ public class SetupGame {
 					} else {
 						name = inputName;
 						frmSetUpGame.dispose();
-						SelectMonster monsterScreen = new SelectMonster();
-						monsterScreen.main(null);
+						SelectMonster.main(name, gameTime, gameDifficulty);
 					}
 				
 			}
