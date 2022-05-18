@@ -77,16 +77,16 @@ public class GameLogic {
 			Monster monsterOptionFour = new Monster("Liam", 13, 10, 23);
 			System.out.println("Please select your Starting Monster:");
 			System.out.println("Option '1': ");
-			monsterOptionOne.commandLineToString();
+			System.out.println(monsterOptionOne.commandLineToString());
 			System.out.println();
 			System.out.println("Option '2': ");
-			monsterOptionTwo.commandLineToString();
+			System.out.println(monsterOptionTwo.commandLineToString());
 			System.out.println();
 			System.out.println("Option '3': ");
-			monsterOptionThree.commandLineToString();
+			System.out.println(monsterOptionThree.commandLineToString());
 			System.out.println();
 			System.out.println("Option '4': ");
-			monsterOptionFour.commandLineToString();
+			System.out.println(monsterOptionFour.commandLineToString());
 			String num = input.nextLine();
 			Pattern pattern = Pattern.compile("[^1-4]");
 			Matcher matcher = pattern.matcher(num);
@@ -121,13 +121,12 @@ public class GameLogic {
 		setDifficulty(input);
 		setStartingMonster(input);
 		System.out.println("Awesome work " + playerName +"! Looks like you are all set up to play - Enjoy the Game!");
-		//call Mainscreen here?
+		player = new Player(playerName, difficulty, startingMonster, numDays);
 		MainScreen mainScreen = new MainScreen(player); // need tho
-		MainScreen.main(null); // runs mainscreen class - unsure how it uses player etc as have called using MainScreen
+		mainScreen.main(null); // runs mainscreen class - unsure how it uses player etc as have called using MainScreen
 		
 		
 		
 	}
 
 }
-

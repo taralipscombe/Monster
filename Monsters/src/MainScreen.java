@@ -1,4 +1,3 @@
-// team
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -63,9 +62,9 @@ public class MainScreen {
 		Pattern pattern = Pattern.compile("[^1-8]");
 		Matcher matcher = pattern.matcher(num);
 		boolean correctNum = matcher.find();
-		if(correctNum || Integer.parseInt(num) > 8 || Integer.parseInt(num) < 1) {
+		if(num.length() == 0 || correctNum || Integer.parseInt(num) > 8 || Integer.parseInt(num) < 1|| num==null) {
 			System.out.println("Error: Please enter a valid move between 1 and 8");		//move????	
-		} else {
+		}else if(Integer.parseInt(num) <= 8 || Integer.parseInt(num) >= 1){
 			int number = Integer.parseInt(num);
 				if (number == 1) {
 					viewAttributes();
@@ -91,17 +90,17 @@ public class MainScreen {
 	
 	public static void viewAttributes() {
 		System.out.println("Your current Attributes are: ");
-		player.printAttributes();
+		System.out.println(player.printAttributes());
 	}
 	
 	public static void viewTeam() {
 		System.out.println("Your current Team: ");
-		player.printCurrentTeam();
+		System.out.println(player.printCurrentTeam());
 	}
 	
 	public static void viewInventory(Scanner input) {
 		System.out.println("Your current Inventory: ");
-		player.printInventory();
+		System.out.println(player.printInventory());
 		System.out.println("Would you like to use an item on a Monster? (please enter 'yes' or 'no', or 'exit' to exit)");
 		boolean selected = true;
 		while (selected) {
