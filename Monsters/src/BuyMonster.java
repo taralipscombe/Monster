@@ -22,6 +22,7 @@ public class BuyMonster {
 
 	private Player player;
 	private ArrayList<Monster> monstersForSale;
+	private int currentlySelected;
 	private JFrame frame;
 	private JTextField txtShopMonster;
 	private JTextField txtName;
@@ -79,6 +80,7 @@ public class BuyMonster {
 		JRadioButton rdbtnMonsterOne = new JRadioButton(monstersForSale.get(0).getName());
 		rdbtnMonsterOne.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				currentlySelected = 1;
 				displayMonster("One");
 			}
 		});
@@ -89,6 +91,7 @@ public class BuyMonster {
 		JRadioButton rdbtnMonsterTwo = new JRadioButton(monstersForSale.get(1).getName());
 		rdbtnMonsterTwo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				currentlySelected = 2;
 				displayMonster("Two");
 			}
 		});
@@ -99,6 +102,7 @@ public class BuyMonster {
 		JRadioButton rdbtnMonsterThree = new JRadioButton(monstersForSale.get(2).getName());
 		rdbtnMonsterThree.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				currentlySelected = 3;
 				displayMonster("Three");
 			}
 		});
@@ -109,6 +113,7 @@ public class BuyMonster {
 		JRadioButton rdbtnMonsterFour = new JRadioButton(monstersForSale.get(3).getName());
 		rdbtnMonsterFour.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				currentlySelected = 4;
 				displayMonster("Four");
 			}
 		});
@@ -218,13 +223,13 @@ public class BuyMonster {
 	
 	
 	public void buySelectedMonster() {
-		if (txtName.getName().equals(monstersForSale.get(0).getName())) {
+		if (currentlySelected == 1) {
 			buy(monstersForSale.get(0));
-		} else if (txtName.getName().equals(monstersForSale.get(1).getName())) {
+		} else if (currentlySelected == 2) {
 			buy(monstersForSale.get(1));
-		} else if (txtName.getName().equals(monstersForSale.get(2).getName())) {
+		} else if (currentlySelected == 3) {
 			buy(monstersForSale.get(2));
-		} else if (txtName.getName().equals(monstersForSale.get(3).getName())){
+		} else if (currentlySelected == 4){
 			buy(monstersForSale.get(3));
 		} else {
 			JOptionPane.showMessageDialog(null, "Please select the Monster you wish to purchase.");
@@ -240,12 +245,9 @@ public class BuyMonster {
 			player.decreaseGold(monster.getPrice());
 			txtCurrentGold.setText("Your current gold: " + player.getgold() + " gold"); 
 			player.addTeamMate(monster);
-			System.out.println("You have successfully bought " + monster.getName());
+			JOptionPane.showMessageDialog(null, "You have successfully bought " + monster.getName());
 }
 	}
-	
-	
-	
 	
 	
 
