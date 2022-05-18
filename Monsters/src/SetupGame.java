@@ -15,7 +15,13 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+
 import java.awt.Font;
+import java.awt.Color;
+
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 
 public class SetupGame {
 
@@ -23,6 +29,10 @@ public class SetupGame {
 	private JTextField nameField;
 	private String name, gameDifficulty, inputName;
 	private int gameTime;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private JButton chooseEasy;
+	private JButton chooseMedium;
+	private JButton chooseHard;
 
 	/**
 	 * Launch the application.
@@ -71,28 +81,43 @@ public class SetupGame {
 		frmSetUpGame.getContentPane().setLayout(null);
 		
 		JTextArea txtrWelcomeToMonster = new JTextArea();
-		txtrWelcomeToMonster.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 15));
+		txtrWelcomeToMonster.setForeground(new Color(255, 255, 255));
+		txtrWelcomeToMonster.setEditable(false);
+		txtrWelcomeToMonster.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 30));
 		txtrWelcomeToMonster.setText("Welcome to Monster Battles!");
-		txtrWelcomeToMonster.setBounds(197, 12, 268, 16);
+		txtrWelcomeToMonster.setOpaque(false);
+		txtrWelcomeToMonster.setBounds(112, 22, 455, 40);
 		frmSetUpGame.getContentPane().add(txtrWelcomeToMonster);
 		
 		JTextArea txtrInputName = new JTextArea();
-		txtrInputName.setFont(new Font("Dialog", Font.BOLD, 12));
+		txtrInputName.setForeground(new Color(255, 255, 255));
+		txtrInputName.setEditable(false);
+		txtrInputName.setFont(new Font("Dialog", Font.BOLD, 18));
+		txtrInputName.setOpaque(false);
 		txtrInputName.setText("Input name:");
-		txtrInputName.setBounds(225, 58, 98, 16);
+		txtrInputName.setBounds(195, 74, 126, 29);
 		frmSetUpGame.getContentPane().add(txtrInputName);
 		
 		nameField = new JTextField();
-		nameField.setBounds(335, 53, 130, 26);
+		nameField.setFont(new Font("Lucida Grande", Font.BOLD, 16));
+		nameField.setForeground(new Color(0, 0, 0));
+		nameField.setBounds(333, 74, 159, 26);
 		frmSetUpGame.getContentPane().add(nameField);
 		nameField.setColumns(10);
 		
 		JTextArea txtrHowManyDays = new JTextArea();
+		txtrHowManyDays.setFont(new Font("Lucida Grande", Font.BOLD, 18));
+		txtrHowManyDays.setForeground(new Color(255, 255, 255));
+		txtrHowManyDays.setEditable(false);
 		txtrHowManyDays.setText("How many days do you want to play?");
-		txtrHowManyDays.setBounds(214, 116, 239, 16);
+		txtrHowManyDays.setOpaque(false);
+		txtrHowManyDays.setBounds(161, 115, 345, 29);
 		frmSetUpGame.getContentPane().add(txtrHowManyDays);
 		
 		JSlider daysSlider = new JSlider();
+		daysSlider.setFont(new Font("Lucida Grande", Font.BOLD, 14));
+		daysSlider.setBackground(new Color(255, 255, 255));
+		daysSlider.setForeground(new Color(255, 255, 255));
 		daysSlider.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
 				gameTime = daysSlider.getValue();
@@ -105,40 +130,69 @@ public class SetupGame {
 		daysSlider.setPaintLabels(true);
 		daysSlider.setPaintTicks(true);
 		daysSlider.setSnapToTicks(true);
-		daysSlider.setBounds(171, 135, 330, 39);
+		daysSlider.setBounds(161, 145, 330, 39);
 		frmSetUpGame.getContentPane().add(daysSlider);
 		
 		JTextArea txtrChooseDifficulty = new JTextArea();
-		txtrChooseDifficulty.setText("Choose difficulty");
-		txtrChooseDifficulty.setBounds(295, 216, 119, 16);
+		txtrChooseDifficulty.setFont(new Font("Lucida Grande", Font.BOLD, 18));
+		txtrChooseDifficulty.setForeground(new Color(255, 255, 255));
+		txtrChooseDifficulty.setEditable(false);
+		txtrChooseDifficulty.setText("Choose difficulty:");
+		txtrChooseDifficulty.setOpaque(false);
+		txtrChooseDifficulty.setBounds(232, 204, 169, 22);
 		frmSetUpGame.getContentPane().add(txtrChooseDifficulty);
 		
-		JButton chooseEasy = new JButton("Easy");
+		chooseEasy = new JButton("Easy");
+		chooseEasy.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		Border buttonBorder = chooseEasy.getBorder();
+		buttonGroup.add(chooseEasy);
 		chooseEasy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				chooseEasy.setBorder(BorderFactory.createLoweredBevelBorder());
+				chooseEasy.setForeground(Color.WHITE);
+				chooseMedium.setBorder(buttonBorder);
+				chooseMedium.setForeground(Color.BLACK);
+				chooseHard.setBorder(buttonBorder);
+				chooseHard.setForeground(Color.BLACK);
 				gameDifficulty = "1";
 				
 			}
 		});
-		chooseEasy.setBounds(146, 244, 117, 29);
+		chooseEasy.setBounds(132, 244, 117, 29);
 		frmSetUpGame.getContentPane().add(chooseEasy);
 		
-		JButton chooseMedium = new JButton("Medium");
+		chooseMedium = new JButton("Medium");
+		chooseMedium.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		buttonGroup.add(chooseMedium);
 		chooseMedium.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				chooseMedium.setBorder(BorderFactory.createLoweredBevelBorder());
+				chooseMedium.setForeground(Color.WHITE);
+				chooseEasy.setBorder(buttonBorder);
+				chooseEasy.setForeground(Color.BLACK);
+				chooseHard.setBorder(buttonBorder);
+				chooseHard.setForeground(Color.BLACK);
 				gameDifficulty = "2";
 			}
 		});
-		chooseMedium.setBounds(275, 244, 117, 29);
+		chooseMedium.setBounds(261, 244, 117, 29);
 		frmSetUpGame.getContentPane().add(chooseMedium);
 		
-		JButton chooseHard = new JButton("Hard");
+		chooseHard = new JButton("Hard");
+		chooseHard.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		buttonGroup.add(chooseHard);
 		chooseHard.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				chooseHard.setBorder(BorderFactory.createLoweredBevelBorder());
+				chooseHard.setForeground(Color.WHITE);
+				chooseEasy.setBorder(buttonBorder);
+				chooseEasy.setForeground(Color.BLACK);
+				chooseMedium.setBorder(buttonBorder);
+				chooseMedium.setForeground(Color.BLACK);
 				gameDifficulty = "3";
 			}
 		});
-		chooseHard.setBounds(404, 244, 117, 29);
+		chooseHard.setBounds(390, 244, 117, 29);
 		frmSetUpGame.getContentPane().add(chooseHard);
 		
 		JButton continueButton = new JButton("Continue");
@@ -161,7 +215,7 @@ public class SetupGame {
 				
 			}
 		});
-		continueButton.setBounds(285, 285, 117, 29);
+		continueButton.setBounds(261, 285, 117, 29);
 		frmSetUpGame.getContentPane().add(continueButton);
 		
 		JLabel lblNewLabel = new JLabel("");
@@ -170,5 +224,8 @@ public class SetupGame {
 		lblNewLabel.setBounds(0, 0, 659, 409);
 		frmSetUpGame.getContentPane().add(lblNewLabel);
 	}
+	
+	
+	
 }
 

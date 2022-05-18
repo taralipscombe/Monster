@@ -16,7 +16,7 @@ import java.awt.event.MouseEvent;
 public class ShopWindow {
 
 	private Player player;
-	private JFrame frmShop;
+	public JFrame frmShop;
 	private JButton btnBuy;
 	private JButton btnSell;
 	private JButton btnExitShop;

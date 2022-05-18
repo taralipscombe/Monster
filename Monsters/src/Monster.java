@@ -33,11 +33,11 @@ public class Monster {
 	}
 	
 	public void removeLife() {
-		lives = lives - 1;
+		lives -= 1;
 	}
 	
 	public void addLife() {
-		lives = lives + 1;
+		lives += 1;
 	}
 	
 	public String getName() {

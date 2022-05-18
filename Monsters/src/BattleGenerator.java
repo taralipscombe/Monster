@@ -21,7 +21,7 @@ public class BattleGenerator {
 	
 	
 	
-	public static ArrayList<Monster> generateTeam() { // generates the team, mainscreen stores the team, then generate team clears the arrayList to null
+	public ArrayList<Monster> generateTeam() { // generates the team, mainscreen stores the team, then generate team clears the arrayList to null
 		generateEnemies();
 		ArrayList<Monster> team = new ArrayList<Monster>();
 		printTeam();
@@ -32,7 +32,7 @@ public class BattleGenerator {
 		return team;
 	}
 	
-	public static int getWinnings(ArrayList<Monster> monsters) {
+	public int getWinnings(ArrayList<Monster> monsters) {
 		int average = 0;
 		for (Monster monster : monsters) {
 			average += monster.getDamage();

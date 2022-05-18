@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 
 public class MainScreen {
 	
+	private static BattleGenerator battles;
 	private static Player player;
 	private static Shop shop;
 	private static ArrayList<Monster> enemyTeamOne = null;
@@ -16,6 +17,33 @@ public class MainScreen {
 	public MainScreen(Player thePlayer) {
 		player = thePlayer;
 		shop = new Shop(player);
+		BattleGenerator battleGen = new BattleGenerator(player);
+		battles = battleGen;
+		
+	}
+	
+	
+	public Player getPlayer() {
+		return player;
+	}
+	
+	public ArrayList<Monster> getEnemyTeam(int num){
+		if (num == 1) {
+			return enemyTeamOne;
+		} else if (num == 2) {
+			return enemyTeamTwo;
+		} else {
+			return enemyTeamThree;
+		}
+	}
+	
+	public void generateNewBattles() {
+		
+		enemyTeamOne = null;
+		enemyTeamTwo = null;
+		enemyTeamThree = null;
+		viewBattles();
+		
 	}
 	
 	public static void displayOptions() {
@@ -147,14 +175,13 @@ public class MainScreen {
 	
 	public static void viewBattles() {
 		//currently not implemented, use Battle generator class to randomise battles
-		BattleGenerator battles = new BattleGenerator(player);
 		int i = 0;
 		while (i < 3) {
 			if (i == 0 ) {
 				System.out.println("Battle '1': ");
 				if (enemyTeamOne == null) {
-				ArrayList<Monster> enemyTeam = BattleGenerator.generateTeam();
-				int winnings = BattleGenerator.getWinnings(enemyTeam);
+				ArrayList<Monster> enemyTeam = battles.generateTeam();
+				int winnings = battles.getWinnings(enemyTeam);
 				System.out.println("Winning this battle will award you with "+ winnings + " gold.");
 				enemyTeamOne = enemyTeam;
 				} else {
@@ -162,15 +189,15 @@ public class MainScreen {
 					for (Monster monster : enemyTeamOne) {
 						System.out.println(monster.toString());
 						System.out.println();
-					int winnings = BattleGenerator.getWinnings(enemyTeamOne);
+					int winnings = battles.getWinnings(enemyTeamOne);
 					System.out.println("Winning this battle will award you with "+ winnings + " gold.");
 				}
 				}
 			} else if (i == 1 ) {
 				System.out.println("Battle '2': ");
 				if (enemyTeamTwo == null) { 
-				ArrayList<Monster> enemyTeam = BattleGenerator.generateTeam();
-				int winnings = BattleGenerator.getWinnings(enemyTeam);
+				ArrayList<Monster> enemyTeam = battles.generateTeam();
+				int winnings = battles.getWinnings(enemyTeam);
 				System.out.println("Winning this battle will award you with "+ winnings + " gold.");
 				enemyTeamTwo = enemyTeam;
 				} else {
@@ -178,15 +205,15 @@ public class MainScreen {
 					for (Monster monster : enemyTeamTwo) {
 						System.out.println(monster.toString());
 						System.out.println();
-					int winnings = BattleGenerator.getWinnings(enemyTeamTwo);
+					int winnings = battles.getWinnings(enemyTeamTwo);
 					System.out.println("Winning this battle will award you with "+ winnings + " gold.");
 				}
 				}
 			} else if (i == 2) {
 				System.out.println("Battle '3': ");	
 				if (enemyTeamThree == null) {
-					ArrayList<Monster> enemyTeam = BattleGenerator.generateTeam();
-					int winnings = BattleGenerator.getWinnings(enemyTeam);
+					ArrayList<Monster> enemyTeam = battles.generateTeam();
+					int winnings = battles.getWinnings(enemyTeam);
 					System.out.println("Winning this battle will award you with "+ winnings + " gold.");
 					enemyTeamThree = enemyTeam;
 				} else {
@@ -194,7 +221,7 @@ public class MainScreen {
 					for (Monster monster : enemyTeamThree) {
 						System.out.println(monster.toString());
 						System.out.println();
-					int winnings = BattleGenerator.getWinnings(enemyTeamThree);
+					int winnings = battles.getWinnings(enemyTeamThree);
 					System.out.println("Winning this battle will award you with "+ winnings + " gold.");
 				}
 				}
@@ -227,18 +254,18 @@ public class MainScreen {
 				System.out.println("TIME TO BATTLE!");
 				if (num.equals("1")) {
 					ArrayList<Monster> battlingTeam = enemyTeamOne;
-					Battle battle = new Battle(player, battlingTeam);
-					Battle.fight();
+					Battle battleOne = new Battle(player, battlingTeam);
+					battleOne.fight();
 					enemyTeamOne = null;
 				} else if (num.equals("2")) {
 					ArrayList<Monster> battlingTeam = enemyTeamTwo;
-					Battle battle = new Battle(player, battlingTeam);
-					Battle.fight();
+					Battle battleTwo = new Battle(player, battlingTeam);
+					battleTwo.fight();
 					enemyTeamTwo = null;
 				} else {
 					ArrayList<Monster> battlingTeam = enemyTeamThree;
-					Battle battle = new Battle(player, battlingTeam);
-					Battle.fight();
+					Battle battleThree = new Battle(player, battlingTeam);
+					battleThree.fight();
 					enemyTeamThree = null;
 				}
 			}
@@ -261,7 +288,7 @@ public class MainScreen {
 		}
 		player.incrementDay();
 		RandomEvent randomEvent = new RandomEvent(player);
-		RandomEvent.generate();
+		randomEvent.generate();
 		
 	}
 	

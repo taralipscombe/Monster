@@ -13,7 +13,7 @@ public class Battle {
 		playersTeam = player.getTeam();
 	}
 	
-	public static void fight() {
+	public void fight() {
 		int numPlayerMonster = 0;
 		int numEnemyMonster = 0;
 		while  (numPlayerMonster < playersTeam.size() && numEnemyMonster < enemyTeam.size()) {

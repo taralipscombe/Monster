@@ -209,7 +209,6 @@ public class BuyItem {
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				Shop.main(player);
 			}
 		});
 		btnExit.setBounds(491, 23, 117, 29);
@@ -256,10 +255,10 @@ public class BuyItem {
 	
 	public void buySelectedItem() {
 		if (currentlySelected == 1) {
-			Item attackPotion = new Item("Magic attack potion" , "damage", 15, 3, 60);
+			Item attackPotion = new Item("Magic Attack Potion" , "damage", 15, 3, 60);
 			buy(attackPotion);
 		} else if (currentlySelected == 2) {
-			Item healingPotion = new Item("Magic healing potion" , "heal amount" , 10, 3, 45);
+			Item healingPotion = new Item("Magic Healing Potion" , "heal amount" , 10, 3, 45);
 			buy(healingPotion);
 		} else if (currentlySelected == 3) {
 			Item extraLife = new Item("Extra Life", "lives", 1, 1, 70);
@@ -281,8 +280,8 @@ public class BuyItem {
 			txtCurrentGold.setText("Your current gold: " + player.getgold() + " gold"); 
 			if(purchasedItem.getName() == "Lucky Dip") {
 				ArrayList<Item> shopItems = new ArrayList<Item>();
-				shopItems.add(new Item("Magic attack potion" , "damage", 15, 3, 60));
-				shopItems.add(new Item("Magic healing potion" , "heal amount" , 10, 3, 45));
+				shopItems.add(new Item("Magic Attack Potion" , "damage", 15, 3, 60));
+				shopItems.add(new Item("Magic Healing Potion" , "heal amount" , 10, 3, 45));
 				shopItems.add(new Item("Extra Life", "lives", 1, 1, 70));
 				Random rndm = new Random();
 				int randomInt = rndm.nextInt(shopItems.size());

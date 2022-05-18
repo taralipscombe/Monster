@@ -169,6 +169,7 @@ public class FightScreen {
 	
 	public void nextPlayerMonster() {
 		JOptionPane.showMessageDialog(null, "Owwww! " + "\n" + "Oh no! " + playerCurrent.getName() + " has just died!");
+		playerCurrent.setCurrentHealth(100);
 		numPlayerCurrent += 1;
 		if (numPlayerCurrent < player.getTeam().size()) {
 			playerCurrent = player.getTeam().get(numPlayerCurrent);
@@ -192,6 +193,14 @@ public class FightScreen {
 	}
 	
 	public void battleWon() {
+		
+		for (Monster monster : player.getTeam()) {
+			if (monster.getLives() == 0) {
+				JOptionPane.showMessageDialog(null, "RIP: " + monster.getName() + " has died in action...");
+				player.removeTeamMate(monster);
+			}
+		}
+		
 		int average = 0;
 		for (Monster monster : enemyTeam) {
 			average += monster.getDamage();
@@ -208,6 +217,14 @@ public class FightScreen {
 	}
 	
 	public void battleLost() {
+		
+		for (Monster monster : player.getTeam()) {
+			if (monster.getLives() == 0) {
+				JOptionPane.showMessageDialog(null, "RIP: " + monster.getName() + " has died in action...");
+				player.removeTeamMate(monster);
+			}
+		}
+		
 		battling = false;
 		JOptionPane.showMessageDialog(null, "Oh no! Your team was defeated and killed in Battle! " + "\n" + "Better luck next time!");
 		btnAttack.setVisible(false);

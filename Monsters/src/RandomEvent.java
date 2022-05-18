@@ -18,7 +18,7 @@ public class RandomEvent {
 
 	}
 	
-	public static void generate() {
+	public void generate() {
 		levelsUp();
 		levelsDown();
 		leavesOvernight();

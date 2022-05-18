@@ -31,6 +31,7 @@ public class SellMonster {
 	private JTextField txtSell;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JTextField txtCurrentGold;
+	private JButton btnReturn;
 	
 
 	/**
@@ -183,6 +184,15 @@ public class SellMonster {
 		txtCurrentGold.setBounds(407, 332, 169, 32);
 		frame.getContentPane().add(txtCurrentGold);
 		txtCurrentGold.setColumns(10);
+		
+		btnReturn = new JButton("Return");
+		btnReturn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
+		btnReturn.setBounds(459, 38, 117, 29);
+		frame.getContentPane().add(btnReturn);
 	}
 	
 	

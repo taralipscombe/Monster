@@ -13,6 +13,7 @@ public class MainScreenWindow {
 
 	private JFrame frmMainscreen;
 	private Player player;
+	private MainScreen mainscreen;
 
 	/**
 	 * Launch the application.
@@ -35,6 +36,9 @@ public class MainScreenWindow {
 	 */
 	public MainScreenWindow(Player incomingPlayer) {
 		player = incomingPlayer;
+		MainScreen newMainscreen =  new MainScreen(player);
+		mainscreen = newMainscreen;
+
 		initialize(player);
 	}
 
@@ -49,14 +53,15 @@ public class MainScreenWindow {
 		frmMainscreen.getContentPane().setLayout(null);
 		
 		JButton viewStats = new JButton("View current Game Stats");
-		viewStats.setFont(new Font("Dialog", Font.BOLD, 10));
+		viewStats.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
 		viewStats.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(frmMainscreen, "Your current Game Stats are:\n"+ player.printAttributes());
+				ImageIcon image = new ImageIcon(SelectMonster.class.getResource("/images/user.png"));
+				JOptionPane.showMessageDialog(frmMainscreen, "Your current Game Stats are:\n"+ player.printAttributes(), "GAME STATS",JOptionPane.INFORMATION_MESSAGE, image);
 				
 			}
 		});
-		viewStats.setBounds(198, 12, 204, 29);
+		viewStats.setBounds(198, 22, 204, 29);
 		frmMainscreen.getContentPane().add(viewStats);
 		
 		JButton viewTeamProperties = new JButton("View your team's properties");
@@ -65,32 +70,47 @@ public class MainScreenWindow {
 				JOptionPane.showMessageDialog(frmMainscreen, "Your team's properties are:\n"+ player.printCurrentTeam());
 			}
 		});
-		viewTeamProperties.setFont(new Font("Dialog", Font.BOLD, 10));
-		viewTeamProperties.setBounds(198, 47, 204, 29);
+		viewTeamProperties.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		viewTeamProperties.setBounds(176, 63, 245, 29);
 		frmMainscreen.getContentPane().add(viewTeamProperties);
 		
 		JButton viewInventory = new JButton("View your inventory");
+		viewInventory.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
 		viewInventory.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JOptionPane.showMessageDialog(frmMainscreen, "The items in your inventory are:\n"+ player.printInventory());
 			}
 		});
-		viewInventory.setBounds(198, 88, 204, 29);
+		viewInventory.setBounds(198, 104, 204, 29);
 		frmMainscreen.getContentPane().add(viewInventory);
 		
 		JButton viewBattles = new JButton("View possible battles");
-		viewBattles.setBounds(198, 118, 204, 29);
+		viewBattles.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		viewBattles.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				BattleScreen newBattleScreen = new BattleScreen(mainscreen);
+				newBattleScreen.frame.setVisible(true);
+
+			}
+		});
+		viewBattles.setBounds(198, 145, 204, 29);
 		frmMainscreen.getContentPane().add(viewBattles);
 		
-		JButton battle = new JButton("Battle!");
-		battle.setBounds(242, 159, 117, 29);
-		frmMainscreen.getContentPane().add(battle);
 		
 		JButton visitShop = new JButton("Visit Shop");
-		visitShop.setBounds(242, 200, 117, 29);
+		visitShop.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		visitShop.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ShopWindow shop = new ShopWindow(player);
+				shop.frmShop.setVisible(true);
+			}
+		});
+		visitShop.setBounds(242, 186, 117, 29);
 		frmMainscreen.getContentPane().add(visitShop);
 		
 		JButton sleep = new JButton("Go to sleep");
+		sleep.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
 		sleep.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				for (Monster monster : player.getTeam()) {
@@ -98,22 +118,25 @@ public class MainScreenWindow {
 				}
 				player.incrementDay();
 				RandomEvent randomEvent = new RandomEvent(player);
-				RandomEvent.generate();
-				JOptionPane.showMessageDialog(frmMainscreen, "Sweet dreams!, Enjoy your sleep!");
+				randomEvent.generate();
+				JOptionPane.showMessageDialog(frmMainscreen, "Sweet dreams! Enjoy your sleep!");
 			}
 		});
-		sleep.setBounds(242, 241, 117, 29);
+		sleep.setBounds(242, 227, 117, 29);
 		frmMainscreen.getContentPane().add(sleep);
 		
 		JButton endGame = new JButton("End Game");
+		endGame.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
 		endGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				player.endGame();
 				frmMainscreen.dispose();
-				JOptionPane.showMessageDialog(frmMainscreen, "Game over! Your game stats finish as:\n"+player.printAttributes());
+				EndScreen ending = new EndScreen(player);
+				ending.frame.setVisible(true);
+				
 			}
 		});
-		endGame.setBounds(242, 282, 117, 29);
+		endGame.setBounds(242, 268, 117, 29);
 		frmMainscreen.getContentPane().add(endGame);
 		
 		JLabel backgroundImage = new JLabel("");

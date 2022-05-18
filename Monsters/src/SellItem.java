@@ -33,6 +33,7 @@ public class SellItem {
 	private JPanel panel;
 	private JButton btnSellItem;
 	private Item currentItem = null;
+	private JButton btnReturn;
 
 	/**
 	 * Launch the application.
@@ -183,6 +184,15 @@ public class SellItem {
 		btnSellItem.setBounds(446, 302, 117, 29);
 		frame.getContentPane().add(btnSellItem);
 		
+		btnReturn = new JButton("Return");
+		btnReturn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
+		btnReturn.setBounds(446, 22, 117, 29);
+		frame.getContentPane().add(btnReturn);
+		
 		
 	}
 	
@@ -191,29 +201,44 @@ public class SellItem {
 		int num = 0;
 		if (item.equals("Attack")) {
 			txtName.setText("Magic Attack Potion");
-			num = player.getNumItems("Magic attack potion");
+			num = player.getNumItems("Magic Attack Potion");
 			txtOwn.setText("You own " + num);
+			if (num > 0) {
+				displaySaleItem();
+			} else {
+				nothingToDisplay();
+			}
 
 		}else if (item.equals("Heal")) {
-			txtName.setText("Magic Heal Potion");
-			num = player.getNumItems("Magic healing potion");
+			txtName.setText("Magic Healing Potion");
+			num = player.getNumItems("Magic Healing Potion");
 			txtOwn.setText("You own " + num);
+			if (num > 0) {
+				displaySaleItem();
+			} else {
+				nothingToDisplay();
+			}
 
 		}else if (item.equals("Life")) {
 			txtName.setText("Extra Life");
 			num = player.getNumItems("Extra Life");
 			txtOwn.setText("You own " + num);	
+			if (num > 0) {
+				displaySaleItem();
+			} else {
+				nothingToDisplay();
+			}
 			
 		} else { // lucky
 			txtName.setText("Lucky Dip");
 			num = player.getNumItems("Lucky Dip");
 			txtOwn.setText("You own " + num);
+			if (num > 0) {
+				displaySaleItem();
+			} else {
+				nothingToDisplay();
+			}
 			
-		}
-		if (num > 0) {
-			displaySaleItem();
-		} else {
-			nothingToDisplay();
 		}
 		
 	}

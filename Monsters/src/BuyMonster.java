@@ -189,6 +189,15 @@ public class BuyMonster {
 		txtCurrentGold.setBounds(397, 341, 208, 26);
 		frame.getContentPane().add(txtCurrentGold);
 		txtCurrentGold.setColumns(10);
+		
+		JButton btnReturn = new JButton("Return");
+		btnReturn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
+		btnReturn.setBounds(459, 19, 117, 29);
+		frame.getContentPane().add(btnReturn);
 	}
 	
 	

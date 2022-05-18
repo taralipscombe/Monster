@@ -18,7 +18,7 @@ import javax.swing.ImageIcon;
 public class BattleScreen {
 
 	private MainScreen mainscreen;
-	private JFrame frame;
+	public JFrame frame;
 	private Player player;
 	private ArrayList<Monster> currentTeam = null;
 	private JTextField txtSelectATeam;
@@ -63,7 +63,7 @@ public class BattleScreen {
 	public BattleScreen(MainScreen ofcMainscreen) {
 		mainscreen = ofcMainscreen;
 		player = mainscreen.getPlayer();
-		MainScreen.viewBattles(); // generate battles
+		mainscreen.generateNewBattles(); // generate battles
 		initialize();
 	}
 
@@ -185,7 +185,9 @@ public class BattleScreen {
 				if (currentTeam == null) {
 					JOptionPane.showMessageDialog(null, "Please select an Enemy Team to Battle.");
 				} else {
+					mainscreen.generateNewBattles();
 					FightScreen fighting = new FightScreen(player, currentTeam);
+					
 					fighting.frame.setVisible(true);
 					frame.dispose();
 					
@@ -197,6 +199,11 @@ public class BattleScreen {
 		frame.getContentPane().add(btnBattle);
 		
 		btnExit = new JButton("Return");
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
 		btnExit.setBounds(23, 36, 117, 29);
 		frame.getContentPane().add(btnExit);
 		

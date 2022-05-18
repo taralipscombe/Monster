@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+import java.awt.Color;
 
 public class SelectMonster {
 
@@ -53,6 +54,8 @@ public class SelectMonster {
 		Monster monsterOptionFour = new Monster("Liam", 13, 10, 23);
 		
 		JButton chooseOne = new JButton("1");
+		chooseOne.setForeground(new Color(0, 0, 0));
+		chooseOne.setBackground(new Color(255, 255, 255));
 		chooseOne.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Player player = new Player(name, difficulty, monsterOptionOne, gameTime);
@@ -98,31 +101,35 @@ public class SelectMonster {
 		
 		String optionOneString = monsterOptionOne.commandLineToString();
 		JTextArea optionOneDescription = new JTextArea(optionOneString);
-		optionOneDescription.setFont(new Font("Dialog", Font.PLAIN, 11));
-		optionOneDescription.setBounds(179, 55, 130, 84);
+		optionOneDescription.setOpaque(false);
+		optionOneDescription.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 12));
+		optionOneDescription.setBounds(175, 55, 130, 90);
 		frmChooseYourMonster.getContentPane().add(optionOneDescription);
 		
 		String optionTwoString = monsterOptionTwo.commandLineToString();
 		JTextArea optionTwoDescription = new JTextArea(optionTwoString);
-		optionTwoDescription.setFont(new Font("Dialog", Font.PLAIN, 11));
+		optionTwoDescription.setOpaque(false);
+		optionTwoDescription.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 12));
 		optionTwoDescription.setBounds(175, 157, 130, 89);
 		frmChooseYourMonster.getContentPane().add(optionTwoDescription);
 		
 		String optionThreeString = monsterOptionThree.commandLineToString();
 		JTextArea optionThreeDescription = new JTextArea(optionThreeString);
-		optionThreeDescription.setFont(new Font("Dialog", Font.PLAIN, 11));
-		optionThreeDescription.setBounds(168, 273, 137, 94);
+		optionThreeDescription.setOpaque(false);
+		optionThreeDescription.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 12));
+		optionThreeDescription.setBounds(174, 258, 130, 94);
 		frmChooseYourMonster.getContentPane().add(optionThreeDescription);
 		
 		String optionFourString = monsterOptionFour.commandLineToString();
 		JTextArea optionFourDescription = new JTextArea(optionFourString);
-		optionFourDescription.setFont(new Font("Dialog", Font.PLAIN, 11));
-		optionFourDescription.setBounds(178, 386, 131, 94);
+		optionFourDescription.setOpaque(false);
+		optionFourDescription.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 12));
+		optionFourDescription.setBounds(174, 379, 131, 94);
 		frmChooseYourMonster.getContentPane().add(optionFourDescription);
 		
 		JLabel monsterOnePic = new JLabel("");
 		monsterOnePic.setIcon(new ImageIcon(SelectMonster.class.getResource("/images/monster1.png")));
-		monsterOnePic.setBounds(324, 36, 109, 94);
+		monsterOnePic.setBounds(309, 35, 119, 104);
 		frmChooseYourMonster.getContentPane().add(monsterOnePic);
 		
 		JLabel monsterTwoPic = new JLabel("");
@@ -132,7 +139,7 @@ public class SelectMonster {
 		
 		JLabel monsterThreePic = new JLabel("");
 		monsterThreePic.setIcon(new ImageIcon(SelectMonster.class.getResource("/images/monster3.png")));
-		monsterThreePic.setBounds(314, 259, 119, 104);
+		monsterThreePic.setBounds(309, 258, 119, 104);
 		frmChooseYourMonster.getContentPane().add(monsterThreePic);
 		
 		JLabel monsterfourPic = new JLabel("");
