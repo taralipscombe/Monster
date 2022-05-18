@@ -30,7 +30,9 @@ public class ShopWindow {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(Player player) {
+	public static void main(String[] args) {
+		Monster monster = new Monster("Fred", 1, 2, 3);
+		Player player = new Player("Emma", "1", monster, 7);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -175,9 +177,6 @@ public class ShopWindow {
 		btnSellMonster.setVisible(true);
 
 	}
-	
-	
-	
 	
 	
 	
