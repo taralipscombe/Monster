@@ -34,9 +34,9 @@ public class MainScreen {
 		Pattern pattern = Pattern.compile("[^1-8]");
 		Matcher matcher = pattern.matcher(num);
 		boolean correctNum = matcher.find();
-		if(correctNum==false || Integer.parseInt(num) > 8 || Integer.parseInt(num) < 1) {
+		if(num.length() == 0 || correctNum || Integer.parseInt(num) > 8 || Integer.parseInt(num) < 1|| num==null) {
 			System.out.println("Error: Please enter a valid move between 1 and 8");		//move????	
-		}else {
+		}else if(Integer.parseInt(num) <= 8 || Integer.parseInt(num) >= 1){
 			int number = Integer.parseInt(num);
 				if (number == 1) {
 					viewAttributes();
