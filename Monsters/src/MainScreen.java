@@ -267,6 +267,13 @@ public class MainScreen {
 	
 	public static void endGame() {
 		player.endGame();
+		System.out.println("Congratulations you have finished the Game!");
+		System.out.println("Game Stats: ");
+		System.out.println("Name: " + player.getName());
+		System.out.println("Game Duration: " + player.getFinishDay());
+		System.out.println("Total Points Gained: " + player.getPoints());
+		System.out.println("Total Gold Gained: " + player.getgold());
+	
 	}
 	
 	
