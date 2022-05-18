@@ -63,17 +63,17 @@ public class MainScreen {
 	
 	public static void viewAttributes() {
 		System.out.println("Your current Attributes are: ");
-		player.printAttributes();
+		System.out.println(player.printAttributes());
 	}
 	
 	public static void viewTeam() {
 		System.out.println("Your current Team: ");
-		player.printCurrentTeam();
+		System.out.println(player.printCurrentTeam());
 	}
 	
 	public static void viewInventory(Scanner input) {
 		System.out.println("Your current Inventory: ");
-		player.printInventory();
+		System.out.println(player.printInventory());
 		System.out.println("Would you like to use an item on a Monster? (please enter 'yes' or 'no', or 'exit' to exit)");
 		boolean selected = true;
 		while (selected) {
