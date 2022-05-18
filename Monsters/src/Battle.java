@@ -45,9 +45,11 @@ public class Battle {
 			//enemy team lost
 			awardWin();
 		}
-		
-		
-		
+		for(Monster monster:player.getTeam()) {
+			if(monster.getLives()==0) {
+				player.removeTeamMate(monster);
+			}
+		}
 		
 	}
 	
