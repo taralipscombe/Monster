@@ -21,6 +21,7 @@ public class BuyItem {
 	
 	private Player player;
 	private JFrame frame;
+	private int currentlySelected;
 	private JTextField txtShopBuyingItems;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JTextField txtName;
@@ -82,6 +83,7 @@ public class BuyItem {
 		JRadioButton rdbtnAttackPotion = new JRadioButton("Magic Attack Potion");
 		rdbtnAttackPotion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				currentlySelected = 1;
 				displayItem("Attack");
 			}
 		});
@@ -92,6 +94,7 @@ public class BuyItem {
 		JRadioButton rdbtnHealingPotion = new JRadioButton("Magic Healing Potion");
 		rdbtnHealingPotion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				currentlySelected = 2;
 				displayItem("Heal");
 			}
 		});
@@ -102,6 +105,7 @@ public class BuyItem {
 		JRadioButton rdbtnExtraLife = new JRadioButton("Extra Life");
 		rdbtnExtraLife.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				currentlySelected = 3;
 				displayItem("Life");
 			}
 		});
@@ -112,6 +116,7 @@ public class BuyItem {
 		JRadioButton rbtnLuckyDip = new JRadioButton("Lucky Dip");
 		rbtnLuckyDip.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				currentlySelected = 4;
 				displayItem("Lucky");
 			}
 		});
@@ -199,6 +204,16 @@ public class BuyItem {
 		txtCurrentGold.setBounds(399, 353, 209, 26);
 		frame.getContentPane().add(txtCurrentGold);
 		txtCurrentGold.setColumns(10);
+		
+		JButton btnExit = new JButton("Exit Shop");
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				Shop.main(player);
+			}
+		});
+		btnExit.setBounds(491, 23, 117, 29);
+		frame.getContentPane().add(btnExit);
 	}
 	
 	
@@ -240,16 +255,16 @@ public class BuyItem {
 	
 	
 	public void buySelectedItem() {
-		if (txtName.getName().equals("Attack")) {
+		if (currentlySelected == 1) {
 			Item attackPotion = new Item("Magic attack potion" , "damage", 15, 3, 60);
 			buy(attackPotion);
-		} else if (txtName.getName().equals("Heal")) {
+		} else if (currentlySelected == 2) {
 			Item healingPotion = new Item("Magic healing potion" , "heal amount" , 10, 3, 45);
 			buy(healingPotion);
-		} else if (txtName.getName().equals("Life")) {
+		} else if (currentlySelected == 3) {
 			Item extraLife = new Item("Extra Life", "lives", 1, 1, 70);
 			buy(extraLife);
-		} else if (txtName.getName().equals("Lucky Dip")){
+		} else if (currentlySelected == 4){
 			Item luckyDip = new Item("Lucky Dip", "unknown", 0, 1, 44);
 			buy(luckyDip);
 		} else {
@@ -281,15 +296,4 @@ public class BuyItem {
 	}
 		
 	}
-
 }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
