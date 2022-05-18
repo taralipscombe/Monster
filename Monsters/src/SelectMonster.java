@@ -7,6 +7,8 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
 
 public class SelectMonster {
 
@@ -40,8 +42,8 @@ public class SelectMonster {
 	 */
 	private void initialize(String name, int gameTime, String difficulty) {
 		frmChooseYourMonster = new JFrame();
-		frmChooseYourMonster.setTitle("Choose your monster");
-		frmChooseYourMonster.setBounds(100, 100, 450, 300);
+		frmChooseYourMonster.setTitle("Choose your monster (click a number)");
+		frmChooseYourMonster.setBounds(100, 100, 471, 555);
 		frmChooseYourMonster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmChooseYourMonster.getContentPane().setLayout(null);
 		
@@ -50,88 +52,97 @@ public class SelectMonster {
 		Monster monsterOptionThree = new Monster("Niall", 19, 35, 54);
 		Monster monsterOptionFour = new Monster("Liam", 13, 10, 23);
 		
-		JButton btnNewButton = new JButton("1");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton chooseOne = new JButton("1");
+		chooseOne.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Player player = new Player(name, difficulty, monsterOptionOne, gameTime);
 				frmChooseYourMonster.dispose();
 				MainScreenWindow.main(player);
 			}
 		});
-		btnNewButton.setBounds(49, 11, 45, 29);
-		frmChooseYourMonster.getContentPane().add(btnNewButton);
+		chooseOne.setBounds(70, 55, 92, 84);
+		frmChooseYourMonster.getContentPane().add(chooseOne);
 		
-		JButton btnNewButton_1 = new JButton("2");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton chooseTwo = new JButton("2");
+		chooseTwo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Player player = new Player(name, difficulty, monsterOptionTwo, gameTime);
 				frmChooseYourMonster.dispose();
 				MainScreenWindow.main(player);
 			}
 		});
-		btnNewButton_1.setBounds(268, 9, 45, 32);
-		frmChooseYourMonster.getContentPane().add(btnNewButton_1);
+		chooseTwo.setBounds(70, 171, 92, 75);
+		frmChooseYourMonster.getContentPane().add(chooseTwo);
 		
-		JButton btnNewButton_2 = new JButton("3");
-		btnNewButton_2.addActionListener(new ActionListener() {
+		JButton chooseThree = new JButton("3");
+		chooseThree.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Player player = new Player(name, difficulty, monsterOptionThree, gameTime);
 				frmChooseYourMonster.dispose();
 				MainScreenWindow.main(player);
 			}
 		});
-		btnNewButton_2.setBounds(49, 137, 45, 32);
-		frmChooseYourMonster.getContentPane().add(btnNewButton_2);
+		chooseThree.setBounds(70, 273, 92, 72);
+		frmChooseYourMonster.getContentPane().add(chooseThree);
 		
-		JButton btnNewButton_3 = new JButton("4");
-		btnNewButton_3.addActionListener(new ActionListener() {
+		JButton chooseFour = new JButton("4");
+		chooseFour.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Player player = new Player(name, difficulty, monsterOptionFour, gameTime);
 				frmChooseYourMonster.dispose();
 				MainScreenWindow.main(player);
 			}
 		});
-		btnNewButton_3.setBounds(268, 136, 45, 35);
-		frmChooseYourMonster.getContentPane().add(btnNewButton_3);
+		chooseFour.setBounds(70, 379, 92, 77);
+		frmChooseYourMonster.getContentPane().add(chooseFour);
 		
 		String optionOneString = monsterOptionOne.commandLineToString();
 		JTextArea optionOneDescription = new JTextArea(optionOneString);
-		optionOneDescription.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
-		optionOneDescription.setBounds(23, 44, 93, 60);
+		optionOneDescription.setFont(new Font("Dialog", Font.PLAIN, 11));
+		optionOneDescription.setBounds(179, 55, 130, 84);
 		frmChooseYourMonster.getContentPane().add(optionOneDescription);
 		
 		String optionTwoString = monsterOptionTwo.commandLineToString();
 		JTextArea optionTwoDescription = new JTextArea(optionTwoString);
-		optionTwoDescription.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
-		optionTwoDescription.setBounds(250, 44, 103, 60);
+		optionTwoDescription.setFont(new Font("Dialog", Font.PLAIN, 11));
+		optionTwoDescription.setBounds(175, 157, 130, 89);
 		frmChooseYourMonster.getContentPane().add(optionTwoDescription);
 		
 		String optionThreeString = monsterOptionThree.commandLineToString();
 		JTextArea optionThreeDescription = new JTextArea(optionThreeString);
-		optionThreeDescription.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
-		optionThreeDescription.setBounds(23, 186, 137, 60);
+		optionThreeDescription.setFont(new Font("Dialog", Font.PLAIN, 11));
+		optionThreeDescription.setBounds(168, 273, 137, 94);
 		frmChooseYourMonster.getContentPane().add(optionThreeDescription);
 		
 		String optionFourString = monsterOptionFour.commandLineToString();
 		JTextArea optionFourDescription = new JTextArea(optionFourString);
-		optionFourDescription.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
-		optionFourDescription.setBounds(250, 183, 137, 71);
+		optionFourDescription.setFont(new Font("Dialog", Font.PLAIN, 11));
+		optionFourDescription.setBounds(178, 386, 131, 94);
 		frmChooseYourMonster.getContentPane().add(optionFourDescription);
 		
-		JLabel lblNewLabel = new JLabel("picture");
-		lblNewLabel.setBounds(112, 39, 81, 65);
-		frmChooseYourMonster.getContentPane().add(lblNewLabel);
+		JLabel monsterOnePic = new JLabel("");
+		monsterOnePic.setIcon(new ImageIcon(SelectMonster.class.getResource("/images/monster1.png")));
+		monsterOnePic.setBounds(324, 36, 109, 94);
+		frmChooseYourMonster.getContentPane().add(monsterOnePic);
 		
-		JLabel lblNewLabel_1 = new JLabel("picture");
-		lblNewLabel_1.setBounds(355, 18, 81, 65);
-		frmChooseYourMonster.getContentPane().add(lblNewLabel_1);
+		JLabel monsterTwoPic = new JLabel("");
+		monsterTwoPic.setIcon(new ImageIcon(SelectMonster.class.getResource("/images/monster2.png")));
+		monsterTwoPic.setBounds(305, 143, 128, 104);
+		frmChooseYourMonster.getContentPane().add(monsterTwoPic);
 		
-		JLabel lblNewLabel_2 = new JLabel("picture");
-		lblNewLabel_2.setBounds(355, 132, 81, 65);
-		frmChooseYourMonster.getContentPane().add(lblNewLabel_2);
+		JLabel monsterThreePic = new JLabel("");
+		monsterThreePic.setIcon(new ImageIcon(SelectMonster.class.getResource("/images/monster3.png")));
+		monsterThreePic.setBounds(314, 259, 119, 104);
+		frmChooseYourMonster.getContentPane().add(monsterThreePic);
 		
-		JLabel lblNewLabel_3 = new JLabel("picture");
-		lblNewLabel_3.setBounds(126, 146, 81, 65);
-		frmChooseYourMonster.getContentPane().add(lblNewLabel_3);
+		JLabel monsterfourPic = new JLabel("");
+		monsterfourPic.setIcon(new ImageIcon(SelectMonster.class.getResource("/images/monster4.png")));
+		monsterfourPic.setBounds(314, 376, 119, 104);
+		frmChooseYourMonster.getContentPane().add(monsterfourPic);
+		
+		JLabel background = new JLabel("");
+		background.setIcon(new ImageIcon(SelectMonster.class.getResource("/images/shopshelf.png")));
+		background.setBounds(12, 0, 463, 549);
+		frmChooseYourMonster.getContentPane().add(background);
 	}
 }

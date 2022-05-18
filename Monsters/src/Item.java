@@ -62,10 +62,12 @@ public class Item {
 		return "Item: "+name+"\nIncreases "+property+" by "+propertyChange;
 	}
 	
-	public void printAttributes() {
-		System.out.println("Item name: " + name);
-		System.out.println("Item's Property: " + property);
-		System.out.println("Item's current usage: " + usage);
+	public String printAttributes() {
+		String retstr = "";
+		retstr+="Item name: " + name+"\n";
+		retstr+="Item's Property: " + property+"\n";
+		retstr+="Item's current usage: " + usage;
+		return retstr;
 	}
 	
 	

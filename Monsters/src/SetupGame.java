@@ -12,11 +12,15 @@ import javax.swing.JSlider;
 import javax.swing.JButton;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class SetupGame {
 
 	private JFrame frmSetUpGame;
-	private JTextField textField;
+	private JTextField nameField;
 	private String name, gameDifficulty, inputName;
 	private int gameTime;
 
@@ -62,83 +66,85 @@ public class SetupGame {
 	private void initialize() {
 		frmSetUpGame = new JFrame();
 		frmSetUpGame.setTitle("Set up Game");
-		frmSetUpGame.setBounds(100, 100, 429, 510);
+		frmSetUpGame.setBounds(100, 100, 661, 366);
 		frmSetUpGame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSetUpGame.getContentPane().setLayout(null);
 		
 		JTextArea txtrWelcomeToMonster = new JTextArea();
+		txtrWelcomeToMonster.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 15));
 		txtrWelcomeToMonster.setText("Welcome to Monster Battles!");
-		txtrWelcomeToMonster.setBounds(26, 29, 186, 16);
+		txtrWelcomeToMonster.setBounds(197, 12, 268, 16);
 		frmSetUpGame.getContentPane().add(txtrWelcomeToMonster);
 		
 		JTextArea txtrInputName = new JTextArea();
+		txtrInputName.setFont(new Font("Dialog", Font.BOLD, 12));
 		txtrInputName.setText("Input name:");
-		txtrInputName.setBounds(50, 73, 98, 16);
+		txtrInputName.setBounds(225, 58, 98, 16);
 		frmSetUpGame.getContentPane().add(txtrInputName);
 		
-		textField = new JTextField();
-		textField.setBounds(157, 68, 130, 26);
-		frmSetUpGame.getContentPane().add(textField);
-		textField.setColumns(10);
+		nameField = new JTextField();
+		nameField.setBounds(335, 53, 130, 26);
+		frmSetUpGame.getContentPane().add(nameField);
+		nameField.setColumns(10);
 		
 		JTextArea txtrHowManyDays = new JTextArea();
 		txtrHowManyDays.setText("How many days do you want to play?");
-		txtrHowManyDays.setBounds(101, 101, 239, 16);
+		txtrHowManyDays.setBounds(214, 116, 239, 16);
 		frmSetUpGame.getContentPane().add(txtrHowManyDays);
 		
-		JSlider slider = new JSlider();
-		slider.addChangeListener(new ChangeListener() {
+		JSlider daysSlider = new JSlider();
+		daysSlider.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
-				gameTime = slider.getValue();
+				gameTime = daysSlider.getValue();
 			}
 		});
-		slider.setMinorTickSpacing(1);
-		slider.setMajorTickSpacing(1);
-		slider.setMinimum(5);
-		slider.setMaximum(15);
-		slider.setPaintLabels(true);
-		slider.setPaintTicks(true);
-		slider.setSnapToTicks(true);
-		slider.setBounds(59, 129, 330, 39);
-		frmSetUpGame.getContentPane().add(slider);
+		daysSlider.setMinorTickSpacing(1);
+		daysSlider.setMajorTickSpacing(1);
+		daysSlider.setMinimum(5);
+		daysSlider.setMaximum(15);
+		daysSlider.setPaintLabels(true);
+		daysSlider.setPaintTicks(true);
+		daysSlider.setSnapToTicks(true);
+		daysSlider.setBounds(171, 135, 330, 39);
+		frmSetUpGame.getContentPane().add(daysSlider);
 		
 		JTextArea txtrChooseDifficulty = new JTextArea();
 		txtrChooseDifficulty.setText("Choose difficulty");
-		txtrChooseDifficulty.setBounds(157, 249, 119, 16);
+		txtrChooseDifficulty.setBounds(295, 216, 119, 16);
 		frmSetUpGame.getContentPane().add(txtrChooseDifficulty);
 		
-		JButton btnNewButton = new JButton("Easy");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton chooseEasy = new JButton("Easy");
+		chooseEasy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				gameDifficulty = "1";
 				
 			}
 		});
-		btnNewButton.setBounds(26, 304, 117, 29);
-		frmSetUpGame.getContentPane().add(btnNewButton);
+		chooseEasy.setBounds(146, 244, 117, 29);
+		frmSetUpGame.getContentPane().add(chooseEasy);
 		
-		JButton btnNewButton_1 = new JButton("Medium");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton chooseMedium = new JButton("Medium");
+		chooseMedium.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				gameDifficulty = "2";
 			}
 		});
-		btnNewButton_1.setBounds(157, 304, 117, 29);
-		frmSetUpGame.getContentPane().add(btnNewButton_1);
+		chooseMedium.setBounds(275, 244, 117, 29);
+		frmSetUpGame.getContentPane().add(chooseMedium);
 		
-		JButton btnNewButton_2 = new JButton("Hard");
-		btnNewButton_2.addActionListener(new ActionListener() {
+		JButton chooseHard = new JButton("Hard");
+		chooseHard.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				gameDifficulty = "3";
 			}
 		});
-		btnNewButton_2.setBounds(287, 304, 117, 29);
-		frmSetUpGame.getContentPane().add(btnNewButton_2);
+		chooseHard.setBounds(404, 244, 117, 29);
+		frmSetUpGame.getContentPane().add(chooseHard);
 		
-		JButton btnNewButton_3 = new JButton("Continue");
-		btnNewButton_3.addActionListener(new ActionListener() {
+		JButton continueButton = new JButton("Continue");
+		continueButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				inputName = textField.getText();
+				inputName = nameField.getText();
 				if(gameDifficulty == null || inputName.length()==0 ) {
 					JOptionPane.showMessageDialog(frmSetUpGame, "Please enter a name and choose a difficulty");
 				}
@@ -155,8 +161,14 @@ public class SetupGame {
 				
 			}
 		});
-		btnNewButton_3.setBounds(159, 401, 117, 29);
-		frmSetUpGame.getContentPane().add(btnNewButton_3);
+		continueButton.setBounds(285, 285, 117, 29);
+		frmSetUpGame.getContentPane().add(continueButton);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setVerticalAlignment(SwingConstants.TOP);
+		lblNewLabel.setIcon(new ImageIcon(SetupGame.class.getResource("/images/back.jpg")));
+		lblNewLabel.setBounds(0, 0, 659, 409);
+		frmSetUpGame.getContentPane().add(lblNewLabel);
 	}
 }
 

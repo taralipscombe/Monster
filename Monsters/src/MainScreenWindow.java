@@ -6,6 +6,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class MainScreenWindow {
 
@@ -42,49 +44,82 @@ public class MainScreenWindow {
 	private void initialize(Player player) {
 		frmMainscreen = new JFrame();
 		frmMainscreen.setTitle("Mainscreen");
-		frmMainscreen.setBounds(100, 100, 464, 423);
+		frmMainscreen.setBounds(100, 100, 619, 354);
 		frmMainscreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMainscreen.getContentPane().setLayout(null);
 		
-		JButton btnNewButton = new JButton("View current Game Stats");
-		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 10));
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton viewStats = new JButton("View current Game Stats");
+		viewStats.setFont(new Font("Dialog", Font.BOLD, 10));
+		viewStats.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(frmMainscreen, "Your current Game Stats are:\n"+ player.printAttributes());
 				
 			}
 		});
-		btnNewButton.setBounds(112, 23, 204, 29);
-		frmMainscreen.getContentPane().add(btnNewButton);
+		viewStats.setBounds(198, 12, 204, 29);
+		frmMainscreen.getContentPane().add(viewStats);
 		
-		JButton btnNewButton_1 = new JButton("View your team's properties");
-		btnNewButton_1.setFont(new Font("Dialog", Font.BOLD, 10));
-		btnNewButton_1.setBounds(112, 59, 204, 29);
-		frmMainscreen.getContentPane().add(btnNewButton_1);
+		JButton viewTeamProperties = new JButton("View your team's properties");
+		viewTeamProperties.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(frmMainscreen, "Your team's properties are:\n"+ player.printCurrentTeam());
+			}
+		});
+		viewTeamProperties.setFont(new Font("Dialog", Font.BOLD, 10));
+		viewTeamProperties.setBounds(198, 47, 204, 29);
+		frmMainscreen.getContentPane().add(viewTeamProperties);
 		
-		JButton btnNewButton_2 = new JButton("View your inventory");
-		btnNewButton_2.setBounds(112, 100, 204, 29);
-		frmMainscreen.getContentPane().add(btnNewButton_2);
+		JButton viewInventory = new JButton("View your inventory");
+		viewInventory.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(frmMainscreen, "The items in your inventory are:\n"+ player.printInventory());
+			}
+		});
+		viewInventory.setBounds(198, 88, 204, 29);
+		frmMainscreen.getContentPane().add(viewInventory);
 		
-		JButton btnNewButton_3 = new JButton("View possible battles");
-		btnNewButton_3.setBounds(112, 141, 204, 29);
-		frmMainscreen.getContentPane().add(btnNewButton_3);
+		JButton viewBattles = new JButton("View possible battles");
+		viewBattles.setBounds(198, 118, 204, 29);
+		frmMainscreen.getContentPane().add(viewBattles);
 		
-		JButton btnNewButton_4 = new JButton("Battle!");
-		btnNewButton_4.setBounds(154, 182, 117, 29);
-		frmMainscreen.getContentPane().add(btnNewButton_4);
+		JButton battle = new JButton("Battle!");
+		battle.setBounds(242, 159, 117, 29);
+		frmMainscreen.getContentPane().add(battle);
 		
-		JButton btnNewButton_5 = new JButton("Visit Shop");
-		btnNewButton_5.setBounds(154, 223, 117, 29);
-		frmMainscreen.getContentPane().add(btnNewButton_5);
+		JButton visitShop = new JButton("Visit Shop");
+		visitShop.setBounds(242, 200, 117, 29);
+		frmMainscreen.getContentPane().add(visitShop);
 		
-		JButton btnNewButton_6 = new JButton("Go to sleep");
-		btnNewButton_6.setBounds(154, 264, 117, 29);
-		frmMainscreen.getContentPane().add(btnNewButton_6);
+		JButton sleep = new JButton("Go to sleep");
+		sleep.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				for (Monster monster : player.getTeam()) {
+					monster.heal();
+				}
+				player.incrementDay();
+				RandomEvent randomEvent = new RandomEvent(player);
+				RandomEvent.generate();
+				JOptionPane.showMessageDialog(frmMainscreen, "Sweet dreams!, Enjoy your sleep!");
+			}
+		});
+		sleep.setBounds(242, 241, 117, 29);
+		frmMainscreen.getContentPane().add(sleep);
 		
-		JButton btnNewButton_7 = new JButton("End Game");
-		btnNewButton_7.setBounds(154, 305, 117, 29);
-		frmMainscreen.getContentPane().add(btnNewButton_7);
+		JButton endGame = new JButton("End Game");
+		endGame.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				player.endGame();
+				frmMainscreen.dispose();
+				JOptionPane.showMessageDialog(frmMainscreen, "Game over! Your game stats finish as:\n"+player.printAttributes());
+			}
+		});
+		endGame.setBounds(242, 282, 117, 29);
+		frmMainscreen.getContentPane().add(endGame);
+		
+		JLabel backgroundImage = new JLabel("");
+		backgroundImage.setIcon(new ImageIcon(MainScreenWindow.class.getResource("/images/back.jpg")));
+		backgroundImage.setBounds(12, -31, 594, 371);
+		frmMainscreen.getContentPane().add(backgroundImage);
 	}
 
 }

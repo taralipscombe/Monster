@@ -115,30 +115,34 @@ public class Player {
 		
 	}
 	
-	public void printCurrentTeam() {
+	public String printCurrentTeam() {
 		if(this.getTeam().size()==0) {
-			System.out.println("Your team is empty. Buy a monster at the shop!");
+			return "Your team is empty. Buy a monster at the shop!";
 		}
+		String retstr = "";
 		for(Monster monster : monsterTeam) {
-			System.out.println();
-			monster.commandLineToString();
+			retstr+=monster.commandLineToString();
+			retstr+="\n";
 		}
+		return retstr;
 	}
 	
-	public void printInventory() {
+	public String printInventory() {
 		if (items.size() == 0) {
-			System.out.println("Your inventory is empty. Buy an item at the shop!");
+			return "Your inventory is empty. Buy an item at the shop!";
 		} else {
+			String retstr = "";
 			int i = 1;
 			for(Item item : items) {
 				if (item.getUsage() == 0) {
 					this.removeItem(item);
 				}
 				System.out.println();
-				System.out.println("Item number " + i + ": ");
-				item.printAttributes();
+				retstr+= "Item number " + i + ": ";
+				retstr+= item.printAttributes();
 				i += 1;
 			}
+			return retstr;
 		}
 		
 	}
