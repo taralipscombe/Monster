@@ -121,13 +121,12 @@ public class GameLogic {
 		setDifficulty(input);
 		setStartingMonster(input);
 		System.out.println("Awesome work " + playerName +"! Looks like you are all set up to play - Enjoy the Game!");
-		//call Mainscreen here?
+		player = new Player(playerName, difficulty, startingMonster, numDays);
 		MainScreen mainScreen = new MainScreen(player); // need tho
-		MainScreen.main(null); // runs mainscreen class - unsure how it uses player etc as have called using MainScreen
+		mainScreen.main(null); // runs mainscreen class - unsure how it uses player etc as have called using MainScreen
 		
 		
 		
 	}
 
 }
-
