@@ -24,7 +24,6 @@ public class SellItem {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JTextField txtName;
 	private JTextField txtOwn;
-	private JTextField txtAmount;
 	private JTextField txtSell;
 	private JLabel lblItemOne;
 	private JLabel lblItemTwo;
@@ -253,8 +252,6 @@ public class SellItem {
 		currentItem = null;
 		
 	}
-	
-	
 	
 	
 	
