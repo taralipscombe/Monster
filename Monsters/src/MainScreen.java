@@ -1,4 +1,3 @@
-// team
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -35,9 +34,9 @@ public class MainScreen {
 		Pattern pattern = Pattern.compile("[^1-8]");
 		Matcher matcher = pattern.matcher(num);
 		boolean correctNum = matcher.find();
-		if(correctNum || Integer.parseInt(num) > 8 || Integer.parseInt(num) < 1) {
+		if(correctNum==false || Integer.parseInt(num) > 8 || Integer.parseInt(num) < 1) {
 			System.out.println("Error: Please enter a valid move between 1 and 8");		//move????	
-		} else {
+		}else {
 			int number = Integer.parseInt(num);
 				if (number == 1) {
 					viewAttributes();
@@ -261,7 +260,7 @@ public class MainScreen {
 		}
 		player.incrementDay();
 		RandomEvent randomEvent = new RandomEvent(player);
-		RandomEvent.generate();
+		randomEvent.generate();
 		
 	}
 	
