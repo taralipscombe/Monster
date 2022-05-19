@@ -10,32 +10,24 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.Color;
+import javax.swing.JTextField;
 
 public class SelectMonster {
 
-	private JFrame frmChooseYourMonster;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String name, int gameTime, String difficulty) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SelectMonster window = new SelectMonster(name, gameTime, difficulty);
-					window.frmChooseYourMonster.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	public JFrame frmChooseYourMonster;
+	private JTextField chooseName;
+	private String playerName, gameDifficulty, monsterName;
+	private int time;
+	private boolean defaultName=true;
+	
 	/**
 	 * Create the application.
 	 */
 	public SelectMonster(String name, int gameTime, String difficulty) {
-		initialize(name, gameTime, difficulty);
+		playerName=name;
+		gameDifficulty=difficulty;
+		time=gameTime;
+		initialize(playerName, time, gameDifficulty);
 	}
 
 	/**
@@ -58,6 +50,9 @@ public class SelectMonster {
 		chooseOne.setBackground(new Color(255, 255, 255));
 		chooseOne.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(defaultName == false) {
+					monsterOptionOne.setName(monsterName);
+				}
 				Player player = new Player(name, difficulty, monsterOptionOne, gameTime);
 				frmChooseYourMonster.dispose();
 				MainScreenWindow.main(player);
@@ -69,6 +64,9 @@ public class SelectMonster {
 		JButton chooseTwo = new JButton("2");
 		chooseTwo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(defaultName == false) {
+					monsterOptionTwo.setName(monsterName);
+				}
 				Player player = new Player(name, difficulty, monsterOptionTwo, gameTime);
 				frmChooseYourMonster.dispose();
 				MainScreenWindow.main(player);
@@ -80,6 +78,9 @@ public class SelectMonster {
 		JButton chooseThree = new JButton("3");
 		chooseThree.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(defaultName == false) {
+					monsterOptionThree.setName(monsterName);
+				}
 				Player player = new Player(name, difficulty, monsterOptionThree, gameTime);
 				frmChooseYourMonster.dispose();
 				MainScreenWindow.main(player);
@@ -91,6 +92,9 @@ public class SelectMonster {
 		JButton chooseFour = new JButton("4");
 		chooseFour.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(defaultName == false) {
+					monsterOptionFour.setName(monsterName);
+				}
 				Player player = new Player(name, difficulty, monsterOptionFour, gameTime);
 				frmChooseYourMonster.dispose();
 				MainScreenWindow.main(player);
@@ -100,6 +104,14 @@ public class SelectMonster {
 		frmChooseYourMonster.getContentPane().add(chooseFour);
 		
 		String optionOneString = monsterOptionOne.commandLineToString();
+		
+		JTextArea txtroptionalNameYour = new JTextArea();
+		txtroptionalNameYour.setBackground(Color.RED);
+		txtroptionalNameYour.setForeground(Color.WHITE);
+		txtroptionalNameYour.setFont(new Font("EB Garamond 12", Font.BOLD, 14));
+		txtroptionalNameYour.setText("(Optional) Name your starting monster:");
+		txtroptionalNameYour.setBounds(12, 485, 240, 21);
+		frmChooseYourMonster.getContentPane().add(txtroptionalNameYour);
 		JTextArea optionOneDescription = new JTextArea(optionOneString);
 		optionOneDescription.setOpaque(false);
 		optionOneDescription.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 12));
@@ -127,6 +139,17 @@ public class SelectMonster {
 		optionFourDescription.setBounds(174, 379, 131, 94);
 		frmChooseYourMonster.getContentPane().add(optionFourDescription);
 		
+		chooseName = new JTextField();
+		chooseName.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				monsterName = chooseName.getText();
+				defaultName=false;
+			}
+		});
+		chooseName.setBounds(263, 487, 114, 19);
+		frmChooseYourMonster.getContentPane().add(chooseName);
+		chooseName.setColumns(10);
+		
 		JLabel monsterOnePic = new JLabel("");
 		monsterOnePic.setIcon(new ImageIcon(SelectMonster.class.getResource("/images/monster1.png")));
 		monsterOnePic.setBounds(309, 35, 119, 104);
@@ -144,12 +167,12 @@ public class SelectMonster {
 		
 		JLabel monsterfourPic = new JLabel("");
 		monsterfourPic.setIcon(new ImageIcon(SelectMonster.class.getResource("/images/monster4.png")));
-		monsterfourPic.setBounds(314, 376, 119, 104);
+		monsterfourPic.setBounds(309, 379, 119, 104);
 		frmChooseYourMonster.getContentPane().add(monsterfourPic);
 		
 		JLabel background = new JLabel("");
 		background.setIcon(new ImageIcon(SelectMonster.class.getResource("/images/shopshelf.png")));
-		background.setBounds(12, 0, 463, 549);
+		background.setBounds(12, -11, 463, 549);
 		frmChooseYourMonster.getContentPane().add(background);
 	}
 }
