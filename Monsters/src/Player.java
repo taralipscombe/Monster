@@ -60,6 +60,15 @@ public class Player {
 	public void removeItem(Item newestItem) {
 		items.remove(newestItem);
 	}
+	
+	public void useItem(Item usingItem, Monster onMonster) {
+		usingItem.useItem(onMonster);
+		if (usingItem.getUsage() == 0) {
+			removeItem(usingItem);
+		}
+		
+	}
+	
 	public void setGold() {
 		if (chosenDifficulty == "Easy") {
 			gold = 200;

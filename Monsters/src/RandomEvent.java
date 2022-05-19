@@ -1,10 +1,13 @@
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 public class RandomEvent {
 	
 	private static ArrayList<Monster> monsterTeam;
 	private static Player player;
+	private static ArrayList<String> randomOccured = new ArrayList<String>();
 	
 	//a monster levels up overnight - one gains 15 attack, 40% (
 	// a monster level down overnight - one loses 15 attack, 30% chance
@@ -18,10 +21,11 @@ public class RandomEvent {
 
 	}
 	
-	public void generate() {
+	public ArrayList<String> generate() {
 		levelsUp();
 		levelsDown();
 		leavesOvernight();
+		return randomOccured;
 	}
 	
 	public static int random(int min, int max) {
@@ -41,7 +45,7 @@ public class RandomEvent {
 	
 	
 	public static void levelsUp() {
-		
+		randomOccured.clear();
 		double randomInt = createRandom();
 		if (randomInt < 0.4) {
 			int range = monsterTeam.size();
@@ -50,7 +54,8 @@ public class RandomEvent {
 			Monster levelUpMonster = monsterTeam.get(rndmInt);
 			int initialDamage = levelUpMonster.getDamage();
 			levelUpMonster.setDamage(initialDamage + 15);
-			System.out.println("Congratulations " + levelUpMonster.getName() + " has leveled up! It's damage is now " + levelUpMonster.getDamage()+ " units.");
+			randomOccured.add("Congratulations " + levelUpMonster.getName() + " has leveled up! Their damage is now " + levelUpMonster.getDamage()+ " units.");
+			System.out.println("Congratulations " + levelUpMonster.getName() + " has leveled up! Their damage is now " + levelUpMonster.getDamage()+ " units.");
 		}
 		
 	}
@@ -64,7 +69,8 @@ public class RandomEvent {
 			Monster levelDownMonster = monsterTeam.get(rndmInt);
 			int initialDamage = levelDownMonster.getDamage();
 			levelDownMonster.setDamage(initialDamage -15);
-			System.out.println("Oh no " + levelDownMonster.getName() + " has gotten sick overnight! It's damage is now " + levelDownMonster.getDamage()+ " units.");
+			randomOccured.add("Oh no " + levelDownMonster.getName() + " has gotten sick overnight! Their damage is now " + levelDownMonster.getDamage()+ " units.");
+			System.out.println("Oh no " + levelDownMonster.getName() + " has gotten sick overnight! Their damage is now " + levelDownMonster.getDamage()+ " units.");
 		}
 	}
 	
@@ -78,9 +84,11 @@ public class RandomEvent {
 		double randomInt = createRandom();
 		if (averageLives >= 1.5 && randomInt <= 0) {
 			Monster leftMonster = monsterLeaves();
+			randomOccured.add("RIP " +  leftMonster.getName() + " has gotten COVID and died! You know have only " + monsterTeam.size() + " monsters left.");
 			System.out.println("RIP " +  leftMonster.getName() + " has gotten COVID and died! You know have only " + monsterTeam.size() + " monsters left.");	
 		} else if (averageLives < 1.5 && randomInt <= 0.1) {
 			Monster leftMonster = monsterLeaves();
+			randomOccured.add("RIP " +  leftMonster.getName() + " has gotten COVID and died! You know have only " + monsterTeam.size() + " monsters left.");
 			System.out.println("RIP " +  leftMonster.getName() + " has gotten COVID and died! You know have only " + monsterTeam.size() + " monsters left.");
 		}
 		

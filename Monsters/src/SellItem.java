@@ -19,7 +19,7 @@ import javax.swing.JButton;
 public class SellItem {
 
 	private Player player;
-	private JFrame frame;
+	public static JFrame frmSellItem;
 	private JTextField txtSellItems;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JTextField txtName;
@@ -43,7 +43,7 @@ public class SellItem {
 			public void run() {
 				try {
 					SellItem window = new SellItem(player);
-					window.frame.setVisible(true);
+					window.frmSellItem.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -65,17 +65,17 @@ public class SellItem {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 649, 450);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmSellItem = new JFrame();
+		frmSellItem.setBounds(100, 100, 649, 450);
+		frmSellItem.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmSellItem.getContentPane().setLayout(null);
 		
 		txtSellItems = new JTextField();
 		txtSellItems.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 18));
 		txtSellItems.setEditable(false);
 		txtSellItems.setText("Sell Items:");
 		txtSellItems.setBounds(254, 20, 109, 26);
-		frame.getContentPane().add(txtSellItems);
+		frmSellItem.getContentPane().add(txtSellItems);
 		txtSellItems.setColumns(10);
 		
 		JRadioButton rdbtnAttackPotion = new JRadioButton("Magic Attack Potion");
@@ -86,7 +86,7 @@ public class SellItem {
 		});
 		buttonGroup.add(rdbtnAttackPotion);
 		rdbtnAttackPotion.setBounds(24, 200, 168, 23);
-		frame.getContentPane().add(rdbtnAttackPotion);
+		frmSellItem.getContentPane().add(rdbtnAttackPotion);
 		
 		JRadioButton rdbtnHealingPotion = new JRadioButton("Magic Healing Potion");
 		rdbtnHealingPotion.addActionListener(new ActionListener() {
@@ -96,7 +96,7 @@ public class SellItem {
 		});
 		buttonGroup.add(rdbtnHealingPotion);
 		rdbtnHealingPotion.setBounds(204, 200, 165, 23);
-		frame.getContentPane().add(rdbtnHealingPotion);
+		frmSellItem.getContentPane().add(rdbtnHealingPotion);
 		
 		JRadioButton rdbtnExtraLife = new JRadioButton("Extra Life");
 		rdbtnExtraLife.addActionListener(new ActionListener() {
@@ -106,7 +106,7 @@ public class SellItem {
 		});
 		buttonGroup.add(rdbtnExtraLife);
 		rdbtnExtraLife.setBounds(55, 377, 120, 23);
-		frame.getContentPane().add(rdbtnExtraLife);
+		frmSellItem.getContentPane().add(rdbtnExtraLife);
 		
 		JRadioButton rbtnLuckyDip = new JRadioButton("Lucky Dip");
 		rbtnLuckyDip.addActionListener(new ActionListener() {
@@ -116,12 +116,12 @@ public class SellItem {
 		});
 		buttonGroup.add(rbtnLuckyDip);
 		rbtnLuckyDip.setBounds(228, 377, 141, 23);
-		frame.getContentPane().add(rbtnLuckyDip);
+		frmSellItem.getContentPane().add(rbtnLuckyDip);
 		
 		panel = new JPanel();
 		panel.setBorder(new TitledBorder(null, "Selected Item:", TitledBorder.CENTER, TitledBorder.ABOVE_TOP, null, null));
 		panel.setBounds(399, 69, 209, 221);
-		frame.getContentPane().add(panel);
+		frmSellItem.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		txtName = new JTextField();
@@ -151,27 +151,27 @@ public class SellItem {
 		lblItemOne = new JLabel("");
 		lblItemOne.setIcon(new ImageIcon(BuyItem.class.getResource("/images/potion.png")));
 		lblItemOne.setBounds(42, 60, 120, 139);
-		frame.getContentPane().add(lblItemOne);
+		frmSellItem.getContentPane().add(lblItemOne);
 		
 		lblItemTwo = new JLabel("");
 		lblItemTwo.setIcon(new ImageIcon(BuyItem.class.getResource("/images/potion_2.png")));
 		lblItemTwo.setBounds(222, 67, 141, 128);
-		frame.getContentPane().add(lblItemTwo);
+		frmSellItem.getContentPane().add(lblItemTwo);
 		
 		lblItemThree = new JLabel("");
 		lblItemThree.setIcon(new ImageIcon(BuyItem.class.getResource("/images/heart.png")));
 		lblItemThree.setBounds(45, 211, 147, 164);
-		frame.getContentPane().add(lblItemThree);
+		frmSellItem.getContentPane().add(lblItemThree);
 		
 		lblItemFour = new JLabel("");
 		lblItemFour.setIcon(new ImageIcon(BuyItem.class.getResource("/images/dialog_question.png")));
 		lblItemFour.setBounds(236, 226, 141, 139);
-		frame.getContentPane().add(lblItemFour);
+		frmSellItem.getContentPane().add(lblItemFour);
 		
 		txtCurrentGold = new JTextField("Your current gold: " + player.getgold() + " gold");
 		txtCurrentGold.setEditable(false);
 		txtCurrentGold.setBounds(399, 353, 209, 26);
-		frame.getContentPane().add(txtCurrentGold);
+		frmSellItem.getContentPane().add(txtCurrentGold);
 		txtCurrentGold.setColumns(10);
 		
 		btnSellItem = new JButton("Sell Item");
@@ -182,16 +182,16 @@ public class SellItem {
 		});
 		btnSellItem.setVisible(false);
 		btnSellItem.setBounds(446, 302, 117, 29);
-		frame.getContentPane().add(btnSellItem);
+		frmSellItem.getContentPane().add(btnSellItem);
 		
 		btnReturn = new JButton("Return");
 		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
+				frmSellItem.dispose();
 			}
 		});
 		btnReturn.setBounds(446, 22, 117, 29);
-		frame.getContentPane().add(btnReturn);
+		frmSellItem.getContentPane().add(btnReturn);
 		
 		
 	}

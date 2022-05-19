@@ -199,19 +199,24 @@ public class SetupGame {
 		continueButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				inputName = nameField.getText();
-				if(gameDifficulty == null || inputName.length()==0 ) {
+				if(gameDifficulty == null && inputName.length()==0 ) {
 					JOptionPane.showMessageDialog(frmSetUpGame, "Please enter a name and choose a difficulty");
+				} else if (inputName.length() == 0) {
+					JOptionPane.showMessageDialog(frmSetUpGame, "Please enter a name");
+				} else if (gameDifficulty == null) {
+					JOptionPane.showMessageDialog(frmSetUpGame, "Please choose a difficulty");
+				} else {
+					Pattern pattern = Pattern.compile("[^a-zA-Z]");
+					Matcher matcher = pattern.matcher(inputName);
+					boolean correctName = matcher.find();
+					if(correctName || inputName.length()<3 ||inputName.length()>15) {
+						JOptionPane.showMessageDialog(frmSetUpGame,"Error: Please enter a valid name between 3-15 letters");			
+						} else {
+							name = inputName;
+							frmSetUpGame.dispose();
+							SelectMonster.main(name, gameTime, gameDifficulty);
+						}
 				}
-				Pattern pattern = Pattern.compile("[^a-zA-Z]");
-				Matcher matcher = pattern.matcher(inputName);
-				boolean correctName = matcher.find();
-				if(correctName || inputName.length()<3 ||inputName.length()>15) {
-					JOptionPane.showMessageDialog(null,"Error: Please enter a valid name between 3-15 letters");			
-					} else {
-						name = inputName;
-						frmSetUpGame.dispose();
-						SelectMonster.main(name, gameTime, gameDifficulty);
-					}
 				
 			}
 		});

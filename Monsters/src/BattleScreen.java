@@ -37,6 +37,9 @@ public class BattleScreen {
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
 	private JLabel lblNewLabel_2;
+	private JTextField txtWinningsOne;
+	private JTextField txtWinningsTwo;
+	private JTextField txtWinningsThree;
 
 	/**
 	 * Launch the application.
@@ -93,7 +96,7 @@ public class BattleScreen {
 			}
 		});
 		buttonGroup.add(rdbtnTeamOne);
-		rdbtnTeamOne.setBounds(32, 97, 141, 23);
+		rdbtnTeamOne.setBounds(32, 86, 141, 23);
 		frame.getContentPane().add(rdbtnTeamOne);
 		
 		JRadioButton rdbtnTeamTwo = new JRadioButton("Enemy Team Two");
@@ -104,7 +107,7 @@ public class BattleScreen {
 			}
 		});
 		buttonGroup.add(rdbtnTeamTwo);
-		rdbtnTeamTwo.setBounds(243, 97, 141, 23);
+		rdbtnTeamTwo.setBounds(243, 86, 141, 23);
 		frame.getContentPane().add(rdbtnTeamTwo);
 		
 		JRadioButton rdbtnTeamThree = new JRadioButton("Enemy Team Three");
@@ -115,12 +118,12 @@ public class BattleScreen {
 			}
 		});
 		buttonGroup.add(rdbtnTeamThree);
-		rdbtnTeamThree.setBounds(457, 97, 150, 23);
+		rdbtnTeamThree.setBounds(457, 86, 150, 23);
 		frame.getContentPane().add(rdbtnTeamThree);
 		
 		
 		JPanel panelTeamOne = new JPanel();
-		panelTeamOne.setBounds(32, 171, 141, 104);
+		panelTeamOne.setBounds(32, 150, 141, 125);
 		frame.getContentPane().add(panelTeamOne);
 		panelTeamOne.setLayout(null);
 		
@@ -139,8 +142,13 @@ public class BattleScreen {
 		panelTeamOne.add(txtHealOne);
 		txtHealOne.setColumns(10);
 		
+		txtWinningsOne = new JTextField();
+		txtWinningsOne.setColumns(10);
+		txtWinningsOne.setBounds(6, 96, 130, 26);
+		panelTeamOne.add(txtWinningsOne);
+		
 		JPanel panelTeamTwo = new JPanel();
-		panelTeamTwo.setBounds(243, 171, 150, 104);
+		panelTeamTwo.setBounds(243, 150, 150, 125);
 		frame.getContentPane().add(panelTeamTwo);
 		panelTeamTwo.setLayout(null);
 		
@@ -159,8 +167,13 @@ public class BattleScreen {
 		panelTeamTwo.add(txtHealTwo);
 		txtHealTwo.setColumns(10);
 		
+		txtWinningsTwo = new JTextField();
+		txtWinningsTwo.setColumns(10);
+		txtWinningsTwo.setBounds(6, 93, 130, 26);
+		panelTeamTwo.add(txtWinningsTwo);
+		
 		JPanel panelTeamThree = new JPanel();
-		panelTeamThree.setBounds(457, 171, 150, 104);
+		panelTeamThree.setBounds(457, 150, 150, 125);
 		frame.getContentPane().add(panelTeamThree);
 		panelTeamThree.setLayout(null);
 		
@@ -175,9 +188,14 @@ public class BattleScreen {
 		txtAttackThree.setColumns(10);
 		
 		txtHealThree = new JTextField();
-		txtHealThree.setBounds(6, 71, 130, 26);
+		txtHealThree.setBounds(6, 62, 130, 26);
 		panelTeamThree.add(txtHealThree);
 		txtHealThree.setColumns(10);
+		
+		txtWinningsThree = new JTextField();
+		txtWinningsThree.setColumns(10);
+		txtWinningsThree.setBounds(6, 93, 130, 26);
+		panelTeamThree.add(txtWinningsThree);
 		
 		btnBattle = new JButton("Battle!"); // call action listener and implement the fight screen with the player and the chosen enemy Team.
 		btnBattle.addActionListener(new ActionListener() {
@@ -232,7 +250,7 @@ public class BattleScreen {
 		for (Monster monster : mainscreen.getEnemyTeam(1)) {
 			cBoxTeamOne.addItem(monster);
 		}
-		cBoxTeamOne.setBounds(32, 132, 141, 27);
+		cBoxTeamOne.setBounds(32, 111, 141, 27);
 		frame.getContentPane().add(cBoxTeamOne);
 		
 		
@@ -246,7 +264,7 @@ public class BattleScreen {
 		for (Monster monster : mainscreen.getEnemyTeam(2)) {
 			cBoxTeamTwo.addItem(monster);
 		}
-		cBoxTeamTwo.setBounds(243, 132, 141, 27);
+		cBoxTeamTwo.setBounds(243, 111, 141, 27);
 		frame.getContentPane().add(cBoxTeamTwo);
 
 		JComboBox<Monster> cBoxTeamThree = new JComboBox<Monster>();
@@ -259,7 +277,7 @@ public class BattleScreen {
 		for (Monster monster : mainscreen.getEnemyTeam(3)) {
 			cBoxTeamThree.addItem(monster);
 		}
-		cBoxTeamThree.setBounds(457, 132, 150, 27);
+		cBoxTeamThree.setBounds(457, 111, 150, 27);
 		frame.getContentPane().add(cBoxTeamThree);
 	}
 	
@@ -268,18 +286,30 @@ public class BattleScreen {
 		txtNameOne.setText("Name: " + monster.getName());
 		txtAttackOne.setText("Damage: " + monster.getDamage() + " units");
 		txtHealOne.setText("Heal: " + monster.getHealAmount() + " units");
+		txtWinningsOne.setText("Reward: " + getWinnings(mainscreen.getEnemyTeam(1)) + " gold");
 	}
 	
 	public void displayTwo(Monster monster) {
 		txtNameTwo.setText("Name: " + monster.getName());
 		txtAttackTwo.setText("Damage: " + monster.getDamage() + " units");
 		txtHealTwo.setText("Heal: " + monster.getHealAmount() + " units");
+		txtWinningsTwo.setText("Reward: " + getWinnings(mainscreen.getEnemyTeam(2)) + " gold");
 	}
 		
 	public void displayThree(Monster monster) {
 		txtNameThree.setText("Name: " + monster.getName());
 		txtAttackThree.setText("Damage: " + monster.getDamage() + " units");
 		txtHealThree.setText("Heal: " + monster.getHealAmount() + " units");
+		txtWinningsThree.setText("Reward: " + getWinnings(mainscreen.getEnemyTeam(3)) + " gold");
+	}
+	
+	public int getWinnings(ArrayList<Monster> monsters) {
+		int average = 0;
+		for (Monster monster : monsters) {
+			average += monster.getDamage();
+		}
+		average = average / monsters.size();
+		return average;
 	}
 	
 	

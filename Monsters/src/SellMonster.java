@@ -23,7 +23,7 @@ public class SellMonster {
 	private Player player;
 	private ArrayList<Monster> monstersForSale;
 	private Monster currentSelected = null;
-	private JFrame frame;
+	public JFrame frmSellMonster;
 	private JTextField txtShopMonster;
 	private JTextField txtName;
 	private JTextField txtDamage;
@@ -37,12 +37,12 @@ public class SellMonster {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(Player player) {
+	public static void main() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SellMonster window = new SellMonster(player);
-					window.frame.setVisible(true);
+					SellMonster window = new SellMonster();
+					window.frmSellMonster.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -63,17 +63,17 @@ public class SellMonster {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 650, 450);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmSellMonster = new JFrame();
+		frmSellMonster.setBounds(100, 100, 650, 450);
+		frmSellMonster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmSellMonster.getContentPane().setLayout(null);
 		
 		txtShopMonster = new JTextField();
 		txtShopMonster.setEditable(false);
 		txtShopMonster.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 18));
 		txtShopMonster.setText("Shop Monsters:");
 		txtShopMonster.setBounds(233, 33, 169, 32);
-		frame.getContentPane().add(txtShopMonster);
+		frmSellMonster.getContentPane().add(txtShopMonster);
 		txtShopMonster.setColumns(10);
 		
 		if (monstersForSale.size() >= 1) {
@@ -85,7 +85,7 @@ public class SellMonster {
 			});
 			buttonGroup.add(rdbtnMonsterOne);
 			rdbtnMonsterOne.setBounds(62, 208, 87, 23);
-			frame.getContentPane().add(rdbtnMonsterOne);
+			frmSellMonster.getContentPane().add(rdbtnMonsterOne);
 		}
 		
 		if (monstersForSale.size() >= 2) {
@@ -97,7 +97,7 @@ public class SellMonster {
 			});
 			buttonGroup.add(rdbtnMonsterTwo);
 			rdbtnMonsterTwo.setBounds(233, 208, 84, 23);
-			frame.getContentPane().add(rdbtnMonsterTwo);
+			frmSellMonster.getContentPane().add(rdbtnMonsterTwo);
 			}
 		
 		if (monstersForSale.size() >= 3) {
@@ -109,7 +109,7 @@ public class SellMonster {
 			});
 			buttonGroup.add(rdbtnMonsterThree);
 			rdbtnMonsterThree.setBounds(62, 361, 94, 23);
-			frame.getContentPane().add(rdbtnMonsterThree);
+			frmSellMonster.getContentPane().add(rdbtnMonsterThree);
 		}
 		
 		if (monstersForSale.size() >= 4) {
@@ -121,13 +121,13 @@ public class SellMonster {
 			});
 			buttonGroup.add(rdbtnMonsterFour);
 			rdbtnMonsterFour.setBounds(233, 361, 96, 23);
-			frame.getContentPane().add(rdbtnMonsterFour);
+			frmSellMonster.getContentPane().add(rdbtnMonsterFour);
 		}
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Selected Monster:", TitledBorder.CENTER, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
 		panel.setBounds(397, 77, 208, 193);
-		frame.getContentPane().add(panel);
+		frmSellMonster.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		txtName = new JTextField();
@@ -162,37 +162,37 @@ public class SellMonster {
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster04.png")));
 		lblNewLabel.setBounds(52, 77, 122, 128);
-		frame.getContentPane().add(lblNewLabel);
+		frmSellMonster.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster01.png")));
 		lblNewLabel_1.setBounds(207, 243, 141, 121);
-		frame.getContentPane().add(lblNewLabel_1);
+		frmSellMonster.getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster02.png")));
 		lblNewLabel_2.setBounds(207, 77, 141, 128);
-		frame.getContentPane().add(lblNewLabel_2);
+		frmSellMonster.getContentPane().add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster05.png")));
 		lblNewLabel_3.setBounds(50, 232, 133, 132);
-		frame.getContentPane().add(lblNewLabel_3);
+		frmSellMonster.getContentPane().add(lblNewLabel_3);
 		
 		txtCurrentGold = new JTextField("Your current gold: " + player.getgold() + " gold");
 		txtCurrentGold.setEditable(false);
 		txtCurrentGold.setBounds(407, 332, 169, 32);
-		frame.getContentPane().add(txtCurrentGold);
+		frmSellMonster.getContentPane().add(txtCurrentGold);
 		txtCurrentGold.setColumns(10);
 		
 		btnReturn = new JButton("Return");
 		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
+				frmSellMonster.dispose();
 			}
 		});
 		btnReturn.setBounds(459, 38, 117, 29);
-		frame.getContentPane().add(btnReturn);
+		frmSellMonster.getContentPane().add(btnReturn);
 	}
 	
 	
@@ -205,7 +205,7 @@ public class SellMonster {
 			}
 		});
 		btnNewButton.setBounds(407, 282, 169, 29);
-		frame.getContentPane().add(btnNewButton);
+		frmSellMonster.getContentPane().add(btnNewButton);
 		
 		if (num.equals("One")) {
 			currentSelected = monstersForSale.get(0);

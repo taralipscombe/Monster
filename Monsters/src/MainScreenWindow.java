@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JLabel;
@@ -78,7 +79,8 @@ public class MainScreenWindow {
 		viewInventory.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
 		viewInventory.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(frmMainscreen, "The items in your inventory are:\n"+ player.printInventory());
+				ViewInventory inventory = new ViewInventory(player);
+				inventory.frmInventory.setVisible(true);
 			}
 		});
 		viewInventory.setBounds(198, 104, 204, 29);
@@ -118,8 +120,12 @@ public class MainScreenWindow {
 				}
 				player.incrementDay();
 				RandomEvent randomEvent = new RandomEvent(player);
-				randomEvent.generate();
 				JOptionPane.showMessageDialog(frmMainscreen, "Sweet dreams! Enjoy your sleep!");
+				ArrayList<String> events = randomEvent.generate();
+				for (String event : events) {
+					JOptionPane.showMessageDialog(frmMainscreen, event);
+				}
+				events.clear();
 			}
 		});
 		sleep.setBounds(242, 227, 117, 29);

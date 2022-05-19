@@ -16,7 +16,7 @@ import java.awt.event.MouseEvent;
 public class ShopWindow {
 
 	private Player player;
-	public JFrame frmShop;
+	public static JFrame frmShop;
 	private JButton btnBuy;
 	private JButton btnSell;
 	private JButton btnExitShop;
@@ -31,14 +31,10 @@ public class ShopWindow {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		Monster monster = new Monster("Fred", 1, 2, 3);
-		Player player = new Player("Emma", "1", monster, 7);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					
-					ShopWindow window = new ShopWindow(player);
-					window.frmShop.setVisible(true);
+					frmShop.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -102,6 +98,11 @@ public class ShopWindow {
 		frmShop.getContentPane().add(btnSell);
 		
 		btnExitShop = new JButton("Exit Shop");
+		btnExitShop.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmShop.dispose();
+			}
+		});
 		btnExitShop.setBounds(35, 371, 117, 29);
 		frmShop.getContentPane().add(btnExitShop);
 		
@@ -110,7 +111,7 @@ public class ShopWindow {
 			public void actionPerformed(ActionEvent e) {
 				//frmShop.dispose();
 				BuyItem buyingItem = new BuyItem(player);
-				buyingItem.main(player);
+				buyingItem.frmBuyItem.setVisible(true);
 
 			}
 		});
@@ -123,7 +124,7 @@ public class ShopWindow {
 		btnBuyMonster.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BuyMonster buyingMonster = new BuyMonster(player);
-				buyingMonster.main(player);
+				buyingMonster.frmBuyMonster.setVisible(buySelected);
 			}
 		});
 		btnBuyMonster.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
@@ -133,7 +134,7 @@ public class ShopWindow {
 		btnSellItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SellItem sellingItem = new SellItem(player);
-				sellingItem.main(player);
+				sellingItem.frmSellItem.setVisible(true);
 			}
 		});
 		btnSellItem.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
@@ -147,7 +148,7 @@ public class ShopWindow {
 		btnSellMonster.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SellMonster sellingMonster = new SellMonster(player);
-				sellingMonster.main(player);
+				sellingMonster.frmSellMonster.setVisible(true);
 			}
 		});
 		btnSellMonster.setFont(new Font("Lucida Grande", Font.PLAIN, 18));

@@ -17,7 +17,7 @@ import java.awt.event.ActionEvent;
 public class FightScreen {
 
 
-	public JFrame frame;
+	public JFrame frmFight;
 	private Player player;
 	private Monster playerCurrent;
 	private int numPlayerCurrent = 0;
@@ -47,7 +47,7 @@ public class FightScreen {
 			public void run() {
 				try {
 					FightScreen window = new FightScreen(playerOne, enemies);
-					window.frame.setVisible(true);
+					window.frmFight.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -72,40 +72,40 @@ public class FightScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 650, 450);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmFight = new JFrame();
+		frmFight.setBounds(100, 100, 650, 450);
+		frmFight.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmFight.getContentPane().setLayout(null);
 		
 		txtTimeToBattle = new JTextField();
 		txtTimeToBattle.setEditable(false);
 		txtTimeToBattle.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 18));
 		txtTimeToBattle.setText("TIME TO BATTLE!");
 		txtTimeToBattle.setBounds(234, 16, 171, 26);
-		frame.getContentPane().add(txtTimeToBattle);
+		frmFight.getContentPane().add(txtTimeToBattle);
 		txtTimeToBattle.setColumns(10);
 		
 		txtPlayersCurrent = new JTextField();
 		txtPlayersCurrent.setText(playerCurrent.getName() + "'s health: " + playerCurrent.getCurrentHealth());
 		txtPlayersCurrent.setBounds(54, 347, 171, 26);
-		frame.getContentPane().add(txtPlayersCurrent);
+		frmFight.getContentPane().add(txtPlayersCurrent);
 		txtPlayersCurrent.setColumns(10);
 		
 		txtEnemysCurrent = new JTextField();
 		txtEnemysCurrent.setText(enemyCurrent.getName() + "'s health: " + enemyCurrent.getCurrentHealth());
 		txtEnemysCurrent.setBounds(414, 347, 171, 26);
-		frame.getContentPane().add(txtEnemysCurrent);
+		frmFight.getContentPane().add(txtEnemysCurrent);
 		txtEnemysCurrent.setColumns(10);
 		
 		lblEnemyMon = new JLabel("");
 		lblEnemyMon.setIcon(new ImageIcon(FightScreen.class.getResource("/images/monster (1).png")));
 		lblEnemyMon.setBounds(373, 76, 260, 248);
-		frame.getContentPane().add(lblEnemyMon);
+		frmFight.getContentPane().add(lblEnemyMon);
 		
 		lblPlayerMon = new JLabel("New label");
 		lblPlayerMon.setIcon(new ImageIcon(FightScreen.class.getResource("/images/monster.png")));
 		lblPlayerMon.setBounds(18, 66, 260, 269);
-		frame.getContentPane().add(lblPlayerMon);
+		frmFight.getContentPane().add(lblPlayerMon);
 	
 		
 		btnAttack = new JButton("Attack!"); // change visible to false when battling is false
@@ -115,7 +115,7 @@ public class FightScreen {
 			}
 		});
 		btnAttack.setBounds(273, 187, 100, 29);
-		frame.getContentPane().add(btnAttack);
+		frmFight.getContentPane().add(btnAttack);
 		
 		btnHeal = new JButton("Heal!"); // change visible to false when battling is false
 		btnHeal.addActionListener(new ActionListener() {
@@ -124,18 +124,18 @@ public class FightScreen {
 			}
 		});
 		btnHeal.setBounds(273, 228, 100, 29);
-		frame.getContentPane().add(btnHeal);
+		frmFight.getContentPane().add(btnHeal);
 		
 		txtPlayersRemaining = new JTextField();
 		txtPlayersRemaining.setText("Monsters left: " + (player.getTeam().size() - numPlayerCurrent - 1));
 		txtPlayersRemaining.setBounds(54, 378, 171, 26);
-		frame.getContentPane().add(txtPlayersRemaining);
+		frmFight.getContentPane().add(txtPlayersRemaining);
 		txtPlayersRemaining.setColumns(10);
 		
 		txtEnemysRemaining = new JTextField();
 		txtEnemysRemaining.setText("Enemies left: " + (enemyTeam.size() - numEnemyCurrent - 1));
 		txtEnemysRemaining.setBounds(414, 378, 171, 26);
-		frame.getContentPane().add(txtEnemysRemaining);
+		frmFight.getContentPane().add(txtEnemysRemaining);
 		txtEnemysRemaining.setColumns(10);
 	}
 	
@@ -168,7 +168,7 @@ public class FightScreen {
 	
 	
 	public void nextPlayerMonster() {
-		JOptionPane.showMessageDialog(null, "Owwww! " + "\n" + "Oh no! " + playerCurrent.getName() + " has just died!");
+		JOptionPane.showMessageDialog(frmFight, "Owwww! " + "\n" + "Oh no! " + playerCurrent.getName() + " has just died!");
 		playerCurrent.setCurrentHealth(100);
 		numPlayerCurrent += 1;
 		if (numPlayerCurrent < player.getTeam().size()) {
@@ -181,7 +181,7 @@ public class FightScreen {
 	}
 	
 	public void nextEnemyMonster() {
-		JOptionPane.showMessageDialog(null, "Wapow! " + "\n" + "Yay!" + playerCurrent.getName() + " has just killed the enemy monster " + enemyCurrent.getName() + " - you gained 25 points");
+		JOptionPane.showMessageDialog(frmFight, "Wapow! " + "\n" + "Yay! " + playerCurrent.getName() + " has just killed the enemy monster " + enemyCurrent.getName() + " - you gained 25 points");
 		player.increasePoints(25);
 		numEnemyCurrent += 1;
 		if (numEnemyCurrent < enemyTeam.size()) {
@@ -196,7 +196,7 @@ public class FightScreen {
 		
 		for (Monster monster : player.getTeam()) {
 			if (monster.getLives() == 0) {
-				JOptionPane.showMessageDialog(null, "RIP: " + monster.getName() + " has died in action...");
+				JOptionPane.showMessageDialog(frmFight, "RIP: " + monster.getName() + " has died in action...");
 				player.removeTeamMate(monster);
 			}
 		}
@@ -208,11 +208,11 @@ public class FightScreen {
 		average = average / enemyTeam.size();
 		player.increaseGold(average);
 		player.increasePoints(50);
-		JOptionPane.showMessageDialog(null, "Congratulations on Winning the Battle!" + "\n" + "You have been awarded with " + average + " gold and 50 extra points!");
+		JOptionPane.showMessageDialog(frmFight, "Congratulations on Winning the Battle!" + "\n" + "You have been awarded with " + average + " gold and 50 extra points!");
 		battling = false;
 		btnAttack.setVisible(false);
 		btnHeal.setVisible(false);
-		frame.dispose();
+		frmFight.dispose();
 		
 	}
 	
@@ -220,16 +220,16 @@ public class FightScreen {
 		
 		for (Monster monster : player.getTeam()) {
 			if (monster.getLives() == 0) {
-				JOptionPane.showMessageDialog(null, "RIP: " + monster.getName() + " has died in action...");
+				JOptionPane.showMessageDialog(frmFight, "RIP: " + monster.getName() + " has died in action...");
 				player.removeTeamMate(monster);
 			}
 		}
 		
 		battling = false;
-		JOptionPane.showMessageDialog(null, "Oh no! Your team was defeated and killed in Battle! " + "\n" + "Better luck next time!");
+		JOptionPane.showMessageDialog(frmFight, "Oh no! Your team was defeated and killed in Battle! " + "\n" + "Better luck next time!");
 		btnAttack.setVisible(false);
 		btnHeal.setVisible(false);
-		frame.dispose();
+		frmFight.dispose();
 	}
 	
 		
