@@ -33,6 +33,7 @@ public class ViewInventory {
 	private JTextField txtEffectOnMonster;
 	private JTextField txtEffect;
 	private JTextField txtUsageLeft;
+	private JTextField txtEffectTwo;
 
 	/**
 	 * Launch the application.
@@ -110,7 +111,7 @@ public class ViewInventory {
 		
 		panel = new JPanel();
 		panel.setBorder(new TitledBorder(null, "Selected Item:", TitledBorder.CENTER, TitledBorder.ABOVE_TOP, null, null));
-		panel.setBounds(399, 118, 209, 200);
+		panel.setBounds(381, 117, 250, 207);
 		frmInventory.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -118,7 +119,7 @@ public class ViewInventory {
 		txtName.setHorizontalAlignment(SwingConstants.CENTER);
 		txtName.setEditable(false);
 		txtName.setText("Name: ");
-		txtName.setBounds(6, 21, 197, 26);
+		txtName.setBounds(6, 21, 238, 26);
 		panel.add(txtName);
 		txtName.setColumns(10);
 		
@@ -126,19 +127,22 @@ public class ViewInventory {
 		txtOwn.setHorizontalAlignment(SwingConstants.CENTER);
 		txtOwn.setEditable(false);
 		txtOwn.setText("You Own: ");
-		txtOwn.setBounds(6, 51, 197, 26);
+		txtOwn.setBounds(6, 51, 238, 26);
 		panel.add(txtOwn);
 		txtOwn.setColumns(10);
 		
 		txtEffectOnMonster = new JTextField();
+		txtEffectOnMonster.setEditable(false);
 		txtEffectOnMonster.setHorizontalAlignment(SwingConstants.CENTER);
 		txtEffectOnMonster.setText("Effect on Monster:");
-		txtEffectOnMonster.setBounds(6, 113, 197, 26);
+		txtEffectOnMonster.setBounds(6, 113, 238, 26);
 		panel.add(txtEffectOnMonster);
 		txtEffectOnMonster.setColumns(10);
 		
 		txtEffect = new JTextField();
-		txtEffect.setBounds(6, 142, 197, 26);
+		txtEffect.setHorizontalAlignment(SwingConstants.CENTER);
+		txtEffect.setEditable(false);
+		txtEffect.setBounds(6, 142, 238, 26);
 		panel.add(txtEffect);
 		txtEffect.setColumns(10);
 		
@@ -147,8 +151,15 @@ public class ViewInventory {
 		txtUsageLeft.setHorizontalAlignment(SwingConstants.CENTER);
 		txtUsageLeft.setEditable(false);
 		txtUsageLeft.setColumns(10);
-		txtUsageLeft.setBounds(6, 83, 197, 26);
+		txtUsageLeft.setBounds(6, 83, 238, 26);
 		panel.add(txtUsageLeft);
+		
+		txtEffectTwo = new JTextField();
+		txtEffectTwo.setHorizontalAlignment(SwingConstants.CENTER);
+		txtEffectTwo.setEditable(false);
+		txtEffectTwo.setColumns(10);
+		txtEffectTwo.setBounds(6, 173, 238, 26);
+		panel.add(txtEffectTwo);
 		
 		lblItemOne = new JLabel("");
 		lblItemOne.setIcon(new ImageIcon(BuyItem.class.getResource("/images/potion.png")));
@@ -194,7 +205,8 @@ public class ViewInventory {
 			txtName.setText("Magic Attack Potion");
 			num = player.getNumItems("Magic Attack Potion");
 			txtOwn.setText("You own " + num);
-			txtEffect.setText("Increases Monsters' Damage by 15 units");
+			txtEffect.setText("Increases Monsters' Damage");
+			txtEffectTwo.setText("by 15 units");
 			if (num > 0) {
 				displayButton();
 			} else {
@@ -205,7 +217,8 @@ public class ViewInventory {
 			txtName.setText("Magic Healing Potion");
 			num = player.getNumItems("Magic Healing Potion");
 			txtOwn.setText("You own " + num);
-			txtEffect.setText("Increases Monsters' Heal Amount by 15 units");
+			txtEffect.setText("Increases Monsters' Heal");
+			txtEffectTwo.setText("Amount by 10 units");
 			if (num > 0) {
 				displayButton();
 			} else {
@@ -216,7 +229,8 @@ public class ViewInventory {
 			txtName.setText("Extra Life");
 			num = player.getNumItems("Extra Life");
 			txtOwn.setText("You own " + num);	
-			txtEffect.setText("Increases Monsters' Lives by one life");
+			txtEffect.setText("Increases Monsters'");
+			txtEffectTwo.setText("Lives by one life");
 			if (num > 0) {
 				displayButton();
 			} else {

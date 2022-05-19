@@ -135,7 +135,7 @@ public class BuyItem {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(null, "Selected Item:", TitledBorder.CENTER, TitledBorder.ABOVE_TOP, null, null));
-		panel.setBounds(397, 69, 224, 221);
+		panel.setBounds(381, 69, 240, 221);
 		frmBuyItem.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -143,7 +143,7 @@ public class BuyItem {
 		txtName.setHorizontalAlignment(SwingConstants.CENTER);
 		txtName.setEditable(false);
 		txtName.setText("Name: ");
-		txtName.setBounds(6, 28, 212, 26);
+		txtName.setBounds(6, 28, 228, 26);
 		panel.add(txtName);
 		txtName.setColumns(10);
 		
@@ -151,7 +151,7 @@ public class BuyItem {
 		txtProperty.setHorizontalAlignment(SwingConstants.CENTER);
 		txtProperty.setEditable(false);
 		txtProperty.setText("Affects: ");
-		txtProperty.setBounds(6, 66, 212, 26);
+		txtProperty.setBounds(6, 66, 228, 26);
 		panel.add(txtProperty);
 		txtProperty.setColumns(10);
 		
@@ -159,7 +159,7 @@ public class BuyItem {
 		txtAmount.setHorizontalAlignment(SwingConstants.CENTER);
 		txtAmount.setEditable(false);
 		txtAmount.setText("Amount: ");
-		txtAmount.setBounds(6, 104, 212, 26);
+		txtAmount.setBounds(6, 104, 228, 26);
 		panel.add(txtAmount);
 		txtAmount.setColumns(10);
 		
@@ -167,7 +167,7 @@ public class BuyItem {
 		txtCost.setHorizontalAlignment(SwingConstants.CENTER);
 		txtCost.setEditable(false);
 		txtCost.setText("Cost : ");
-		txtCost.setBounds(6, 142, 212, 26);
+		txtCost.setBounds(6, 142, 228, 26);
 		panel.add(txtCost);
 		txtCost.setColumns(10);
 		
@@ -175,7 +175,7 @@ public class BuyItem {
 		txtOwn.setHorizontalAlignment(SwingConstants.CENTER);
 		txtOwn.setEditable(false);
 		txtOwn.setText("Own: ");
-		txtOwn.setBounds(6, 180, 212, 26);
+		txtOwn.setBounds(6, 180, 228, 26);
 		panel.add(txtOwn);
 		txtOwn.setColumns(10);
 		

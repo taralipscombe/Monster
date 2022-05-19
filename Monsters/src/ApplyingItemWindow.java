@@ -80,11 +80,11 @@ public class ApplyingItemWindow {
 		
 		
 		if (monsterTeam.size() >=1 ) {
-			JOptionPane.showMessageDialog(frmApplyingItem, "Your Monster Team is looking empty... Purchase more Monsters at the Shop!");
-			JLabel lblNewLabel = new JLabel("");
-			lblNewLabel.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster04.png")));
-			lblNewLabel.setBounds(52, 77, 122, 128);
-			frmApplyingItem.getContentPane().add(lblNewLabel);
+		
+			JLabel MonPicOne = new JLabel("");
+			MonPicOne.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster04.png")));
+			MonPicOne.setBounds(52, 77, 122, 128);
+			frmApplyingItem.getContentPane().add(MonPicOne);
 			
 			JRadioButton rdbtnMonsterOne = new JRadioButton(monsterTeam.get(0).getName());
 			rdbtnMonsterOne.addActionListener(new ActionListener() {
@@ -100,10 +100,11 @@ public class ApplyingItemWindow {
 		
 		if (monsterTeam.size() >= 2) {
 			JOptionPane.showMessageDialog(frmApplyingItem, "Your Monster Team is looking empty... Purchase more Monsters at the Shop!");
-			JLabel lblNewLabel_1 = new JLabel("");
-			lblNewLabel_1.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster01.png")));
-			lblNewLabel_1.setBounds(207, 243, 141, 121);
-			frmApplyingItem.getContentPane().add(lblNewLabel_1);
+			
+			JLabel MonPicTwo = new JLabel("");
+			MonPicTwo.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster02.png")));
+			MonPicTwo.setBounds(207, 77, 141, 128);
+			frmApplyingItem.getContentPane().add(MonPicTwo);
 			
 			JRadioButton rdbtnMonsterTwo = new JRadioButton(monsterTeam.get(1).getName());
 			rdbtnMonsterTwo.addActionListener(new ActionListener() {
@@ -118,11 +119,12 @@ public class ApplyingItemWindow {
 		}
 		
 		if (monsterTeam.size() >= 3) {
-		
-			JLabel lblNewLabel_2 = new JLabel("");
-			lblNewLabel_2.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster02.png")));
-			lblNewLabel_2.setBounds(207, 77, 141, 128);
-			frmApplyingItem.getContentPane().add(lblNewLabel_2);
+	
+			
+			JLabel MonPicThree = new JLabel("");
+			MonPicThree.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster05.png")));
+			MonPicThree.setBounds(50, 232, 133, 132);
+			frmApplyingItem.getContentPane().add(MonPicThree);
 			
 			JRadioButton rdbtnMonsterThree = new JRadioButton(monsterTeam.get(2).getName());
 			rdbtnMonsterThree.addActionListener(new ActionListener() {
@@ -138,10 +140,11 @@ public class ApplyingItemWindow {
 		
 		if (monsterTeam.size() >= 4) { 
 			
-			JLabel lblNewLabel_3 = new JLabel("");
-			lblNewLabel_3.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster05.png")));
-			lblNewLabel_3.setBounds(50, 232, 133, 132);
-			frmApplyingItem.getContentPane().add(lblNewLabel_3);
+			
+			JLabel MonPicFour = new JLabel("");
+			MonPicFour.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster01.png")));
+			MonPicFour.setBounds(207, 243, 141, 121);
+			frmApplyingItem.getContentPane().add(MonPicFour);
 		
 			JRadioButton rdbtnMonsterFour = new JRadioButton(monsterTeam.get(3).getName());
 			rdbtnMonsterFour.addActionListener(new ActionListener() {

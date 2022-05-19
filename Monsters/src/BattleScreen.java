@@ -218,7 +218,7 @@ public class BattleScreen {
 					mainscreen.generateNewBattles();
 					FightScreen fighting = new FightScreen(player, currentTeam);
 					
-					fighting.frame.setVisible(true);
+					fighting.frmFight.setVisible(true);
 					frame.dispose();
 					
 				}
