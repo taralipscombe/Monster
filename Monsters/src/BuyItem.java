@@ -52,7 +52,10 @@ public class BuyItem {
 	}
 
 	/**
-	 * Create the application.
+	 * Create the application. Initializes the frame of the window and sets visible
+	 *
+	 * @param ofcPlayer the official player of the game
+	 * 
 	 */
 	public BuyItem(Player ofcPlayer) {
 		player = ofcPlayer;
@@ -216,6 +219,11 @@ public class BuyItem {
 	}
 	
 	
+	/**
+	 * Display item. Displays the name, property, property change, cost, and the number already owned of an item.
+	 *
+	 * @param item the item that needs to be displayed
+	 */
 	public void displayItem(String item) {
 		if (item.equals("Attack")) {
 			txtName.setText("Magic Attack Potion");
@@ -252,6 +260,11 @@ public class BuyItem {
 	}
 	
 	
+	/**
+	 * Buy selected item. Takes the 'currently Selected' variable and creates the item it represents
+	 * the player then buys the Item by calling the buy method.
+	 * 
+	 */
 	public void buySelectedItem() {
 		if (currentlySelected == 1) {
 			Item attackPotion = new Item("Magic Attack Potion" , "damage", 15, 3, 60);
@@ -273,6 +286,13 @@ public class BuyItem {
 		}
 	}
 	
+	/**
+	 * Buy. Makes the player purchase the currently selected item, checking if they have enough gold.
+	 * If the player has selected the lucky dip, another item is randomly selected and added to
+	 * the players inventory.
+	 *
+	 * @param purchasedItem the purchased item
+	 */
 	public void buy(Item purchasedItem) {
 		
 		if(player.getgold() < purchasedItem.getPurchasePrice()) {

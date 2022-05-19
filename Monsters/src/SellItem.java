@@ -16,27 +16,64 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SellItem.
+ */
 public class SellItem {
 
+	/** The player. */
 	private Player player;
+	
+	/** The frm sell item. */
 	public static JFrame frmSellItem;
+	
+	/** The txt sell items. */
 	private JTextField txtSellItems;
+	
+	/** The button group. */
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	
+	/** The txt name. */
 	private JTextField txtName;
+	
+	/** The txt own. */
 	private JTextField txtOwn;
+	
+	/** The txt sell. */
 	private JTextField txtSell;
+	
+	/** The lbl item one. */
 	private JLabel lblItemOne;
+	
+	/** The lbl item two. */
 	private JLabel lblItemTwo;
+	
+	/** The lbl item three. */
 	private JLabel lblItemThree;
+	
+	/** The lbl item four. */
 	private JLabel lblItemFour;
+	
+	/** The txt current gold. */
 	private JTextField txtCurrentGold;
+	
+	/** The panel. */
 	private JPanel panel;
+	
+	/** The btn sell item. */
 	private JButton btnSellItem;
+	
+	/** The current item. */
 	private Item currentItem = null;
+	
+	/** The btn return. */
 	private JButton btnReturn;
 
 	/**
 	 * Launch the application.
+	 *
+	 * @param player the player
 	 */
 	public static void main(Player player) {
 		EventQueue.invokeLater(new Runnable() {
@@ -53,6 +90,8 @@ public class SellItem {
 
 	/**
 	 * Create the application.
+	 *
+	 * @param ofcPlayer the official player of the game.
 	 */
 	public SellItem(Player ofcPlayer) {
 		
@@ -197,6 +236,11 @@ public class SellItem {
 	}
 	
 	
+	/**
+	 * Display item. Once an item is selected the displayItem method displays the attributes of the item to the player.
+	 *
+	 * @param item the item the players wishes to display
+	 */
 	public void displayItem(String item) {
 		int num = 0;
 		if (item.equals("Attack")) {
@@ -243,6 +287,11 @@ public class SellItem {
 		
 	}
 	
+	/**
+	 * Display sale item.  If the player owns at least one item sort of what they selected, this method finds the most recent occurence of the 
+	 * item in the players inventory and gets its sell back price.
+	 * The button to sell the item is then displayed.
+	 */
 	public void displaySaleItem() {
 		
 		ArrayList<Item> items = player.getItems();
@@ -262,6 +311,9 @@ public class SellItem {
 		btnSellItem.setVisible(true);
 	}
 	
+	/**
+	 * Nothing to display. Called when the player does not own any occurences of the selected Item.
+	 */
 	public void nothingToDisplay() {
 		currentItem = null;
 		txtSell.setVisible(false);
@@ -269,6 +321,10 @@ public class SellItem {
 		
 	}
 	
+	/**
+	 * Sell current item. If sell Item button is selected this method is called to remove the item from the players inventory
+	 * and increase their gold by the sell back price.
+	 */
 	public void sellCurrentItem() {
 		
 		int sellBackPrice = currentItem.getsellbackPrice();

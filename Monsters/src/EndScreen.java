@@ -10,19 +10,38 @@ import javax.swing.border.TitledBorder;
 import javax.swing.border.BevelBorder;
 import java.awt.Color;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EndScreen.
+ */
 public class EndScreen {
 
 	
+	/** The frame. */
 	public JFrame frame;
+	
+	/** The player. */
 	private Player player;
+	
+	/** The txt game ended. */
 	private JTextField txtGameEnded;
+	
+	/** The txt name. */
 	private JTextField txtName;
+	
+	/** The txt days. */
 	private JTextField txtDays;
+	
+	/** The txt points. */
 	private JTextField txtPoints;
+	
+	/** The txt gold. */
 	private JTextField txtGold;
 
 	/**
 	 * Launch the application.
+	 *
+	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
 		Monster monster = new Monster("Fred", 1, 2, 3);
@@ -41,6 +60,8 @@ public class EndScreen {
 
 	/**
 	 * Create the application.
+	 *
+	 * @param ofcPlayer the official player of the game.
 	 */
 	public EndScreen(Player ofcPlayer) {
 		
@@ -50,6 +71,7 @@ public class EndScreen {
 
 	/**
 	 * Initialize the contents of the frame.
+	 * Sets the Text fields to display the final Players stats.
 	 */
 	private void initialize() {
 		frame = new JFrame();

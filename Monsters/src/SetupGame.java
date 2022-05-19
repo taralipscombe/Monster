@@ -25,13 +25,28 @@ import javax.swing.ButtonGroup;
 
 public class SetupGame {
 
+	/** The set up game frame. */
 	private JFrame frmSetUpGame;
+	
+	/** The name field. */
 	private JTextField nameField;
+	
+	/** The players name, game difficulty, and inputted name. */
 	private String name, gameDifficulty, inputName;
+	
+	/** The game time. */
 	private int gameTime;
+	
+	/** The button group. */
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	
+	/** The choose easy button. */
 	private JButton chooseEasy;
+	
+	/** The choose medium button. */
 	private JButton chooseMedium;
+	
+	/** The choose hard button. */
 	private JButton chooseHard;
 
 	/**
@@ -58,21 +73,45 @@ public class SetupGame {
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Checks if the name is Valid
+	 *
+	 * @return true, if successful
 	 */
 	public boolean validName() {
 	    return inputName.matches("[a-zA-Z]+");
 	}
+	
+	/**
+	 * Gets the name.
+	 *
+	 * @return the name
+	 */
 	public String getName() {
 		return name;
 	}
+	
+	/**
+	 * Gets the difficulty.
+	 *
+	 * @return the difficulty
+	 */
 	public String getDifficulty() {
 		return gameDifficulty;
 	}
+	
+	
+	/**
+	 * Gets the time.
+	 *
+	 * @return the time
+	 */
 	public int getTime() {
 		return gameTime;
 	}
 	
+	/**
+	 * Initialize the contents of the window
+	 */
 	private void initialize() {
 		frmSetUpGame = new JFrame();
 		frmSetUpGame.setTitle("Set up Game");

@@ -18,18 +18,43 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BuyMonster.
+ */
 public class BuyMonster {
 
+	/** The player. */
 	private Player player;
+	
+	/** The monsters for sale. */
 	private ArrayList<Monster> monstersForSale;
+	
+	/** The currently selected. */
 	private int currentlySelected;
+	
+	/** The frm buy monster. */
 	public JFrame frmBuyMonster;
+	
+	/** The txt shop monster. */
 	private JTextField txtShopMonster;
+	
+	/** The txt name. */
 	private JTextField txtName;
+	
+	/** The txt damage. */
 	private JTextField txtDamage;
+	
+	/** The txt heal. */
 	private JTextField txtHeal;
+	
+	/** The txt cost. */
 	private JTextField txtCost;
+	
+	/** The button group. */
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	
+	/** The txt current gold. */
 	private JTextField txtCurrentGold;
 
 	/**
@@ -49,7 +74,9 @@ public class BuyMonster {
 	}
 
 	/**
-	 * Create the application.
+	 * Create the application. Creates a monsterGenertor instance to randomly create Monsters for the player to buy
+	 *
+	 * @param ofcPlayer the official Player of the game
 	 */
 	public BuyMonster(Player ofcPlayer) {
 		
@@ -202,6 +229,11 @@ public class BuyMonster {
 	
 	
 
+	/**
+	 * Display monster. Once a monster is selected in the shop, its attributes are displayed using this method.
+	 *
+	 * @param num the num of the monster in the team
+	 */
 	public void displayMonster(String num) {
 		if (num.equals("One")) {
 			txtName.setText(monstersForSale.get(0).getName()); 
@@ -231,6 +263,10 @@ public class BuyMonster {
 	
 	
 	
+	/**
+	 * Buy selected monster. If the buy Montser button is selected, then the buy method is called with the currently selected monster.
+	 * 
+	 */
 	public void buySelectedMonster() {
 		if (currentlySelected == 1) {
 			buy(monstersForSale.get(0));
@@ -245,6 +281,12 @@ public class BuyMonster {
 		}
 	}
 	
+	/**
+	 * Buy. Checks the player has enough gold to purchase the monster and that they have room in their team.
+	 * If passes all of the checks, the player then purchases the monster
+	 *
+	 * @param monster the monster
+	 */
 	public void buy(Monster monster) {
 		if(player.getgold() < monster.getPrice()) {
 			JOptionPane.showMessageDialog(frmBuyMonster, "You do not have enough gold to purchase this Monster. You can earn more gold by battling!");

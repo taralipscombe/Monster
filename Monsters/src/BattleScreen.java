@@ -61,7 +61,9 @@ public class BattleScreen {
 	}
 
 	/**
-	 * Create the application.
+	 * Create the application. Calls the generate battles method of the main screen to initialize possible battles.
+	 *
+	 * @param mainscreen the official instance of MainScreen
 	 */
 	public BattleScreen(MainScreen ofcMainscreen) {
 		mainscreen = ofcMainscreen;
@@ -209,7 +211,7 @@ public class BattleScreen {
 		txtWinningsThree.setBounds(6, 93, 130, 26);
 		panelTeamThree.add(txtWinningsThree);
 		
-		btnBattle = new JButton("Battle!"); // call action listener and implement the fight screen with the player and the chosen enemy Team.
+		btnBattle = new JButton("Battle!"); 
 		btnBattle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (currentTeam == null) {
@@ -294,6 +296,11 @@ public class BattleScreen {
 	}
 	
 	
+	/**
+	 * Display one. Displays the attributes of the currently selected Monster in the first battle team
+	 *
+	 * @param monster the currently selected monster in the first team
+	 */
 	public void displayOne(Monster monster) {
 		txtNameOne.setText("Name: " + monster.getName());
 		txtAttackOne.setText("Damage: " + monster.getDamage() + " units");
@@ -301,6 +308,11 @@ public class BattleScreen {
 		txtWinningsOne.setText("Reward: " + getWinnings(mainscreen.getEnemyTeam(1)) + " gold");
 	}
 	
+	/**
+	 * Display two. Displays the attributes of the currently selected Monster in the second battle team
+	 *
+	 * @param monster the currently selected monster in the second team
+	 */
 	public void displayTwo(Monster monster) {
 		txtNameTwo.setText("Name: " + monster.getName());
 		txtAttackTwo.setText("Damage: " + monster.getDamage() + " units");
@@ -308,6 +320,11 @@ public class BattleScreen {
 		txtWinningsTwo.setText("Reward: " + getWinnings(mainscreen.getEnemyTeam(2)) + " gold");
 	}
 		
+	/**
+	 * Display three. Displays the attributes of the currently selected Monster in the third battle team
+	 *
+	 * @param monster the currently selected monster in the third team
+	 */
 	public void displayThree(Monster monster) {
 		txtNameThree.setText("Name: " + monster.getName());
 		txtAttackThree.setText("Damage: " + monster.getDamage() + " units");
@@ -315,6 +332,12 @@ public class BattleScreen {
 		txtWinningsThree.setText("Reward: " + getWinnings(mainscreen.getEnemyTeam(3)) + " gold");
 	}
 	
+	/**
+	 * Gets the winnings. 
+	 *
+	 * @param monsters the potential enemy battle team
+	 * @return the winnings, the gold awarded to the player if the battle with the team is won.
+	 */
 	public int getWinnings(ArrayList<Monster> monsters) {
 		int average = 0;
 		for (Monster monster : monsters) {

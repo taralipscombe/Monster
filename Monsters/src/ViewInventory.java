@@ -15,28 +15,66 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
+/**
+ * The Class ViewInventory.
+ */
 public class ViewInventory {
 
+	/** The frame of the class */
 	public JFrame frmInventory;
+	
+	/** The player of the game */
 	private Player player;
+	
+	/** The text of the title, sell items */
 	private JTextField txtSellItems;
+	
+	/** The button group. */
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	
+	/** The txt name of item. */
 	private JTextField txtName;
+	
+	/** The txt of how many items the player owns. */
 	private JTextField txtOwn;
+	
+	/** The lbl of item one. */
 	private JLabel lblItemOne;
+	
+	/** The lbl of item two. */
 	private JLabel lblItemTwo;
+	
+	/** The lbl of item three. */
 	private JLabel lblItemThree;
+	
+	/** The panel. */
 	private JPanel panel;
+	
+	/** The apply item to a monster button. */
 	private JButton btnApplyItem;
+	
+	/** The currently selected item. */
 	private Item currentItem = null;
+	
+	/** The button to return to the mainscreen. */
 	private JButton btnReturn;
+	
+	/** The text of "Effect on Monster:". */
 	private JTextField txtEffectOnMonster;
+	
+	/** The text of the effect of the currently selected item on the monster. */
 	private JTextField txtEffect;
+	
+	/** The text of how much usage of an item is left. */
 	private JTextField txtUsageLeft;
+	
+	/** The second text of the effect of the currently selected item on the monster. */
 	private JTextField txtEffectTwo;
 
 	/**
 	 * Launch the application.
+	 *
+	 * @param ofcPlayer the official player of the team
 	 */
 	public static void main(Player ofcPlayer) {
 		EventQueue.invokeLater(new Runnable() {
@@ -53,6 +91,8 @@ public class ViewInventory {
 
 	/**
 	 * Create the application.
+	 *
+	 * @param ofcplayer the official player
 	 */
 	public ViewInventory(Player ofcplayer) {
 		player = ofcplayer;
@@ -199,6 +239,11 @@ public class ViewInventory {
 	}
 	
 	
+	/**
+	 * Display item. Display the attributes of the currently selected item.
+	 *
+	 * @param item the currently selected item
+	 */
 	public void displayItem(String item) {
 		int num = 0;
 		if (item.equals("Magic Attack Potion")) {
@@ -242,6 +287,11 @@ public class ViewInventory {
 	}
 	
 	
+	/**
+	 * Gets the latest item.
+	 *
+	 * sets current item as the most recent selected item 
+	 */
 	public void getLatestItem() {
 		
 		ArrayList<Item> items = player.getItems();
@@ -257,12 +307,18 @@ public class ViewInventory {
 		}
 	}
 	
+	/**
+	 * Display button.
+	 */
 	public void displayButton() {
 		getLatestItem();
 		txtUsageLeft.setText("Uses left: " + currentItem.getUsage());
 		btnApplyItem.setVisible(true);
 	}
 	
+	/**
+	 * Nothing to display.
+	 */
 	public void nothingToDisplay() {
 		currentItem = null;
 		txtUsageLeft.setText("Uses left: ");
@@ -270,6 +326,9 @@ public class ViewInventory {
 		
 	}
 	
+	/**
+	 * Apply current item.
+	 */
 	public void applyCurrentItem() {
 		
 		ApplyingItemWindow applying = new ApplyingItemWindow(player, currentItem);

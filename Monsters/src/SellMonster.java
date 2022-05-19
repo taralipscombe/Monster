@@ -51,7 +51,9 @@ public class SellMonster {
 	}
 
 	/**
-	 * Create the application.
+	 * Create the application. Get the players team as options of monsters to sell.
+	 *
+	 * @param ofcPlayer the official player of the game.
 	 */
 	public SellMonster(Player ofcPlayer) {
 		player = ofcPlayer;
@@ -196,9 +198,14 @@ public class SellMonster {
 	}
 	
 	
+	/**
+	 * Display monster. Displays the currently selected Monster and its attributes, also displays the sell selected monster button.
+	 *
+	 * @param num the number of the currently selected Monster.
+	 */
 	public void displayMonster(String num) {
 		
-		JButton btnNewButton = new JButton("Buy Selected Monster");
+		JButton btnNewButton = new JButton("Sell Selected Monster");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				sellSelectedMonster();
@@ -242,6 +249,9 @@ public class SellMonster {
 	}
 	
 	
+	/**
+	 * Sells the currently selected monster by removing Monster from players monster team and increase their gold by the sell back price.
+	 */
 	public void sellSelectedMonster() {
 		
 		int sellBack = (currentSelected.getLives() / 3 )* currentSelected.getPrice();

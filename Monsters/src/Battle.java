@@ -7,12 +7,23 @@ public class Battle {
 	private static ArrayList<Monster> enemyTeam;
 	
 	
+	/**
+	 * Instantiates a new battle.
+	 *
+	 * @param thePlayer the player of the game
+	 * @param enemy the Array List of Monsters that the player will battle
+	 */
 	public Battle(Player thePlayer, ArrayList<Monster> enemy) {
 		player = thePlayer;
 		enemyTeam = enemy;
 		playersTeam = player.getTeam();
 	}
 	
+	/**
+	 * Fight.
+	 * The Players team will "fight" the enemy team, until all Monsters in one team are killed (reach 0 health)
+	 * At which stage the battle is either won or lost
+	 */
 	public void fight() {
 		int numPlayerMonster = 0;
 		int numEnemyMonster = 0;
@@ -53,6 +64,11 @@ public class Battle {
 		
 	}
 	
+	/**
+	 * Award win.
+	 * If Players Monster team won the above battle, the awardWin method is called to increase the players gold and points.
+	 * Prints the gold won by the player.
+	 */
 	public static void awardWin() {
 		System.out.println("Congratulations on Winning the Battle!");
 		int average = 0;
@@ -67,6 +83,11 @@ public class Battle {
 		
 	}
 	
+	/**
+	 * Award loss.
+	 * If Players Monster team lost the above battle, the awardLoss method is called.
+	 * Prints the loss of the battle.
+	 */
 	public static void awardLoss() {
 		System.out.println("Oh no! Your team was defeated and killed in Battle!");
 		

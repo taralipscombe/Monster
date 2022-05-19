@@ -3,10 +3,18 @@ import java.util.Random;
 
 import javax.swing.JOptionPane;
 
+/**
+ * The Class RandomEvent.
+ */
 public class RandomEvent {
 	
+	/** The players monster team. */
 	private static ArrayList<Monster> monsterTeam;
+	
+	/** The official player of the game. */
 	private static Player player;
+	
+	/** List of strings stating what (if any) random events occured  */
 	private static ArrayList<String> randomOccured = new ArrayList<String>();
 	
 	//a monster levels up overnight - one gains 15 attack, 40% (
@@ -15,12 +23,22 @@ public class RandomEvent {
 	// above average 1.5 lives, only 5% chance, below average 1.5 lives, 20% chance
 	// new monster joins - coudl include zayne, even if not day ten (only once a game), easy = 15%, medium = 10% , hard = 5%
 	
+	/**
+	 * Instantiates a new random event. Sets the player and monster Team attributes
+	 *
+	 * @param thePlayer the official player
+	 */
 	public RandomEvent(Player thePlayer) {
 		player = thePlayer;
 		monsterTeam = player.getTeam();
 
 	}
 	
+	/**
+	 * Generate. Calls all methods of possible random events
+	 *
+	 * @return the array list of strings stating what events occured.
+	 */
 	public ArrayList<String> generate() {
 		levelsUp();
 		levelsDown();
@@ -28,6 +46,13 @@ public class RandomEvent {
 		return randomOccured;
 	}
 	
+	/**
+	 * Random. Generates a random int between the min and the max
+	 *
+	 * @param min the minimum value
+	 * @param max the maximum value
+	 * @return the int generated
+	 */
 	public static int random(int min, int max) {
 	    int range = (max - min) + 1;
 	    Random rndm = new Random();
@@ -36,6 +61,11 @@ public class RandomEvent {
 	}
 	
 	
+	/**
+	 * Creates the random. Creates a random double between 0 and 1.
+	 *
+	 * @return the double generated
+	 */
 	public static double createRandom() {
 		
 		Random rndm = new Random();
@@ -44,6 +74,11 @@ public class RandomEvent {
 	}
 	
 	
+	/**
+	 * Levels up. First clears the random occured attribute so only the most recent events are added.
+	 * If the random integer generated is between 0 and 0.3 (inclusive, a 40% chance), a random monster is selected from
+	 *  the monster team and leveled up - its damage increase by 15 units.
+	 */
 	public static void levelsUp() {
 		randomOccured.clear();
 		double randomInt = createRandom();
@@ -60,6 +95,11 @@ public class RandomEvent {
 		
 	}
 	
+	/**
+	 * Levels down.
+	 * If the random integer generated is between 0 and 0.2 (inclusive, a 30% chance), a random monster is selected from
+	 *  the monster team and leveled down - its damage reduced by 15 units.
+	 */
 	public static void levelsDown() {
 		double randomInt = createRandom();
 		if (randomInt < 0.3) {
@@ -75,6 +115,11 @@ public class RandomEvent {
 	}
 	
 	
+	/**
+	 * Leaves overnight. Gets the average lives of Monsters in the monster team
+	 * If the average lives is greater than or equal to 1.5, there is a 10% chance a player dies overnight and is removed from the team
+	 * If the average lives is instead less than 1.5, there is a 20% chance a player dies overnight and is removed from the team
+	 */
 	public static void leavesOvernight() {
 		double averageLives = 0;
 		for (Monster monster : monsterTeam) {
@@ -94,6 +139,11 @@ public class RandomEvent {
 		
 	}
 	
+	/**
+	 * Monster leaves. A randomly chosen Monster selected when the above method is called and requirements for a monster leaving are met.
+	 *
+	 * @return the monster that is removed from the team.
+	 */
 	public static Monster monsterLeaves() {
 		Random rndm = new Random();
 	    int randomInt = rndm.nextInt(monsterTeam.size());
@@ -103,6 +153,13 @@ public class RandomEvent {
 	}
 	
 	
+	/**
+	 * Joins overnight. Based on the players difficulty, a new monster can join over night
+	 * Generates an array list of possible Monsters to join the team
+	 * If difficulty is easy, there is a 30% chance a random monster joins
+	 * If difficulty is medium, there is a 20% chance a random monster joins
+	 * If difficulty is hard, there is a 10% chance a random monster joins
+	 */
 	public static void joinsOvernight() {
 		String difficulty = player.getDifficulty();
 		MonsterGenerator monGenerator = new MonsterGenerator();
