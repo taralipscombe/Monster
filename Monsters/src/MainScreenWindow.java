@@ -68,7 +68,8 @@ public class MainScreenWindow {
 		JButton viewTeamProperties = new JButton("View your team's properties");
 		viewTeamProperties.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(frmMainscreen, "Your team's properties are:\n"+ player.printCurrentTeam());
+				PlayerTeam playersTeam = new PlayerTeam(player);
+				playersTeam.frmPlayerTeam.setVisible(true);
 			}
 		});
 		viewTeamProperties.setFont(new Font("Lucida Grande", Font.PLAIN, 15));

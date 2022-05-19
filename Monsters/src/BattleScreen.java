@@ -128,21 +128,25 @@ public class BattleScreen {
 		panelTeamOne.setLayout(null);
 		
 		txtNameOne = new JTextField();
+		txtNameOne.setEditable(false);
 		txtNameOne.setBounds(6, 6, 130, 26);
 		panelTeamOne.add(txtNameOne);
 		txtNameOne.setColumns(10);
 		
 		txtAttackOne = new JTextField();
+		txtAttackOne.setEditable(false);
 		txtAttackOne.setBounds(6, 37, 130, 26);
 		panelTeamOne.add(txtAttackOne);
 		txtAttackOne.setColumns(10);
 		
 		txtHealOne = new JTextField();
+		txtHealOne.setEditable(false);
 		txtHealOne.setBounds(6, 69, 130, 26);
 		panelTeamOne.add(txtHealOne);
 		txtHealOne.setColumns(10);
 		
 		txtWinningsOne = new JTextField();
+		txtWinningsOne.setEditable(false);
 		txtWinningsOne.setColumns(10);
 		txtWinningsOne.setBounds(6, 96, 130, 26);
 		panelTeamOne.add(txtWinningsOne);
@@ -153,21 +157,25 @@ public class BattleScreen {
 		panelTeamTwo.setLayout(null);
 		
 		txtNameTwo = new JTextField();
+		txtNameTwo.setEditable(false);
 		txtNameTwo.setBounds(6, 6, 130, 26);
 		panelTeamTwo.add(txtNameTwo);
 		txtNameTwo.setColumns(10);
 		
 		txtAttackTwo = new JTextField();
+		txtAttackTwo.setEditable(false);
 		txtAttackTwo.setBounds(6, 34, 130, 26);
 		panelTeamTwo.add(txtAttackTwo);
 		txtAttackTwo.setColumns(10);
 		
 		txtHealTwo = new JTextField();
+		txtHealTwo.setEditable(false);
 		txtHealTwo.setBounds(6, 65, 130, 26);
 		panelTeamTwo.add(txtHealTwo);
 		txtHealTwo.setColumns(10);
 		
 		txtWinningsTwo = new JTextField();
+		txtWinningsTwo.setEditable(false);
 		txtWinningsTwo.setColumns(10);
 		txtWinningsTwo.setBounds(6, 93, 130, 26);
 		panelTeamTwo.add(txtWinningsTwo);
@@ -178,21 +186,25 @@ public class BattleScreen {
 		panelTeamThree.setLayout(null);
 		
 		txtNameThree = new JTextField();
+		txtNameThree.setEditable(false);
 		txtNameThree.setBounds(6, 6, 130, 26);
 		panelTeamThree.add(txtNameThree);
 		txtNameThree.setColumns(10);
 		
 		txtAttackThree = new JTextField();
+		txtAttackThree.setEditable(false);
 		txtAttackThree.setBounds(6, 33, 130, 26);
 		panelTeamThree.add(txtAttackThree);
 		txtAttackThree.setColumns(10);
 		
 		txtHealThree = new JTextField();
+		txtHealThree.setEditable(false);
 		txtHealThree.setBounds(6, 62, 130, 26);
 		panelTeamThree.add(txtHealThree);
 		txtHealThree.setColumns(10);
 		
 		txtWinningsThree = new JTextField();
+		txtWinningsThree.setEditable(false);
 		txtWinningsThree.setColumns(10);
 		txtWinningsThree.setBounds(6, 93, 130, 26);
 		panelTeamThree.add(txtWinningsThree);

@@ -80,6 +80,7 @@ public class ApplyingItemWindow {
 		
 		
 		if (monsterTeam.size() >=1 ) {
+			JOptionPane.showMessageDialog(frmApplyingItem, "Your Monster Team is looking empty... Purchase more Monsters at the Shop!");
 			JLabel lblNewLabel = new JLabel("");
 			lblNewLabel.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster04.png")));
 			lblNewLabel.setBounds(52, 77, 122, 128);
@@ -98,7 +99,7 @@ public class ApplyingItemWindow {
 		}
 		
 		if (monsterTeam.size() >= 2) {
-			
+			JOptionPane.showMessageDialog(frmApplyingItem, "Your Monster Team is looking empty... Purchase more Monsters at the Shop!");
 			JLabel lblNewLabel_1 = new JLabel("");
 			lblNewLabel_1.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster01.png")));
 			lblNewLabel_1.setBounds(207, 243, 141, 121);
@@ -161,6 +162,7 @@ public class ApplyingItemWindow {
 		panel.setLayout(null);
 		
 		txtName = new JTextField();
+		txtName.setEditable(false);
 		txtName.setHorizontalAlignment(SwingConstants.CENTER);
 		txtName.setText("Name");
 		txtName.setBounds(6, 29, 196, 26);
@@ -168,6 +170,7 @@ public class ApplyingItemWindow {
 		txtName.setColumns(10);
 		
 		txtDamage = new JTextField();
+		txtDamage.setEditable(false);
 		txtDamage.setText("Damage");
 		txtDamage.setHorizontalAlignment(SwingConstants.CENTER);
 		txtDamage.setBounds(6, 67, 196, 26);
@@ -175,6 +178,7 @@ public class ApplyingItemWindow {
 		txtDamage.setColumns(10);
 		
 		txtHeal = new JTextField();
+		txtHeal.setEditable(false);
 		txtHeal.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHeal.setText("Heal");
 		txtHeal.setBounds(6, 105, 196, 26);
@@ -182,6 +186,7 @@ public class ApplyingItemWindow {
 		txtHeal.setColumns(10);
 		
 		txtCost = new JTextField();
+		txtCost.setEditable(false);
 		txtCost.setHorizontalAlignment(SwingConstants.CENTER);
 		txtCost.setText("Cost");
 		txtCost.setBounds(6, 143, 196, 26);

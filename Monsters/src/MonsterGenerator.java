@@ -38,8 +38,22 @@ public class MonsterGenerator {
 		int range = monsterNames.size();
 	    Random rndm = new Random();
 	    int randomInt = rndm.nextInt(range);
-	    return monsterNames.get(randomInt);
+	    String name = monsterNames.get(randomInt);
+	    while (!checkName(name)) {
+		    int nextRandomInt = rndm.nextInt(range);
+		    name = monsterNames.get(nextRandomInt);
+	    }
+	    return name;
 		
+	}
+	
+	public boolean checkName(String name) {
+		for(Monster monster : returnableMonsters) {
+	    	if (monster.getName().equals(name)) {
+	    		return false;
+	    	}
+	    }
+		return true;
 	}
 	
 	public int randomDamage() {

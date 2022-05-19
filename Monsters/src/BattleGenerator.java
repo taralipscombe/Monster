@@ -103,18 +103,15 @@ public class BattleGenerator {
 	
 	
 	public static boolean checkName(String potentialName) {
-		boolean checking = true;
 		for(Monster monster : enemyTeam) {
 			if (monster.getName().equals(potentialName)){
-				checking = false;
+				return false;
 			}
 		}
-		return checking;
-		
+		return true;
 	}
 	
-	// damage = 50(max)
-	// heal amount = 35(max)
+
 	
 	public static int random(int min, int max) {
 	    int range = (max - min) + 1;
