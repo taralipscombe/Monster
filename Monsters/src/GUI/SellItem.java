@@ -1,3 +1,5 @@
+package GUI;
+
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;

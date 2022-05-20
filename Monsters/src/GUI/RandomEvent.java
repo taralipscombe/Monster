@@ -1,7 +1,7 @@
+package GUI;
+
 import java.util.ArrayList;
 import java.util.Random;
-
-import javax.swing.JOptionPane;
 
 /**
  * The Class RandomEvent.
@@ -90,7 +90,7 @@ public class RandomEvent {
 			int initialDamage = levelUpMonster.getDamage();
 			levelUpMonster.setDamage(initialDamage + 15);
 			randomOccured.add("Congratulations " + levelUpMonster.getName() + " has leveled up! Their damage is now " + levelUpMonster.getDamage()+ " units.");
-			System.out.println("Congratulations " + levelUpMonster.getName() + " has leveled up! Their damage is now " + levelUpMonster.getDamage()+ " units.");
+			
 		}
 		
 	}
@@ -110,7 +110,7 @@ public class RandomEvent {
 			int initialDamage = levelDownMonster.getDamage();
 			levelDownMonster.setDamage(initialDamage -15);
 			randomOccured.add("Oh no " + levelDownMonster.getName() + " has gotten sick overnight! Their damage is now " + levelDownMonster.getDamage()+ " units.");
-			System.out.println("Oh no " + levelDownMonster.getName() + " has gotten sick overnight! Their damage is now " + levelDownMonster.getDamage()+ " units.");
+			
 		}
 	}
 	
@@ -130,11 +130,11 @@ public class RandomEvent {
 		if (averageLives >= 1.5 && randomInt <= 0) {
 			Monster leftMonster = monsterLeaves();
 			randomOccured.add("RIP " +  leftMonster.getName() + " has gotten COVID and died! You know have only " + monsterTeam.size() + " monsters left.");
-			System.out.println("RIP " +  leftMonster.getName() + " has gotten COVID and died! You know have only " + monsterTeam.size() + " monsters left.");	
+		
 		} else if (averageLives < 1.5 && randomInt <= 0.1) {
 			Monster leftMonster = monsterLeaves();
 			randomOccured.add("RIP " +  leftMonster.getName() + " has gotten COVID and died! You know have only " + monsterTeam.size() + " monsters left.");
-			System.out.println("RIP " +  leftMonster.getName() + " has gotten COVID and died! You know have only " + monsterTeam.size() + " monsters left.");
+		
 		}
 		
 	}

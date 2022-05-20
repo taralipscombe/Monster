@@ -1,3 +1,5 @@
+package GUI;
+
 public class Item {
 	private String name, property;
 	private int propertyChange, usage;

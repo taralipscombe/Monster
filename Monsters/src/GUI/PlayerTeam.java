@@ -1,5 +1,6 @@
+package GUI;
+
 import java.awt.Color;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -25,7 +26,6 @@ public class PlayerTeam {
 	public JFrame frmPlayerTeam;
 	private Player player;
 	private ArrayList<Monster> monsterTeam;
-	private int currentlySelected;
 	private JTextField txtYourCurrentMonster;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JTextField txtName;
@@ -33,21 +33,7 @@ public class PlayerTeam {
 	private JTextField txtHeal;
 	private JTextField txtCost;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PlayerTeam window = new PlayerTeam();
-					window.frmPlayerTeam.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the application.
@@ -85,7 +71,6 @@ public class PlayerTeam {
 			JRadioButton rdbtnMonsterOne = new JRadioButton(monsterTeam.get(0).getName());
 			rdbtnMonsterOne.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					currentlySelected = 1;
 					displayMonster("One");
 				}
 			});
@@ -104,7 +89,6 @@ public class PlayerTeam {
 			JRadioButton rdbtnMonsterTwo = new JRadioButton(monsterTeam.get(1).getName());
 			rdbtnMonsterTwo.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					currentlySelected = 2;
 					displayMonster("Two");
 				}
 			});
@@ -123,7 +107,6 @@ public class PlayerTeam {
 			JRadioButton rdbtnMonsterThree = new JRadioButton(monsterTeam.get(2).getName());
 			rdbtnMonsterThree.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					currentlySelected = 3;
 					displayMonster("Three");
 				}
 			});
@@ -141,7 +124,6 @@ public class PlayerTeam {
 			JRadioButton rdbtnMonsterFour = new JRadioButton(monsterTeam.get(3).getName());
 			rdbtnMonsterFour.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					currentlySelected = 4;
 					displayMonster("Four");
 				}
 			});

@@ -1,4 +1,5 @@
-import java.awt.EventQueue;
+package GUI;
+
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -8,7 +9,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
-import javax.swing.SwingConstants;
 import java.awt.Color;
 import javax.swing.JTextField;
 
