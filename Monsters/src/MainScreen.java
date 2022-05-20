@@ -18,7 +18,15 @@ public class MainScreen {
 		shop = new Shop(player);
 		BattleGenerator battleGen = new BattleGenerator(player);
 		battles = battleGen;
-		
+	}
+	
+	public void commence() {
+		Scanner input = new Scanner(System.in);
+		while (player.getDay() < player.getFinishDay()) {
+			displayOptions();
+			nextMove(input);
+		}
+		endGame();
 	}
 	
 	
@@ -101,27 +109,28 @@ public class MainScreen {
 	public static void viewInventory(Scanner input) {
 		System.out.println("Your current Inventory: ");
 		System.out.println(player.printInventory());
-		System.out.println("Would you like to use an item on a Monster? (please enter 'yes' or 'no', or 'exit' to exit)");
-		boolean selected = true;
-		while (selected) {
-			String yesOrNo = input.nextLine();
-			Pattern pattern = Pattern.compile("[^a-zA-Z]");
-			Matcher matcher = pattern.matcher(yesOrNo);
-			boolean correctInput = matcher.find();
-			if (yesOrNo.equals("exit")) {
-				selected = false;
-			} if (correctInput) {
-				System.out.println("Error: Please enter 'yes' or 'no'");	
-			} else if (yesOrNo.equals("yes") || yesOrNo.equals("Yes")){
-				applyItem(input);
-				selected = false;
-				
-			} else if (yesOrNo.equals("no") || yesOrNo.equals("No")) {
-				selected = false;
-			} else {
-				System.out.println("Error: Please enter 'yes' or 'no'");	
-			}
-		
+		if (player.getItems().size() > 0) {
+			System.out.println("Would you like to use an item on a Monster? (please enter 'yes' or 'no', or 'exit' to exit)");
+			boolean selected = true;
+			while (selected) {
+				String yesOrNo = input.nextLine();
+				Pattern pattern = Pattern.compile("[^a-zA-Z]");
+				Matcher matcher = pattern.matcher(yesOrNo);
+				boolean correctInput = matcher.find();
+				if (yesOrNo.equals("exit")) {
+					selected = false;
+				} if (correctInput) {
+					System.out.println("Error: Please enter 'yes' or 'no'");	
+				} else if (yesOrNo.equals("yes") || yesOrNo.equals("Yes")){
+					applyItem(input);
+					selected = false;
+					
+				} else if (yesOrNo.equals("no") || yesOrNo.equals("No")) {
+					selected = false;
+				} else {
+					System.out.println("Error: Please enter 'yes' or 'no'");	
+				}
+		}
 		}
 	}
 	
@@ -137,7 +146,7 @@ public class MainScreen {
 			boolean correctInput = matcher.find();
 			if (num.equals("exit")){
 				exited = true;
-			} else if (correctInput || Integer.parseInt(num) < 1 || Integer.parseInt(num) > player.getItems().size() ) {
+			} else if (num.length() == 0|| correctInput || Integer.parseInt(num) < 1 || Integer.parseInt(num) > player.getItems().size() ) {
 				System.out.println("Error: Please enter a number between 1 and " + player.getItems().size() + " (inclusive) (or enter 'exit' to exit). ");	
 			} else {
 				int numberItem = Integer.parseInt(num) - 1;
@@ -246,7 +255,7 @@ public class MainScreen {
 			Pattern pattern = Pattern.compile("[^1-3]");
 			Matcher matcher = pattern.matcher(num);
 			boolean correctNum = matcher.find(); 
-			if (correctNum || Integer.parseInt(num) > 3 || Integer.parseInt(num) < 1) {
+			if (num.length() == 0 || correctNum || Integer.parseInt(num) > 3 || Integer.parseInt(num) < 1) {
 				System.out.println("Error: Please enter a valid move between 1 and 3");	
 			} else {
 				selected = false;
@@ -302,15 +311,4 @@ public class MainScreen {
 	
 	}
 	
-	
-	
-	public static void main(String[] args) {
-		Scanner input = new Scanner(System.in);
-		while (player.getDay() < player.getFinishDay()) {
-			displayOptions();
-			nextMove(input);
-		}
-		//finish game
-
-	}
 }

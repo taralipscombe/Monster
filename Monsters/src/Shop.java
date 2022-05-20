@@ -180,23 +180,26 @@ public class Shop {
 		Pattern pattern = Pattern.compile("[^1-4]");
 		Matcher matcher = pattern.matcher(num);
 		boolean correctNum = matcher.find();
-		if(num.length()==0 ||correctNum) {
+		if(num.length()==0 ||correctNum ) {
 			System.out.println("Error: Invalid input, returning to shop");
-		}
-		int number = Integer.parseInt(num);
-		if(number >4) {
-			System.out.println("Error: Invalid input, returning to shop");
-		}else if(number<=4 && number>=1) {
-			Monster purchasedMonster = monstersForSale.get(number-1);
-			if(player.getgold() < purchasedMonster.getPrice()) {
-				System.out.println("You do not have enough gold to purchase this Monster. You can earn more gold by battling!");
-			} else {
-				player.decreaseGold(purchasedMonster.getPrice());
-				player.addTeamMate(purchasedMonster);
-				System.out.println("You have successfully bought " + purchasedMonster.getName());
-		}
+		} else if(num.equals("exit") || num.equals("Exit")) {
+			System.out.println("Returning to shop");
+		} else {
+			int number = Integer.parseInt(num);
+			if(number >4) {
+				System.out.println("Error: Invalid input, returning to shop");
+			}else if(number<=4 && number>=1) {
+				Monster purchasedMonster = monstersForSale.get(number-1);
+				if(player.getgold() < purchasedMonster.getPrice()) {
+					System.out.println("You do not have enough gold to purchase this Monster. You can earn more gold by battling!");
+				} else {
+					player.decreaseGold(purchasedMonster.getPrice());
+					player.addTeamMate(purchasedMonster);
+					System.out.println("You have successfully bought " + purchasedMonster.getName());
+			}
 		
 	}
+		}
 		
 	}
 }
