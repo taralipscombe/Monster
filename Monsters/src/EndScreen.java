@@ -1,5 +1,3 @@
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import java.awt.Font;
@@ -10,7 +8,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.border.BevelBorder;
 import java.awt.Color;
 
-// TODO: Auto-generated Javadoc
+
 /**
  * The Class EndScreen.
  */
@@ -18,7 +16,7 @@ public class EndScreen {
 
 	
 	/** The frame. */
-	public JFrame frame;
+	public JFrame frmEndScreen;
 	
 	/** The player. */
 	private Player player;
@@ -38,25 +36,6 @@ public class EndScreen {
 	/** The txt gold. */
 	private JTextField txtGold;
 
-	/**
-	 * Launch the application.
-	 *
-	 * @param args the arguments
-	 */
-	public static void main(String[] args) {
-		Monster monster = new Monster("Fred", 1, 2, 3);
-		Player playerOne = new Player("Emma", "1", monster, 7);
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					EndScreen window = new EndScreen(playerOne);
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
@@ -74,34 +53,34 @@ public class EndScreen {
 	 * Sets the Text fields to display the final Players stats.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		frame.setBounds(100, 100, 650, 449);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmEndScreen = new JFrame();
+		frmEndScreen.getContentPane().setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		frmEndScreen.setBounds(100, 100, 650, 449);
+		frmEndScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmEndScreen.getContentPane().setLayout(null);
 		
 		txtGameEnded = new JTextField();
 		txtGameEnded.setEditable(false);
 		txtGameEnded.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 30));
 		txtGameEnded.setText("GAME ENDED");
 		txtGameEnded.setBounds(206, 39, 224, 35);
-		frame.getContentPane().add(txtGameEnded);
+		frmEndScreen.getContentPane().add(txtGameEnded);
 		txtGameEnded.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(EndScreen.class.getResource("/images/user.png")));
 		lblNewLabel.setBounds(126, 64, 153, 197);
-		frame.getContentPane().add(lblNewLabel);
+		frmEndScreen.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(EndScreen.class.getResource("/images/earscreature.png")));
 		lblNewLabel_1.setBounds(29, 186, 173, 205);
-		frame.getContentPane().add(lblNewLabel_1);
+		frmEndScreen.getContentPane().add(lblNewLabel_1);
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null), "PLAYER STATS", TitledBorder.CENTER, TitledBorder.BELOW_TOP, null, new Color(0, 0, 0)));
 		panel.setBounds(305, 106, 300, 265);
-		frame.getContentPane().add(panel);
+		frmEndScreen.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		txtName = new JTextField();

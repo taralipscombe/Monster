@@ -93,7 +93,7 @@ public class MainScreenWindow {
 			public void actionPerformed(ActionEvent e) {
 
 				BattleScreen newBattleScreen = new BattleScreen(mainscreen);
-				newBattleScreen.frame.setVisible(true);
+				newBattleScreen.frmBattle.setVisible(true);
 
 			}
 		});
@@ -139,7 +139,7 @@ public class MainScreenWindow {
 				player.endGame();
 				frmMainscreen.dispose();
 				EndScreen ending = new EndScreen(player);
-				ending.frame.setVisible(true);
+				ending.frmEndScreen.setVisible(true);
 				
 			}
 		});

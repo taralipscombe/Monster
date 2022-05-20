@@ -1,4 +1,4 @@
-import java.awt.EventQueue;
+
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,7 +18,7 @@ import javax.swing.ImageIcon;
 public class BattleScreen {
 
 	private MainScreen mainscreen;
-	public JFrame frame;
+	public JFrame frmBattle;
 	private Player player;
 	private ArrayList<Monster> currentTeam = null;
 	private JTextField txtSelectATeam;
@@ -41,24 +41,6 @@ public class BattleScreen {
 	private JTextField txtWinningsTwo;
 	private JTextField txtWinningsThree;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		Monster monster = new Monster("Fred", 1, 2, 3);
-		Player player = new Player("Emma", "1", monster, 7);
-		MainScreen mainscreen = new MainScreen(player);
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					BattleScreen window = new BattleScreen(mainscreen);
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application. Calls the generate battles method of the main screen to initialize possible battles.
@@ -76,17 +58,17 @@ public class BattleScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 650, 450);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmBattle = new JFrame();
+		frmBattle.setBounds(100, 100, 650, 450);
+		frmBattle.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmBattle.getContentPane().setLayout(null);
 		
 		txtSelectATeam = new JTextField();
 		txtSelectATeam.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 18));
 		txtSelectATeam.setText("Select a Team to Battle:");
 		txtSelectATeam.setEditable(false);
 		txtSelectATeam.setBounds(200, 31, 234, 26);
-		frame.getContentPane().add(txtSelectATeam);
+		frmBattle.getContentPane().add(txtSelectATeam);
 		txtSelectATeam.setColumns(10);
 		
 		
@@ -99,7 +81,7 @@ public class BattleScreen {
 		});
 		buttonGroup.add(rdbtnTeamOne);
 		rdbtnTeamOne.setBounds(32, 86, 141, 23);
-		frame.getContentPane().add(rdbtnTeamOne);
+		frmBattle.getContentPane().add(rdbtnTeamOne);
 		
 		JRadioButton rdbtnTeamTwo = new JRadioButton("Enemy Team Two");
 		rdbtnTeamTwo.addActionListener(new ActionListener() {
@@ -110,7 +92,7 @@ public class BattleScreen {
 		});
 		buttonGroup.add(rdbtnTeamTwo);
 		rdbtnTeamTwo.setBounds(243, 86, 141, 23);
-		frame.getContentPane().add(rdbtnTeamTwo);
+		frmBattle.getContentPane().add(rdbtnTeamTwo);
 		
 		JRadioButton rdbtnTeamThree = new JRadioButton("Enemy Team Three");
 		rdbtnTeamThree.addActionListener(new ActionListener() {
@@ -121,12 +103,12 @@ public class BattleScreen {
 		});
 		buttonGroup.add(rdbtnTeamThree);
 		rdbtnTeamThree.setBounds(457, 86, 150, 23);
-		frame.getContentPane().add(rdbtnTeamThree);
+		frmBattle.getContentPane().add(rdbtnTeamThree);
 		
 		
 		JPanel panelTeamOne = new JPanel();
 		panelTeamOne.setBounds(32, 150, 141, 125);
-		frame.getContentPane().add(panelTeamOne);
+		frmBattle.getContentPane().add(panelTeamOne);
 		panelTeamOne.setLayout(null);
 		
 		txtNameOne = new JTextField();
@@ -155,7 +137,7 @@ public class BattleScreen {
 		
 		JPanel panelTeamTwo = new JPanel();
 		panelTeamTwo.setBounds(243, 150, 150, 125);
-		frame.getContentPane().add(panelTeamTwo);
+		frmBattle.getContentPane().add(panelTeamTwo);
 		panelTeamTwo.setLayout(null);
 		
 		txtNameTwo = new JTextField();
@@ -184,7 +166,7 @@ public class BattleScreen {
 		
 		JPanel panelTeamThree = new JPanel();
 		panelTeamThree.setBounds(457, 150, 150, 125);
-		frame.getContentPane().add(panelTeamThree);
+		frmBattle.getContentPane().add(panelTeamThree);
 		panelTeamThree.setLayout(null);
 		
 		txtNameThree = new JTextField();
@@ -219,40 +201,39 @@ public class BattleScreen {
 				} else {
 					mainscreen.generateNewBattles();
 					FightScreen fighting = new FightScreen(player, currentTeam);
-					
 					fighting.frmFight.setVisible(true);
-					frame.dispose();
+					frmBattle.dispose();
 					
 				}
 			}
 		});
 		btnBattle.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 		btnBattle.setBounds(490, 33, 117, 29);
-		frame.getContentPane().add(btnBattle);
+		frmBattle.getContentPane().add(btnBattle);
 		
 		btnExit = new JButton("Return");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
+				frmBattle.dispose();
 			}
 		});
 		btnExit.setBounds(23, 36, 117, 29);
-		frame.getContentPane().add(btnExit);
+		frmBattle.getContentPane().add(btnExit);
 		
 		lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(BattleScreen.class.getResource("/images/viking_helmet.png")));
 		lblNewLabel.setBounds(253, 287, 141, 120);
-		frame.getContentPane().add(lblNewLabel);
+		frmBattle.getContentPane().add(lblNewLabel);
 		
 		lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(BattleScreen.class.getResource("/images/sword.png")));
 		lblNewLabel_1.setBounds(32, 287, 155, 128);
-		frame.getContentPane().add(lblNewLabel_1);
+		frmBattle.getContentPane().add(lblNewLabel_1);
 		
 		lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon(BattleScreen.class.getResource("/images/arrow.png")));
 		lblNewLabel_2.setBounds(457, 287, 150, 120);
-		frame.getContentPane().add(lblNewLabel_2);
+		frmBattle.getContentPane().add(lblNewLabel_2);
 		
 		JComboBox<Monster> cBoxTeamOne = new JComboBox<Monster>();
 		cBoxTeamOne.addActionListener(new ActionListener() {
@@ -265,7 +246,7 @@ public class BattleScreen {
 			cBoxTeamOne.addItem(monster);
 		}
 		cBoxTeamOne.setBounds(32, 111, 141, 27);
-		frame.getContentPane().add(cBoxTeamOne);
+		frmBattle.getContentPane().add(cBoxTeamOne);
 		
 		
 		JComboBox<Monster> cBoxTeamTwo = new JComboBox<Monster>();
@@ -279,7 +260,7 @@ public class BattleScreen {
 			cBoxTeamTwo.addItem(monster);
 		}
 		cBoxTeamTwo.setBounds(243, 111, 141, 27);
-		frame.getContentPane().add(cBoxTeamTwo);
+		frmBattle.getContentPane().add(cBoxTeamTwo);
 
 		JComboBox<Monster> cBoxTeamThree = new JComboBox<Monster>();
 		cBoxTeamThree.addActionListener(new ActionListener() {
@@ -292,7 +273,7 @@ public class BattleScreen {
 			cBoxTeamThree.addItem(monster);
 		}
 		cBoxTeamThree.setBounds(457, 111, 150, 27);
-		frame.getContentPane().add(cBoxTeamThree);
+		frmBattle.getContentPane().add(cBoxTeamThree);
 	}
 	
 	

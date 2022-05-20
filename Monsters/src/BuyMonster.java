@@ -1,5 +1,3 @@
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -57,21 +55,6 @@ public class BuyMonster {
 	/** The txt current gold. */
 	private JTextField txtCurrentGold;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main() {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					BuyMonster window = new BuyMonster();
-					window.frmBuyMonster.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application. Creates a monsterGenertor instance to randomly create Monsters for the player to buy

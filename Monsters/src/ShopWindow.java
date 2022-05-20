@@ -1,22 +1,16 @@
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-import javax.swing.BoxLayout;
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+
 
 public class ShopWindow {
 
 	private Player player;
-	public static JFrame frmShop;
+	public JFrame frmShop;
 	private JButton btnBuy;
 	private JButton btnSell;
 	private JButton btnExitShop;
@@ -24,23 +18,7 @@ public class ShopWindow {
 	private JButton btnBuyMonster;
 	private JButton btnSellItem;
 	private JButton btnSellMonster;
-	private boolean sellSelected = false;
-	private boolean buySelected = false;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					frmShop.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
@@ -124,7 +102,7 @@ public class ShopWindow {
 		btnBuyMonster.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BuyMonster buyingMonster = new BuyMonster(player);
-				buyingMonster.frmBuyMonster.setVisible(buySelected);
+				buyingMonster.frmBuyMonster.setVisible(true);
 			}
 		});
 		btnBuyMonster.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
@@ -160,8 +138,6 @@ public class ShopWindow {
 	}
 	
 	public void buyButtonSelected() {
-		buySelected = true;
-		sellSelected = false;
 		btnSellItem.setVisible(false);
 		btnSellMonster.setVisible(false);
 		btnBuyItem.setVisible(true);
@@ -170,8 +146,6 @@ public class ShopWindow {
 	}
 	
 	public void sellButtonSelected() {
-		sellSelected = true;
-		buySelected = false;
 		btnBuyItem.setVisible(false);
 		btnBuyMonster.setVisible(false);
 		btnSellItem.setVisible(true);

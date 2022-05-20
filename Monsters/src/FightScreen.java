@@ -1,7 +1,4 @@
 
-import java.awt.EventQueue;
-
-
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import java.awt.Font;
@@ -14,7 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 
-// TODO: Auto-generated Javadoc
+
 /**
  * The Class FightScreen.
  */
@@ -72,27 +69,7 @@ public class FightScreen {
 	/** The txt enemys remaining. */
 	private JTextField txtEnemysRemaining;
 
-	/**
-	 * Launch the application.
-	 *
-	 * @param args the arguments
-	 */
-	public static void main(String[] args) {
-		Monster monster = new Monster("Fred", 1, 2, 3);
-		Player playerOne = new Player("Emma", "1", monster, 7);
-		BattleGenerator battles = new BattleGenerator(playerOne);
-		ArrayList<Monster> enemies = battles.generateTeam();
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FightScreen window = new FightScreen(playerOne, enemies);
-					window.frmFight.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the application. Gets the players first Monster. 

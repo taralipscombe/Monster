@@ -1,5 +1,3 @@
-import java.awt.EventQueue;
-
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -16,7 +14,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
 
-// TODO: Auto-generated Javadoc
+
 /**
  * The Class SellItem.
  */
@@ -26,7 +24,7 @@ public class SellItem {
 	private Player player;
 	
 	/** The frm sell item. */
-	public static JFrame frmSellItem;
+	public JFrame frmSellItem;
 	
 	/** The txt sell items. */
 	private JTextField txtSellItems;
@@ -70,23 +68,6 @@ public class SellItem {
 	/** The btn return. */
 	private JButton btnReturn;
 
-	/**
-	 * Launch the application.
-	 *
-	 * @param player the player
-	 */
-	public static void main(Player player) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SellItem window = new SellItem(player);
-					window.frmSellItem.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.

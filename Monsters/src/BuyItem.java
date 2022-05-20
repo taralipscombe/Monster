@@ -1,5 +1,3 @@
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -35,21 +33,6 @@ public class BuyItem {
 	private JLabel lblNewLabel_3;
 	private JTextField txtCurrentGold;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main() {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					BuyItem window = new BuyItem();
-					window.frmBuyItem.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application. Initializes the frame of the window and sets visible
