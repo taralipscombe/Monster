@@ -4,8 +4,19 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * 
+ * The class Mainscreen. Takes input from the user to play the game.
+ *
+ */
 public class MainScreen {
-	
+	/**
+	 * battles  Type BattleGenerator
+	 * player  player of the game
+	 * shop  Type Shop of items
+	 * enemyTeamOne, Two, Three enemy teams to battle
+	 *
+	 */
 	private static BattleGenerator battles;
 	private static Player player;
 	private static Shop shop;
@@ -13,6 +24,11 @@ public class MainScreen {
 	private static ArrayList<Monster> enemyTeamTwo = null;
 	private static ArrayList<Monster> enemyTeamThree = null;
 	
+	/**
+	 * Instantiates a new MainScreen.
+	 *
+	 * @param thePlayer the player of the game.
+	 */
 	public MainScreen(Player thePlayer) {
 		player = thePlayer;
 		shop = new Shop(player);
@@ -20,6 +36,9 @@ public class MainScreen {
 		battles = battleGen;
 	}
 	
+	/**
+	 * Plays the game for the number of days chosen by the player
+	 */
 	public void commence() {
 		Scanner input = new Scanner(System.in);
 		while (player.getDay() < player.getFinishDay()) {
@@ -29,11 +48,20 @@ public class MainScreen {
 		endGame();
 	}
 	
-	
+	/**
+	 * Gets the player.
+	 *
+	 * @return the player
+	 */
 	public Player getPlayer() {
 		return player;
 	}
 	
+	/**
+	 * Gets the enemy team
+	 * @param num number of monsters wanted in the team
+	 * @return the array list of Monsters
+	 */
 	public ArrayList<Monster> getEnemyTeam(int num){
 		if (num == 1) {
 			return enemyTeamOne;
@@ -44,6 +72,10 @@ public class MainScreen {
 		}
 	}
 	
+	/**
+	 * Generates 3 new battle options
+	 *
+	 */
 	public void generateNewBattles() {
 		
 		enemyTeamOne = null;
@@ -52,7 +84,10 @@ public class MainScreen {
 		viewBattles();
 		
 	}
-	
+	/**
+	 * Prints the options of playing the game on the mainscreen
+	 *
+	 */
 	public static void displayOptions() {
 		System.out.println("Please select your next move:");
 		System.out.println("Option (1): View your current attributes"); //not attributes but dont know other word
@@ -65,6 +100,9 @@ public class MainScreen {
 		System.out.println("Option (8): END GAME");
 	}
 	
+	/**
+	 * Takes input integers from the user to choose what actions to take in the game
+	 */
 	public static void nextMove(Scanner input) {
 		String num = input.nextLine();
 		Pattern pattern = Pattern.compile("[^1-8]");
@@ -95,17 +133,23 @@ public class MainScreen {
 		}
 	}
 	
-	
+	/**
+	 * Prints the player's attributes to show the user.
+	 */
 	public static void viewAttributes() {
 		System.out.println("Your current Attributes are: ");
 		System.out.println(player.printAttributes());
 	}
-	
+	/**
+	 * Prints the Monsters in the team array list to show the user.
+	 */
 	public static void viewTeam() {
 		System.out.println("Your current Team: ");
 		System.out.println(player.printCurrentTeam());
 	}
-	
+	/**
+	 * Prints the inventory of the player to show the user. Takes input for if the player wants to use an item.
+	 */
 	public static void viewInventory(Scanner input) {
 		System.out.println("Your current Inventory: ");
 		System.out.println(player.printInventory());
@@ -133,7 +177,10 @@ public class MainScreen {
 		}
 		}
 	}
-	
+	/**
+	 * Applies the item to a monster chosen by the player with input.
+	 *
+	 */
 	public static void applyItem(Scanner input) {
 		boolean selected = true;
 		boolean exited = false;
@@ -171,16 +218,11 @@ public class MainScreen {
 			}
 		}
 			}
-		}
-		
-		
-
-
-		
-		
-		
+		}	
 	}
-	
+	/**
+	 * Creates three random options of battles for the player and displays them to the user.
+	 */
 	public static void viewBattles() {
 		//currently not implemented, use Battle generator class to randomise battles
 		int i = 0;
@@ -239,7 +281,9 @@ public class MainScreen {
 		}
 
 	}
-	
+	/**
+	 * Takes user input from the player to battle, uses the battle class.
+	 */
 	public static void battle(Scanner input) {
 		// first check if teams have been generated, if not generate that team so there is at three options
 		// once selected, remove the team from the attribute - battles can only be played once - consider the heal feature?
@@ -280,16 +324,19 @@ public class MainScreen {
 			}
 		
 	}
-	
+	/**
+	 * Takes user input to go through to the shop using the enterStore shop method.
+	 */
 	public static void visitShop(Scanner input) {
-		//go to shop class? print out all available items, will need to be able to purchase, or re sell current items, will need to call view inventory for that
-		//have set items, potentially unlock new items with monster (i.e. buy new monster, can now get new item or maybe hard idk tbd
+		
 		shop.enterStore(input);
 		
 	}
 	
 	
-	//Implement the overnight random events - maybe new random event class?
+	/**
+	 * Changes the day to the next, monsters will heal overnight, random event may occur.
+	 */
 	public static void sleep() {
 		for (Monster monster : player.getTeam()) {
 			monster.heal();
@@ -299,7 +346,9 @@ public class MainScreen {
 		randomEvent.generate();
 		
 	}
-	
+	/**
+	 * Finishes playing the game and prints the stats of the game to show the player.
+	 */
 	public static void endGame() {
 		player.endGame();
 		System.out.println("Congratulations you have finished the Game!");
