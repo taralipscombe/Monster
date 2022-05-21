@@ -40,13 +40,13 @@ public class ViewInventory {
 	/** The txt of how many items the player owns. */
 	private JTextField txtOwn;
 	
-	/** The lbl of item one. */
+	/** The picture of item one. */
 	private JLabel lblItemOne;
 	
-	/** The lbl of item two. */
+	/** The picture of item two. */
 	private JLabel lblItemTwo;
 	
-	/** The lbl of item three. */
+	/** The picture of item three. */
 	private JLabel lblItemThree;
 	
 	/** The panel. */
@@ -104,6 +104,11 @@ public class ViewInventory {
 
 	/**
 	 * Initialize the contents of the frame.
+	 * 
+	 * lblItemOne sourced from: https://findicons.com/icon/32954/potion
+	 * lblItemTwo sourced from: https://findicons.com/icon/32883/potion_2
+	 * lblItemThree sourced from: https://findicons.com/icon/211681/heart
+	 * 
 	 */
 	private void initialize() {
 		frmInventory = new JFrame();

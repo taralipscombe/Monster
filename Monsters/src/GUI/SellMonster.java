@@ -37,7 +37,7 @@ public class SellMonster {
 	public JFrame frmSellMonster;
 	
 	/** The txt shop monster. */
-	private JTextField txtShopMonster;
+	private JTextField txtSellMonster;
 	
 	/** The text displaying the currently selected Monsters name. */
 	private JTextField txtName;
@@ -60,9 +60,17 @@ public class SellMonster {
 	/** The return button. */
 	private JButton btnReturn;
 	
+	/** The sell Monster button. */
+	private JButton btnSellButton;
+	
 
 	/**
 	 * Create the application. Get the players team as options of monsters to sell.
+	 * 
+	 * monPicOne sourced from: https://findicons.com/icon/220399/monster04
+	 * monPicTwo sourced from: https://findicons.com/icon/220396/monster02
+	 * monPicThree sourced from: https://findicons.com/icon/220398/monster05
+	 * monPicFour sourced from: https://findicons.com/icon/220397/monster01
 	 *
 	 * @param ofcPlayer the official player of the game.
 	 */
@@ -81,13 +89,13 @@ public class SellMonster {
 		frmSellMonster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSellMonster.getContentPane().setLayout(null);
 		
-		txtShopMonster = new JTextField();
-		txtShopMonster.setEditable(false);
-		txtShopMonster.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 18));
-		txtShopMonster.setText("Shop Monsters:");
-		txtShopMonster.setBounds(233, 33, 169, 32);
-		frmSellMonster.getContentPane().add(txtShopMonster);
-		txtShopMonster.setColumns(10);
+		txtSellMonster = new JTextField();
+		txtSellMonster.setEditable(false);
+		txtSellMonster.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 18));
+		txtSellMonster.setText("Sell Monsters:");
+		txtSellMonster.setBounds(233, 33, 169, 32);
+		frmSellMonster.getContentPane().add(txtSellMonster);
+		txtSellMonster.setColumns(10);
 		
 		if (monstersForSale.size() >= 1) {
 			JRadioButton rdbtnMonsterOne = new JRadioButton(monstersForSale.get(0).getName());
@@ -172,31 +180,42 @@ public class SellMonster {
 		txtSell.setColumns(10);
 		
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster04.png")));
-		lblNewLabel.setBounds(52, 77, 122, 128);
-		frmSellMonster.getContentPane().add(lblNewLabel);
+		JLabel monPicOne = new JLabel("");
+		monPicOne.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster04.png")));
+		monPicOne.setBounds(52, 77, 122, 128);
+		frmSellMonster.getContentPane().add(monPicOne);
 		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster01.png")));
-		lblNewLabel_1.setBounds(207, 243, 141, 121);
-		frmSellMonster.getContentPane().add(lblNewLabel_1);
+		JLabel monPicFour = new JLabel("");
+		monPicFour.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster01.png")));
+		monPicFour.setBounds(207, 243, 141, 121);
+		frmSellMonster.getContentPane().add(monPicFour);
 		
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster02.png")));
-		lblNewLabel_2.setBounds(207, 77, 141, 128);
-		frmSellMonster.getContentPane().add(lblNewLabel_2);
+		JLabel monPicTwo = new JLabel("");
+		monPicTwo.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster02.png")));
+		monPicTwo.setBounds(207, 77, 141, 128);
+		frmSellMonster.getContentPane().add(monPicTwo);
 		
-		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster05.png")));
-		lblNewLabel_3.setBounds(50, 232, 133, 132);
-		frmSellMonster.getContentPane().add(lblNewLabel_3);
+		JLabel monPicThree = new JLabel("");
+		monPicThree.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster05.png")));
+		monPicThree.setBounds(50, 232, 133, 132);
+		frmSellMonster.getContentPane().add(monPicThree);
 		
 		txtCurrentGold = new JTextField("Your current gold: " + player.getgold() + " gold");
+		txtCurrentGold.setHorizontalAlignment(SwingConstants.CENTER);
 		txtCurrentGold.setEditable(false);
-		txtCurrentGold.setBounds(407, 332, 169, 32);
+		txtCurrentGold.setBounds(397, 332, 208, 32);
 		frmSellMonster.getContentPane().add(txtCurrentGold);
 		txtCurrentGold.setColumns(10);
+		
+		btnSellButton = new JButton("Sell Selected Monster");
+		btnSellButton.setVisible(false);
+		btnSellButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				sellSelectedMonster();
+			}
+		});
+		btnSellButton.setBounds(407, 282, 169, 29);
+		frmSellMonster.getContentPane().add(btnSellButton);
 		
 		btnReturn = new JButton("Return");
 		btnReturn.addActionListener(new ActionListener() {
@@ -215,15 +234,8 @@ public class SellMonster {
 	 * @param num the number of the currently selected Monster.
 	 */
 	public void displayMonster(String num) {
-		
-		JButton btnNewButton = new JButton("Sell Selected Monster");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				sellSelectedMonster();
-			}
-		});
-		btnNewButton.setBounds(407, 282, 169, 29);
-		frmSellMonster.getContentPane().add(btnNewButton);
+	
+		btnSellButton.setVisible(true);
 		
 		if (num.equals("One")) {
 			currentSelected = monstersForSale.get(0);
@@ -232,6 +244,7 @@ public class SellMonster {
 			txtHeal.setText("Heal Amount: " + monstersForSale.get(0).getHealAmount() + " units");
 			int sellBack = (monstersForSale.get(0).getLives() / 3 )* monstersForSale.get(0).getPrice();
 			txtSell.setText("Sell back for " + sellBack + " gold");
+			
 			
 		}else if (num.equals("Two")) {
 			currentSelected = monstersForSale.get(1);

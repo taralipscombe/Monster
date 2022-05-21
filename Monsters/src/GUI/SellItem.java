@@ -52,9 +52,6 @@ public class SellItem {
 	/** The picture of item three. */
 	private JLabel lblItemThree;
 	
-	/** The picture of item four. */
-	private JLabel lblItemFour;
-	
 	/** The txt displaying the players' current gold. */
 	private JTextField txtCurrentGold;
 	
@@ -85,6 +82,10 @@ public class SellItem {
 
 	/**
 	 * Initialize the contents of the frame.
+	 * 
+	 * lblItemOne sourced from: https://findicons.com/icon/32954/potion
+	 * lblItemTwo sourced from: https://findicons.com/icon/32954/potion_2
+	 * lblItemThree sourced from: https://findicons.com/icon/211681/heart
 	 */
 	private void initialize() {
 		frmSellItem = new JFrame();
@@ -127,18 +128,8 @@ public class SellItem {
 			}
 		});
 		buttonGroup.add(rdbtnExtraLife);
-		rdbtnExtraLife.setBounds(55, 377, 120, 23);
+		rdbtnExtraLife.setBounds(137, 375, 120, 23);
 		frmSellItem.getContentPane().add(rdbtnExtraLife);
-		
-		JRadioButton rbtnLuckyDip = new JRadioButton("Lucky Dip");
-		rbtnLuckyDip.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				displayItem("Lucky");
-			}
-		});
-		buttonGroup.add(rbtnLuckyDip);
-		rbtnLuckyDip.setBounds(228, 377, 141, 23);
-		frmSellItem.getContentPane().add(rbtnLuckyDip);
 		
 		panel = new JPanel();
 		panel.setBorder(new TitledBorder(null, "Selected Item:", TitledBorder.CENTER, TitledBorder.ABOVE_TOP, null, null));
@@ -182,13 +173,8 @@ public class SellItem {
 		
 		lblItemThree = new JLabel("");
 		lblItemThree.setIcon(new ImageIcon(BuyItem.class.getResource("/images/heart.png")));
-		lblItemThree.setBounds(45, 211, 147, 164);
+		lblItemThree.setBounds(127, 215, 147, 164);
 		frmSellItem.getContentPane().add(lblItemThree);
-		
-		lblItemFour = new JLabel("");
-		lblItemFour.setIcon(new ImageIcon(BuyItem.class.getResource("/images/dialog_question.png")));
-		lblItemFour.setBounds(236, 226, 141, 139);
-		frmSellItem.getContentPane().add(lblItemFour);
 		
 		txtCurrentGold = new JTextField("Your current gold: " + player.getgold() + " gold");
 		txtCurrentGold.setEditable(false);
@@ -250,16 +236,6 @@ public class SellItem {
 			txtName.setText("Extra Life");
 			num = player.getNumItems("Extra Life");
 			txtOwn.setText("You own " + num);	
-			if (num > 0) {
-				displaySaleItem();
-			} else {
-				nothingToDisplay();
-			}
-			
-		} else { // lucky
-			txtName.setText("Lucky Dip");
-			num = player.getNumItems("Lucky Dip");
-			txtOwn.setText("You own " + num);
 			if (num > 0) {
 				displaySaleItem();
 			} else {

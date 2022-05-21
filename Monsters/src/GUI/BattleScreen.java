@@ -106,6 +106,11 @@ public class BattleScreen {
 
 	/**
 	 * Initialize the contents of the frame.
+	 * 
+	 * picOne sourced from: https://findicons.com/icon/32952/sword
+	 * picTwo sourced from: https://findicons.com/icon/567997/viking_helmet
+	 * picThree sourced from: https://findicons.com/icon/206663/arrow
+	 * 
 	 */
 	private void initialize() {
 		frmBattle = new JFrame();
@@ -247,7 +252,7 @@ public class BattleScreen {
 		btnBattle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (currentTeam == null) {
-					JOptionPane.showMessageDialog(null, "Please select an Enemy Team to Battle.");
+					JOptionPane.showMessageDialog(frmBattle, "Please select an Enemy Team to Battle.");
 				} else {
 					mainscreen.generateNewBattles();
 					FightScreen fighting = new FightScreen(player, currentTeam);

@@ -74,6 +74,12 @@ public class BuyMonster {
 
 	/**
 	 * Initialize the contents of the frame.
+	 * 
+	 * monPicOne sourced from: https://findicons.com/icon/220399/monster04
+	 * monPicTwo sourced from: https://findicons.com/icon/220396/monster02
+	 * monPicThree sourced from: https://findicons.com/icon/220398/monster05
+	 * monPicFour sourced from: https://findicons.com/icon/220397/monster01
+	 * 
 	 */
 	private void initialize() {
 		frmBuyMonster = new JFrame();
@@ -176,25 +182,25 @@ public class BuyMonster {
 		btnNewButton.setBounds(407, 282, 169, 29);
 		frmBuyMonster.getContentPane().add(btnNewButton);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster04.png")));
-		lblNewLabel.setBounds(52, 77, 122, 128);
-		frmBuyMonster.getContentPane().add(lblNewLabel);
+		JLabel monPicOne = new JLabel("");
+		monPicOne.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster04.png")));
+		monPicOne.setBounds(52, 77, 122, 128);
+		frmBuyMonster.getContentPane().add(monPicOne);
 		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster01.png")));
-		lblNewLabel_1.setBounds(207, 243, 141, 121);
-		frmBuyMonster.getContentPane().add(lblNewLabel_1);
+		JLabel monPicFour = new JLabel("");
+		monPicFour.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster01.png")));
+		monPicFour.setBounds(207, 243, 141, 121);
+		frmBuyMonster.getContentPane().add(monPicFour);
 		
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster02.png")));
-		lblNewLabel_2.setBounds(207, 77, 141, 128);
-		frmBuyMonster.getContentPane().add(lblNewLabel_2);
+		JLabel monPicTwo = new JLabel("");
+		monPicTwo.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster02.png")));
+		monPicTwo.setBounds(207, 77, 141, 128);
+		frmBuyMonster.getContentPane().add(monPicTwo);
 		
-		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster05.png")));
-		lblNewLabel_3.setBounds(50, 232, 133, 132);
-		frmBuyMonster.getContentPane().add(lblNewLabel_3);
+		JLabel monPicThree = new JLabel("");
+		monPicThree.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster05.png")));
+		monPicThree.setBounds(50, 232, 133, 132);
+		frmBuyMonster.getContentPane().add(monPicThree);
 		
 		txtCurrentGold = new JTextField("Your current gold: " + player.getgold() + " gold");
 		txtCurrentGold.setEditable(false);

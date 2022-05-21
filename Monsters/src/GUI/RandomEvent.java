@@ -82,7 +82,7 @@ public class RandomEvent {
 	public static void levelsUp() {
 		randomOccured.clear();
 		double randomInt = createRandom();
-		if (randomInt < 0.4) {
+		if (randomInt < 0.4 && monsterTeam.size() > 0) {
 			int range = monsterTeam.size();
 			Random rndm = new Random();
 			int rndmInt = rndm.nextInt(range);
@@ -103,7 +103,7 @@ public class RandomEvent {
 	 */
 	public static void levelsDown() {
 		double randomInt = createRandom();
-		if (randomInt < 0.3) {
+		if (randomInt < 0.3 && monsterTeam.size() > 0) {
 			int range = monsterTeam.size();
 			Random rndm = new Random();
 			int rndmInt = rndm.nextInt(range);
@@ -124,19 +124,21 @@ public class RandomEvent {
 	 */
 	public static void leavesOvernight() {
 		double averageLives = 0;
-		for (Monster monster : monsterTeam) {
-			averageLives += monster.getLives();
-		}
-		averageLives = averageLives / monsterTeam.size();
-		double randomInt = createRandom();
-		if (averageLives >= 1.5 && randomInt <= 0) {
-			Monster leftMonster = monsterLeaves();
-			randomOccured.add("RIP " +  leftMonster.getName() + " has gotten COVID and died! You know have only " + monsterTeam.size() + " monsters left.");
-		
-		} else if (averageLives < 1.5 && randomInt <= 0.1) {
-			Monster leftMonster = monsterLeaves();
-			randomOccured.add("RIP " +  leftMonster.getName() + " has gotten COVID and died! You know have only " + monsterTeam.size() + " monsters left.");
-		
+		if (monsterTeam.size() > 0) {
+			for (Monster monster : monsterTeam) {
+				averageLives += monster.getLives();
+			}
+			averageLives = averageLives / monsterTeam.size();
+			double randomInt = createRandom();
+			if (averageLives >= 1.5 && randomInt <= 0) {
+				Monster leftMonster = monsterLeaves();
+				randomOccured.add("RIP " +  leftMonster.getName() + " has gotten COVID and died! You know have only " + monsterTeam.size() + " monsters left.");
+			
+			} else if (averageLives < 1.5 && randomInt <= 0.1) {
+				Monster leftMonster = monsterLeaves();
+				randomOccured.add("RIP " +  leftMonster.getName() + " has gotten COVID and died! You know have only " + monsterTeam.size() + " monsters left.");
+			
+			}
 		}
 		
 	}
@@ -152,6 +154,7 @@ public class RandomEvent {
 	    Monster leftMonster = monsterTeam.get(randomInt);
 	    monsterTeam.remove(randomInt);
 	    return leftMonster;
+		
 	}
 	
 	
@@ -163,22 +166,24 @@ public class RandomEvent {
 	 * If difficulty is hard, there is a 10% chance a random monster joins
 	 */
 	public static void joinsOvernight() {
-		String difficulty = player.getDifficulty();
-		MonsterGenerator monGenerator = new MonsterGenerator();
-		ArrayList<Monster> newMonsters = monGenerator.generator();
-		double randomInt = createRandom();
-		if (difficulty.equals("1") && randomInt <= 0.2) {
-			Random rndm = new Random();
-		    int randomInteger = rndm.nextInt(newMonsters.size());
-			monsterTeam.add(newMonsters.get(randomInteger));
-		} else if (difficulty.equals("2") && randomInt <= 0.1) {
-			Random rndm = new Random();
-		    int randomInteger = rndm.nextInt(newMonsters.size());
-			monsterTeam.add(newMonsters.get(randomInteger));
-		} else if (difficulty.equals("3") && randomInt <= 0.0) {
-			Random rndm = new Random();
-		    int randomInteger = rndm.nextInt(newMonsters.size());
-			monsterTeam.add(newMonsters.get(randomInteger));
+		if (monsterTeam.size() < 4) {
+			String difficulty = player.getDifficulty();
+			MonsterGenerator monGenerator = new MonsterGenerator();
+			ArrayList<Monster> newMonsters = monGenerator.generator();
+			double randomInt = createRandom();
+			if (difficulty.equals("1") && randomInt <= 0.2) {
+				Random rndm = new Random();
+			    int randomInteger = rndm.nextInt(newMonsters.size());
+				monsterTeam.add(newMonsters.get(randomInteger));
+			} else if (difficulty.equals("2") && randomInt <= 0.1) {
+				Random rndm = new Random();
+			    int randomInteger = rndm.nextInt(newMonsters.size());
+				monsterTeam.add(newMonsters.get(randomInteger));
+			} else if (difficulty.equals("3") && randomInt <= 0.0) {
+				Random rndm = new Random();
+			    int randomInteger = rndm.nextInt(newMonsters.size());
+				monsterTeam.add(newMonsters.get(randomInteger));
+			}
 		}
 		
 		

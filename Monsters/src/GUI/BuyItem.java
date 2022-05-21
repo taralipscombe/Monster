@@ -57,13 +57,13 @@ public class BuyItem {
 	private JLabel itemPicOne;
 	
 	/** The lbl displaying item Two. */
-	private JLabel ItemPicThree;
+	private JLabel itemPicTwo;
 	
 	/** The lbl displaying item Three. */
-	private JLabel lblNewLabel_2;
+	private JLabel itemPicThree;
 	
 	/** The lbl displaying item Four. */
-	private JLabel ItemPicFour;
+	private JLabel itemPicFour;
 	
 	/** The players current gold. */
 	private JTextField txtCurrentGold;
@@ -84,6 +84,12 @@ public class BuyItem {
 
 	/**
 	 * Initialize the contents of the frame.
+	 * 
+	 * itemOnePic sourced from: https://findicons.com/icon/32883/potion
+	 * itemTwoPic sourced from: https://findicons.com/icon/32883/potion_2
+	 * itemThreePic sourced from: https://findicons.com/icon/211681/heart
+	 * itemFourPic sourced from: https://findicons.com/icon/185381/dialog_question
+	 * 
 	 */
 	private void initialize() {
 		
@@ -205,20 +211,20 @@ public class BuyItem {
 		itemPicOne.setBounds(42, 60, 120, 139);
 		frmBuyItem.getContentPane().add(itemPicOne);
 		
-		ItemPicThree = new JLabel("");
-		ItemPicThree.setIcon(new ImageIcon(BuyItem.class.getResource("/images/potion_2.png")));
-		ItemPicThree.setBounds(222, 67, 141, 128);
-		frmBuyItem.getContentPane().add(ItemPicThree);
+		itemPicTwo = new JLabel("");
+		itemPicTwo.setIcon(new ImageIcon(BuyItem.class.getResource("/images/potion_2.png")));
+		itemPicTwo.setBounds(222, 67, 141, 128);
+		frmBuyItem.getContentPane().add(itemPicTwo);
 		
-		lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon(BuyItem.class.getResource("/images/heart.png")));
-		lblNewLabel_2.setBounds(45, 211, 147, 164);
-		frmBuyItem.getContentPane().add(lblNewLabel_2);
+		itemPicThree = new JLabel("");
+		itemPicThree.setIcon(new ImageIcon(BuyItem.class.getResource("/images/heart.png")));
+		itemPicThree.setBounds(45, 211, 147, 164);
+		frmBuyItem.getContentPane().add(itemPicThree);
 		
-		ItemPicFour = new JLabel("");
-		ItemPicFour.setIcon(new ImageIcon(BuyItem.class.getResource("/images/dialog_question.png")));
-		ItemPicFour.setBounds(236, 226, 141, 139);
-		frmBuyItem.getContentPane().add(ItemPicFour);
+		itemPicFour = new JLabel("");
+		itemPicFour.setIcon(new ImageIcon(BuyItem.class.getResource("/images/dialog_question.png")));
+		itemPicFour.setBounds(236, 226, 141, 139);
+		frmBuyItem.getContentPane().add(itemPicFour);
 		
 		txtCurrentGold = new JTextField("Your current gold: " + player.getgold() + " gold");
 		txtCurrentGold.setEditable(false);

@@ -14,7 +14,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
@@ -47,6 +46,11 @@ public class PlayerTeam {
 
 	/**
 	 * Initialize the contents of the frame.
+	 * 
+	 * MonPicOne sourced from: https://findicons.com/icon/220399/monster04
+	 * MonPicTwo sourced from: https://findicons.com/icon/220396/monster02
+	 * MonPicThree sourced from: https://findicons.com/icon/220398/monster05
+	 * MonPicFour sourced from: https://findicons.com/icon/220397/monster01
 	 */
 	private void initialize() {
 		frmPlayerTeam = new JFrame();
@@ -187,9 +191,6 @@ public class PlayerTeam {
 		btnReturn.setBounds(511, 21, 117, 29);
 		frmPlayerTeam.getContentPane().add(btnReturn);
 		
-		if (monsterTeam.size() <= 2 ) {
-			JOptionPane.showMessageDialog(frmPlayerTeam, "Your Monster Team is looking empty... \n Purchase more Monsters at the Shop!");
-		}
 		
 	}
 	

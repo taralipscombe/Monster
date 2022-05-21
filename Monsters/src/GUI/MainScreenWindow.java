@@ -47,6 +47,8 @@ public class MainScreenWindow {
 
 	/**
 	 * Initialize the contents of the frame.
+	 * 
+	 * image sourced from: https://findicons.com/search/cartoon-child
 	 */
 	private void initialize(Player player) {
 		frmMainscreen = new JFrame();
@@ -70,6 +72,9 @@ public class MainScreenWindow {
 		JButton viewTeamProperties = new JButton("View your team's properties");
 		viewTeamProperties.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if (player.getTeam().size() <= 2 ) {
+					JOptionPane.showMessageDialog(frmMainscreen, "Your Monster Team is looking empty... \n Purchase more Monsters at the Shop!");
+				}
 				PlayerTeam playersTeam = new PlayerTeam(player);
 				playersTeam.frmPlayerTeam.setVisible(true);
 			}
