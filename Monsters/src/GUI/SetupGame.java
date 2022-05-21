@@ -1,3 +1,5 @@
+package GUI;
+
 import java.awt.EventQueue;
 import javax.swing.JOptionPane;
 
@@ -252,8 +254,9 @@ public class SetupGame {
 						JOptionPane.showMessageDialog(frmSetUpGame,"Error: Please enter a valid name between 3-15 letters");			
 						} else {
 							name = inputName;
+							SelectMonster selectMonster = new SelectMonster(name, gameTime, gameDifficulty);
+							selectMonster.frmChooseYourMonster.setVisible(true);
 							frmSetUpGame.dispose();
-							SelectMonster.main(name, gameTime, gameDifficulty);
 						}
 				}
 				

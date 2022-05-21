@@ -4,11 +4,20 @@ import java.util.Random;
 
 public class BattleGenerator {
 	
+	/** The players monster team. */
 	private static ArrayList<Monster> monsterTeam;
+	
+	/** The difficulty chosen by the player. */
 	private static String difficulty;
+	
+	/** The enemy team of Monsters. */
 	private static ArrayList<Monster> enemyTeam = new ArrayList<Monster>();
+	
+	/** The potential names of Monsters. */
 	private static ArrayList<String> potentialNames = new ArrayList<String>(Arrays.asList("Bewarewolf", "Lunatick", "Clawcerer", "Badboon", 
 			"Artichoker", "Hammer", "Assassin", "Coomba", "Bandit", "Bruiser", "Scythid", "CoffinMan", "Bubbles", "Sparkles", "Spiker"));
+	
+	/** The offical player of the game. */
 	private static Player player;
 	
 	

@@ -77,7 +77,7 @@ public class RandomEvent {
 	/**
 	 * Levels up. First clears the random occured attribute so only the most recent events are added.
 	 * If the random integer generated is between 0 and 0.3 (inclusive, a 40% chance), a random monster is selected from
-	 *  the monster team and leveled up - its damage increase by 15 units.
+	 *  the monster team and leveled up - its damage increase by 15 units, unless its damage is already above 60.
 	 */
 	public static void levelsUp() {
 		randomOccured.clear();
@@ -87,10 +87,11 @@ public class RandomEvent {
 			Random rndm = new Random();
 			int rndmInt = rndm.nextInt(range);
 			Monster levelUpMonster = monsterTeam.get(rndmInt);
-			int initialDamage = levelUpMonster.getDamage();
-			levelUpMonster.setDamage(initialDamage + 15);
-			randomOccured.add("Congratulations " + levelUpMonster.getName() + " has leveled up! Their damage is now " + levelUpMonster.getDamage()+ " units.");
-			
+			if (levelUpMonster.getDamage() <= 60) {
+				int initialDamage = levelUpMonster.getDamage();
+				levelUpMonster.setDamage(initialDamage + 15);
+				randomOccured.add("Congratulations " + levelUpMonster.getName() + " has leveled up! Their damage is now " + levelUpMonster.getDamage()+ " units.");
+			}
 		}
 		
 	}
@@ -98,7 +99,7 @@ public class RandomEvent {
 	/**
 	 * Levels down.
 	 * If the random integer generated is between 0 and 0.2 (inclusive, a 30% chance), a random monster is selected from
-	 *  the monster team and leveled down - its damage reduced by 15 units.
+	 *  the monster team and leveled down - its damage reduced by 15 units, unless its current damage is less than 16.
 	 */
 	public static void levelsDown() {
 		double randomInt = createRandom();
@@ -107,10 +108,11 @@ public class RandomEvent {
 			Random rndm = new Random();
 			int rndmInt = rndm.nextInt(range);
 			Monster levelDownMonster = monsterTeam.get(rndmInt);
-			int initialDamage = levelDownMonster.getDamage();
-			levelDownMonster.setDamage(initialDamage -15);
-			randomOccured.add("Oh no " + levelDownMonster.getName() + " has gotten sick overnight! Their damage is now " + levelDownMonster.getDamage()+ " units.");
-			
+			if (levelDownMonster.getDamage() > 15) {
+				int initialDamage = levelDownMonster.getDamage();
+				levelDownMonster.setDamage(initialDamage -15);
+				randomOccured.add("Oh no " + levelDownMonster.getName() + " has gotten sick overnight! Their damage is now " + levelDownMonster.getDamage()+ " units.");
+			}
 		}
 	}
 	

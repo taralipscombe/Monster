@@ -1,7 +1,6 @@
 package GUI;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -21,39 +20,57 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ApplyingItemWindow.
+ */
 public class ApplyingItemWindow {
 
+	/** The frame of the class. */
 	public JFrame frmApplyingItem;
+	
+	/** The player of the game. */
 	private Player player;
+	
+	/** The item to be applied. */
 	private Item appliedItem;
+	
+	/** The monster team. */
 	private ArrayList<Monster> monsterTeam;
+	
+	/** The currently selected monster (represented as an integer corresponding to its placement in the list). */
 	private int currentlySelected;
+	
+	/** The button group. */
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	
+	/** The text displaying the current Monsters name. */
 	private JTextField txtName;
+	
+	/** The text displaying the current Monsters damage. */
 	private JTextField txtDamage;
+	
+	/** The text displaying the current Monsters heal amount. */
 	private JTextField txtHeal;
-	private JTextField txtCost;
+	
+	/** The text displaying the current Monsters health. */
+	private JTextField txtCurrentHealth;
+	
+	/** The txt title. */
 	private JTextField txtTitle;
+	
+	/** The btn apply. */
 	private JButton btnApply;
+	
+	/** The text displaying the current Monsters remaining lives. */
+	private JTextField txtLives;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(Player ofcPlayer, Item item) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ApplyingItemWindow window = new ApplyingItemWindow(ofcPlayer, item);
-					window.frmApplyingItem.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the application.
+	 *
+	 * @param ofcPlayer the ofc player
+	 * @param item the item
 	 */
 	public ApplyingItemWindow(Player ofcPlayer, Item item) {
 		
@@ -162,7 +179,7 @@ public class ApplyingItemWindow {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Selected Monster:", TitledBorder.CENTER, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
-		panel.setBounds(398, 118, 208, 193);
+		panel.setBounds(398, 98, 208, 220);
 		frmApplyingItem.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -190,13 +207,22 @@ public class ApplyingItemWindow {
 		panel.add(txtHeal);
 		txtHeal.setColumns(10);
 		
-		txtCost = new JTextField();
-		txtCost.setEditable(false);
-		txtCost.setHorizontalAlignment(SwingConstants.CENTER);
-		txtCost.setText("Cost");
-		txtCost.setBounds(6, 143, 196, 26);
-		panel.add(txtCost);
-		txtCost.setColumns(10);
+		txtCurrentHealth = new JTextField();
+		txtCurrentHealth.setEditable(false);
+		txtCurrentHealth.setHorizontalAlignment(SwingConstants.CENTER);
+		txtCurrentHealth.setText("Current Health");
+		txtCurrentHealth.setBounds(6, 143, 196, 26);
+		panel.add(txtCurrentHealth);
+		txtCurrentHealth.setColumns(10);
+		
+		txtLives = new JTextField();
+		txtLives.setToolTipText("");
+		txtLives.setText("Lives left");
+		txtLives.setHorizontalAlignment(SwingConstants.CENTER);
+		txtLives.setEditable(false);
+		txtLives.setColumns(10);
+		txtLives.setBounds(6, 181, 196, 26);
+		panel.add(txtLives);
 		
 		
 		JButton btnReturn = new JButton("Return");
@@ -225,6 +251,11 @@ public class ApplyingItemWindow {
 	}
 	
 	
+	/**
+	 * Display monster.
+	 *
+	 * @param num the num
+	 */
 	public void displayMonster(String num) {
 		
 		btnApply.setVisible(true);
@@ -233,25 +264,29 @@ public class ApplyingItemWindow {
 			txtName.setText(monsterTeam.get(0).getName()); 
 			txtDamage.setText("Damage: " + monsterTeam.get(0).getDamage() + " units");
 			txtHeal.setText("Heal Amount: " + monsterTeam.get(0).getHealAmount() + " units");
-			txtCost.setText("Cost: " + monsterTeam.get(0).getPrice() + " gold");
+			txtCurrentHealth.setText("Current Health: " + monsterTeam.get(0).getCurrentHealth() + " units");
+			txtLives.setText("Lives left: " + monsterTeam.get(0).getCurrentHealth());
 			
 		}else if (num.equals("Two")) {
 			txtName.setText(monsterTeam.get(1).getName()); 
 			txtDamage.setText("Damage: " + monsterTeam.get(1).getDamage() + " units");
 			txtHeal.setText("Heal Amount: " + monsterTeam.get(1).getHealAmount() + " units");
-			txtCost.setText("Cost: " + monsterTeam.get(1).getPrice() + " gold");
+			txtCurrentHealth.setText("Current Health: " + monsterTeam.get(1).getCurrentHealth() + " units");
+			txtLives.setText("Lives left: " + monsterTeam.get(1).getCurrentHealth());
 			
 		}else if (num.equals("Three")) {
 			txtName.setText(monsterTeam.get(2).getName()); 
 			txtDamage.setText("Damage: " + monsterTeam.get(2).getDamage() + " units");
 			txtHeal.setText("Heal Amount: " + monsterTeam.get(2).getHealAmount() + " units");
-			txtCost.setText("Cost: " + monsterTeam.get(2).getPrice() + " gold");
+			txtCurrentHealth.setText("Current Health: " + monsterTeam.get(2).getCurrentHealth() + " units");
+			txtLives.setText("Lives left: " + monsterTeam.get(2).getCurrentHealth());
 			
 		} else { // Four
 			txtName.setText(monsterTeam.get(3).getName()); 
 			txtDamage.setText("Damage: " + monsterTeam.get(3).getDamage() + " units");
 			txtHeal.setText("Heal Amount: " + monsterTeam.get(3).getHealAmount() + " units");
-			txtCost.setText("Cost: " + monsterTeam.get(3).getPrice() + " gold");
+			txtCurrentHealth.setText("Current Health: " + monsterTeam.get(3).getCurrentHealth() + " units");
+			txtLives.setText("Lives left: " + monsterTeam.get(3).getCurrentHealth());
 			
 		}
 		

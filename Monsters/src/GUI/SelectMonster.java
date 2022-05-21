@@ -18,15 +18,15 @@ public class SelectMonster {
 	private JTextField chooseName;
 	private String playerName, gameDifficulty, monsterName;
 	private int time;
-	private boolean defaultName=true;
+	private boolean defaultName = true;
 	
 	/**
 	 * Create the application.
 	 */
 	public SelectMonster(String name, int gameTime, String difficulty) {
-		playerName=name;
-		gameDifficulty=difficulty;
-		time=gameTime;
+		playerName = name;
+		gameDifficulty = difficulty;
+		time = gameTime;
 		initialize(playerName, time, gameDifficulty);
 	}
 
@@ -50,7 +50,7 @@ public class SelectMonster {
 		chooseOne.setBackground(new Color(255, 255, 255));
 		chooseOne.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(defaultName == false) {
+				if(!defaultName) {
 					monsterOptionOne.setName(monsterName);
 				}
 				Player player = new Player(name, difficulty, monsterOptionOne, gameTime);
@@ -64,7 +64,7 @@ public class SelectMonster {
 		JButton chooseTwo = new JButton("2");
 		chooseTwo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(defaultName == false) {
+				if(!defaultName) {
 					monsterOptionTwo.setName(monsterName);
 				}
 				Player player = new Player(name, difficulty, monsterOptionTwo, gameTime);
@@ -78,7 +78,7 @@ public class SelectMonster {
 		JButton chooseThree = new JButton("3");
 		chooseThree.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(defaultName == false) {
+				if(!defaultName) {
 					monsterOptionThree.setName(monsterName);
 				}
 				Player player = new Player(name, difficulty, monsterOptionThree, gameTime);
@@ -92,7 +92,7 @@ public class SelectMonster {
 		JButton chooseFour = new JButton("4");
 		chooseFour.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(defaultName == false) {
+				if(!defaultName) {
 					monsterOptionFour.setName(monsterName);
 				}
 				Player player = new Player(name, difficulty, monsterOptionFour, gameTime);
@@ -106,11 +106,12 @@ public class SelectMonster {
 		String optionOneString = monsterOptionOne.commandLineToString();
 		
 		JTextArea txtroptionalNameYour = new JTextArea();
+		txtroptionalNameYour.setEditable(false);
 		txtroptionalNameYour.setBackground(Color.RED);
 		txtroptionalNameYour.setForeground(Color.WHITE);
-		txtroptionalNameYour.setFont(new Font("EB Garamond 12", Font.BOLD, 14));
+		txtroptionalNameYour.setFont(new Font("Dialog", Font.BOLD, 12));
 		txtroptionalNameYour.setText("(Optional) Name your starting monster:");
-		txtroptionalNameYour.setBounds(12, 485, 240, 21);
+		txtroptionalNameYour.setBounds(23, 485, 260, 21);
 		frmChooseYourMonster.getContentPane().add(txtroptionalNameYour);
 		JTextArea optionOneDescription = new JTextArea(optionOneString);
 		optionOneDescription.setOpaque(false);
@@ -143,10 +144,10 @@ public class SelectMonster {
 		chooseName.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				monsterName = chooseName.getText();
-				defaultName=false;
+				defaultName = false;
 			}
 		});
-		chooseName.setBounds(263, 487, 114, 19);
+		chooseName.setBounds(284, 487, 137, 19);
 		frmChooseYourMonster.getContentPane().add(chooseName);
 		chooseName.setColumns(10);
 		
@@ -167,7 +168,7 @@ public class SelectMonster {
 		
 		JLabel monsterfourPic = new JLabel("");
 		monsterfourPic.setIcon(new ImageIcon(SelectMonster.class.getResource("/images/monster4.png")));
-		monsterfourPic.setBounds(309, 379, 119, 104);
+		monsterfourPic.setBounds(309, 374, 119, 104);
 		frmChooseYourMonster.getContentPane().add(monsterfourPic);
 		
 		JLabel background = new JLabel("");

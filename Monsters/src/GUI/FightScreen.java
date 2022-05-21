@@ -20,13 +20,13 @@ import java.awt.event.ActionEvent;
 public class FightScreen {
 
 
-	/** The frm fight. */
+	/** The fight frame. */
 	public JFrame frmFight;
 	
 	/** The player. */
 	private Player player;
 	
-	/** The player current. */
+	/** The players current Monster. */
 	private Monster playerCurrent;
 	
 	/** The num player current. */
@@ -35,40 +35,40 @@ public class FightScreen {
 	/** The enemy team. */
 	private ArrayList<Monster> enemyTeam;
 	
-	/** The enemy current. */
+	/** The enemy current Monster. */
 	private Monster enemyCurrent;
 	
 	/** The num enemy current. */
 	private int numEnemyCurrent = 0;
 	
-	/** The battling. */
+	/** The battling boolean, true whilst there is at least one monster alive in each team . */
 	private boolean battling = true;
 	
 	/** The txt time to battle. */
 	private JTextField txtTimeToBattle;
 	
-	/** The txt players current. */
+	/** The txt players current Monster. */
 	private JTextField txtPlayersCurrent;
 	
-	/** The txt enemys current. */
+	/** The txt enemys current Monster. */
 	private JTextField txtEnemysCurrent;
 	
-	/** The lbl enemy mon. */
+	/** The picture enemy monster. */
 	private JLabel lblEnemyMon;
 	
-	/** The lbl player mon. */
+	/** The picture player monster. */
 	private JLabel lblPlayerMon;
 	
-	/** The btn attack. */
+	/** The attack button. */
 	private JButton btnAttack;
 	
-	/** The btn heal. */
+	/** The heal button. */
 	private JButton btnHeal;
 	
-	/** The txt players remaining. */
+	/** The txt players remaining Monsters. */
 	private JTextField txtPlayersRemaining;
 	
-	/** The txt enemys remaining. */
+	/** The txt enemys remaining Monsters. */
 	private JTextField txtEnemysRemaining;
 
 

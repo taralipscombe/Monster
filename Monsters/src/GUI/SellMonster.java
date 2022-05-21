@@ -18,19 +18,46 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
+
+/**
+ * The Class SellMonster.
+ */
 public class SellMonster {
 
+	/** The player. */
 	private Player player;
+	
+	/** The monsters for sale. */
 	private ArrayList<Monster> monstersForSale;
+	
+	/** The current selected Monster . */
 	private Monster currentSelected = null;
+	
+	/** The sell monster frame. */
 	public JFrame frmSellMonster;
+	
+	/** The txt shop monster. */
 	private JTextField txtShopMonster;
+	
+	/** The text displaying the currently selected Monsters name. */
 	private JTextField txtName;
+	
+	/** The text displaying the currently selected Monsters damage. */
 	private JTextField txtDamage;
+	
+	/** The text displaying the currently selected Monsters heal amount. */
 	private JTextField txtHeal;
+	
+	/** The text displaying the currently selected Monsters selling price. */
 	private JTextField txtSell;
+	
+	/** The button group. */
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	
+	/** The text displaying the players gold. */
 	private JTextField txtCurrentGold;
+	
+	/** The return button. */
 	private JButton btnReturn;
 	
 
@@ -242,6 +269,7 @@ public class SellMonster {
 		player.removeTeamMate(currentSelected);
 		player.increaseGold(sellBack);
 		txtCurrentGold.setText("Your current gold: " + player.getgold() + " gold");
+		frmSellMonster.dispose();
 		
 	}
 	

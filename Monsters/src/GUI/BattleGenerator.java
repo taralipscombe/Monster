@@ -1,3 +1,5 @@
+package GUI;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -37,7 +39,6 @@ public class BattleGenerator {
 	public ArrayList<Monster> generateTeam() { // generates the team, mainscreen stores the team, then generate team clears the arrayList to null
 		generateEnemies();
 		ArrayList<Monster> team = new ArrayList<Monster>();
-		printTeam();
 		for (Monster monster : enemyTeam) {
 			team.add(monster);
 		}
@@ -60,17 +61,7 @@ public class BattleGenerator {
 		return average;
 	}
 	
-	
-	/**
-	 * Prints the Player's Monster team.
-	 */
-	public static void printTeam() {
-		for (Monster monster : enemyTeam) {
-			System.out.println();
-			System.out.println(monster.toString());
-		}
-		System.out.println();
-	}
+
 	
 	/**
 	 * Generate enemies. Matches the number of monsters in the players Monster Team to get even teams.

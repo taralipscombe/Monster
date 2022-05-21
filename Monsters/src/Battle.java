@@ -2,8 +2,13 @@ import java.util.ArrayList;
 
 public class Battle {
 	
+	/** The player of the game. */
 	private static Player player;
+	
+	/** The players team of Monsters. */
 	private static ArrayList<Monster> playersTeam;
+	
+	/** The enemy team of Monsters. */
 	private static ArrayList<Monster> enemyTeam;
 	
 	

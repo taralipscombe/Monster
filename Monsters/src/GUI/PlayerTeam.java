@@ -31,9 +31,9 @@ public class PlayerTeam {
 	private JTextField txtName;
 	private JTextField txtDamage;
 	private JTextField txtHeal;
-	private JTextField txtCost;
+	private JTextField txtLives;
+	private JTextField txtCurrentHealth;
 
-	
 
 	/**
 	 * Create the application.
@@ -134,7 +134,7 @@ public class PlayerTeam {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Selected Monster:", TitledBorder.CENTER, TitledBorder.ABOVE_TOP, null, new Color(0, 0, 0)));
-		panel.setBounds(398, 118, 208, 193);
+		panel.setBounds(398, 118, 208, 209);
 		frmPlayerTeam.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -162,13 +162,21 @@ public class PlayerTeam {
 		panel.add(txtHeal);
 		txtHeal.setColumns(10);
 		
-		txtCost = new JTextField();
-		txtCost.setEditable(false);
-		txtCost.setHorizontalAlignment(SwingConstants.CENTER);
-		txtCost.setText("Cost");
-		txtCost.setBounds(6, 143, 196, 26);
-		panel.add(txtCost);
-		txtCost.setColumns(10);
+		txtLives = new JTextField();
+		txtLives.setEditable(false);
+		txtLives.setHorizontalAlignment(SwingConstants.CENTER);
+		txtLives.setText("Lives Left");
+		txtLives.setBounds(6, 168, 196, 26);
+		panel.add(txtLives);
+		txtLives.setColumns(10);
+		
+		txtCurrentHealth = new JTextField();
+		txtCurrentHealth.setText("Current Health:");
+		txtCurrentHealth.setHorizontalAlignment(SwingConstants.CENTER);
+		txtCurrentHealth.setEditable(false);
+		txtCurrentHealth.setColumns(10);
+		txtCurrentHealth.setBounds(6, 138, 196, 26);
+		panel.add(txtCurrentHealth);
 		
 		JButton btnReturn = new JButton("Return");
 		btnReturn.addActionListener(new ActionListener() {
@@ -192,28 +200,31 @@ public void displayMonster(String num) {
 			txtName.setText(monsterTeam.get(0).getName()); 
 			txtDamage.setText("Damage: " + monsterTeam.get(0).getDamage() + " units");
 			txtHeal.setText("Heal Amount: " + monsterTeam.get(0).getHealAmount() + " units");
-			txtCost.setText("Cost: " + monsterTeam.get(0).getPrice() + " gold");
+			txtLives.setText("Lives left: " + monsterTeam.get(0).getLives());
+			txtCurrentHealth.setText("Current Health: " + monsterTeam.get(0).getCurrentHealth() + " units");
 			
 		}else if (num.equals("Two")) {
 			txtName.setText(monsterTeam.get(1).getName()); 
 			txtDamage.setText("Damage: " + monsterTeam.get(1).getDamage() + " units");
 			txtHeal.setText("Heal Amount: " + monsterTeam.get(1).getHealAmount() + " units");
-			txtCost.setText("Cost: " + monsterTeam.get(1).getPrice() + " gold");
+			txtLives.setText("Lives left: " + monsterTeam.get(1).getLives());
+			txtCurrentHealth.setText("Current Health: " + monsterTeam.get(1).getCurrentHealth() + " units");
 			
 		}else if (num.equals("Three")) {
 			txtName.setText(monsterTeam.get(2).getName()); 
 			txtDamage.setText("Damage: " + monsterTeam.get(2).getDamage() + " units");
 			txtHeal.setText("Heal Amount: " + monsterTeam.get(2).getHealAmount() + " units");
-			txtCost.setText("Cost: " + monsterTeam.get(2).getPrice() + " gold");
+			txtLives.setText("Lives left: " + monsterTeam.get(2).getLives());
+			txtCurrentHealth.setText("Current Health: " + monsterTeam.get(2).getCurrentHealth() + " units");
 			
 		} else { // Four
 			txtName.setText(monsterTeam.get(3).getName()); 
 			txtDamage.setText("Damage: " + monsterTeam.get(3).getDamage() + " units");
 			txtHeal.setText("Heal Amount: " + monsterTeam.get(3).getHealAmount() + " units");
-			txtCost.setText("Cost: " + monsterTeam.get(3).getPrice() + " gold");
+			txtLives.setText("Lives left: " + monsterTeam.get(3).getLives());
+			txtCurrentHealth.setText("Current Health: " + monsterTeam.get(3).getCurrentHealth() + " units");
 			
 		}
 		
 	}
-
 }

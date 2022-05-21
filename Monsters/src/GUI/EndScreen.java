@@ -17,7 +17,7 @@ import java.awt.Color;
 public class EndScreen {
 
 	
-	/** The frame. */
+	/** The end screen frame. */
 	public JFrame frmEndScreen;
 	
 	/** The player. */
@@ -26,16 +26,16 @@ public class EndScreen {
 	/** The txt game ended. */
 	private JTextField txtGameEnded;
 	
-	/** The txt name. */
+	/** The text displaying the players name. */
 	private JTextField txtName;
 	
-	/** The txt days. */
+	/** The text displaying the players game length. */
 	private JTextField txtDays;
 	
-	/** The txt points. */
+	/** The text displaying the players points. */
 	private JTextField txtPoints;
 	
-	/** The txt gold. */
+	/** The text displaying the players gold. */
 	private JTextField txtGold;
 
 

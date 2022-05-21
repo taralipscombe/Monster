@@ -273,7 +273,7 @@ public class BuyMonster {
 	 * @param monster the monster
 	 */
 	public void buy(Monster monster) {
-		if(player.getgold() < monster.getPrice()) {
+		if (player.getgold() < monster.getPrice()) {
 			JOptionPane.showMessageDialog(frmBuyMonster, "You do not have enough gold to purchase this Monster. You can earn more gold by battling!");
 		} else if (player.getTeam().size() == 4 ) {
 			JOptionPane.showMessageDialog(frmBuyMonster, "You already have a full team! TIP: You can sell Monsters in the Shop!");
@@ -282,6 +282,7 @@ public class BuyMonster {
 			txtCurrentGold.setText("Your current gold: " + player.getgold() + " gold"); 
 			player.addTeamMate(monster);
 			JOptionPane.showMessageDialog(frmBuyMonster, "You have successfully bought " + monster.getName());
+			frmBuyMonster.dispose();
 }
 	}
 	

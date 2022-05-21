@@ -22,10 +22,10 @@ import javax.swing.JButton;
  */
 public class SellItem {
 
-	/** The player. */
+	/** The player of the game. */
 	private Player player;
 	
-	/** The frm sell item. */
+	/** The sell item frame. */
 	public JFrame frmSellItem;
 	
 	/** The txt sell items. */
@@ -34,40 +34,40 @@ public class SellItem {
 	/** The button group. */
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
-	/** The txt name. */
+	/** The text displaying the item's name. */
 	private JTextField txtName;
 	
-	/** The txt own. */
+	/** The text displaying how many of those items the player already owns. */
 	private JTextField txtOwn;
 	
-	/** The txt sell. */
+	/** The text displaying the item's selling price. */
 	private JTextField txtSell;
 	
-	/** The lbl item one. */
+	/** The picture of item one. */
 	private JLabel lblItemOne;
 	
-	/** The lbl item two. */
+	/** The picture of item two. */
 	private JLabel lblItemTwo;
 	
-	/** The lbl item three. */
+	/** The picture of item three. */
 	private JLabel lblItemThree;
 	
-	/** The lbl item four. */
+	/** The picture of item four. */
 	private JLabel lblItemFour;
 	
-	/** The txt current gold. */
+	/** The txt displaying the players' current gold. */
 	private JTextField txtCurrentGold;
 	
-	/** The panel. */
+	/** The panel to the side diaplying the information . */
 	private JPanel panel;
 	
-	/** The btn sell item. */
+	/** The sell item button. */
 	private JButton btnSellItem;
 	
 	/** The current item. */
 	private Item currentItem = null;
 	
-	/** The btn return. */
+	/** The return button. */
 	private JButton btnReturn;
 
 
@@ -314,6 +314,7 @@ public class SellItem {
 		player.increaseGold(sellBackPrice);
 		player.getItems().remove(currentItem);
 		currentItem = null;
+		frmSellItem.dispose();
 		
 	}
 	

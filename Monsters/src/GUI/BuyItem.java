@@ -17,22 +17,55 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BuyItem.
+ */
 public class BuyItem {
 	
+	/** The official player of the game. */
 	private Player player;
+	
+	/** The buy item frame. */
 	public JFrame frmBuyItem;
+	
+	/** The currently selected item. */
 	private int currentlySelected;
+	
+	/** The txt shop buying items. */
 	private JTextField txtShopBuyingItems;
+	
+	/** The button group. */
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	
+	/** The text displaying the current Items name. */
 	private JTextField txtName;
+	
+	/** The text displaying the current Item property. */
 	private JTextField txtProperty;
+	
+	/** The text displaying the current Item property change. */
 	private JTextField txtAmount;
+	
+	/** The text displaying the current Item cost. */
 	private JTextField txtCost;
+	
+	/** The text displaying how many items the player owns of the current Item. */
 	private JTextField txtOwn;
-	private JLabel lblNewLabel;
-	private JLabel lblNewLabel_1;
+	
+	/** The lbl displaying item One. */
+	private JLabel itemPicOne;
+	
+	/** The lbl displaying item Two. */
+	private JLabel ItemPicThree;
+	
+	/** The lbl displaying item Three. */
 	private JLabel lblNewLabel_2;
-	private JLabel lblNewLabel_3;
+	
+	/** The lbl displaying item Four. */
+	private JLabel ItemPicFour;
+	
+	/** The players current gold. */
 	private JTextField txtCurrentGold;
 
 
@@ -167,25 +200,25 @@ public class BuyItem {
 		panel.add(txtOwn);
 		txtOwn.setColumns(10);
 		
-		lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(BuyItem.class.getResource("/images/potion.png")));
-		lblNewLabel.setBounds(42, 60, 120, 139);
-		frmBuyItem.getContentPane().add(lblNewLabel);
+		itemPicOne = new JLabel("");
+		itemPicOne.setIcon(new ImageIcon(BuyItem.class.getResource("/images/potion.png")));
+		itemPicOne.setBounds(42, 60, 120, 139);
+		frmBuyItem.getContentPane().add(itemPicOne);
 		
-		lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(BuyItem.class.getResource("/images/potion_2.png")));
-		lblNewLabel_1.setBounds(222, 67, 141, 128);
-		frmBuyItem.getContentPane().add(lblNewLabel_1);
+		ItemPicThree = new JLabel("");
+		ItemPicThree.setIcon(new ImageIcon(BuyItem.class.getResource("/images/potion_2.png")));
+		ItemPicThree.setBounds(222, 67, 141, 128);
+		frmBuyItem.getContentPane().add(ItemPicThree);
 		
 		lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon(BuyItem.class.getResource("/images/heart.png")));
 		lblNewLabel_2.setBounds(45, 211, 147, 164);
 		frmBuyItem.getContentPane().add(lblNewLabel_2);
 		
-		lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(new ImageIcon(BuyItem.class.getResource("/images/dialog_question.png")));
-		lblNewLabel_3.setBounds(236, 226, 141, 139);
-		frmBuyItem.getContentPane().add(lblNewLabel_3);
+		ItemPicFour = new JLabel("");
+		ItemPicFour.setIcon(new ImageIcon(BuyItem.class.getResource("/images/dialog_question.png")));
+		ItemPicFour.setBounds(236, 226, 141, 139);
+		frmBuyItem.getContentPane().add(ItemPicFour);
 		
 		txtCurrentGold = new JTextField("Your current gold: " + player.getgold() + " gold");
 		txtCurrentGold.setEditable(false);
@@ -299,6 +332,7 @@ public class BuyItem {
 			}
 			player.addItem(purchasedItem);
 			JOptionPane.showMessageDialog(frmBuyItem, "You have successfully bought " + purchasedItem.getName());
+			frmBuyItem.dispose();
 	}
 		
 	}

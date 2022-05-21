@@ -16,37 +16,86 @@ import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 
+
+/**
+ * The Class BattleScreen.
+ */
 public class BattleScreen {
 
+	/** The mainscreen instance passed through. */
 	private MainScreen mainscreen;
+	
+	/** The battle frame. */
 	public JFrame frmBattle;
+	
+	/** The player. */
 	private Player player;
+	
+	/** The current team selected. */
 	private ArrayList<Monster> currentTeam = null;
+	
+	/** The txt select a team. */
 	private JTextField txtSelectATeam;
+	
+	/** The button group. */
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	
+	/** The text displaying the currently selected Monster in team one's name. */
 	private JTextField txtNameOne;
+	
+	/** The text displaying the currently selected Monster in team one's attack. */
 	private JTextField txtAttackOne;
+	
+	/** The text displaying the currently selected Monster in team one's heal amount. */
 	private JTextField txtHealOne;
+	
+	/** The text displaying the currently selected Monster in team two's name. */
 	private JTextField txtNameTwo;
+	
+	/** The text displaying the currently selected Monster in team two's attack. */
 	private JTextField txtAttackTwo;
+	
+	/** The text displaying the currently selected Monster in team two's heal amount. */
 	private JTextField txtHealTwo;
+	
+	/** The text displaying the currently selected Monster in team three's name.*/
 	private JTextField txtNameThree;
+	
+	/** The text displaying the currently selected Monster in team three's attack. */
 	private JTextField txtAttackThree;
+	
+	/** The text displaying the currently selected Monster in team three's heal amount. */
 	private JTextField txtHealThree;
+	
+	/** The battle button. */
 	private JButton btnBattle;
+	
+	/** The exit button. */
 	private JButton btnExit;
-	private JLabel lblNewLabel;
-	private JLabel lblNewLabel_1;
-	private JLabel lblNewLabel_2;
+	
+	/** The first picture. */
+	private JLabel picTwo;
+	
+	/** The second picture. */
+	private JLabel picOne;
+	
+	/** The third picture. */
+	private JLabel picThree;
+	
+	/** The text displaying gold won for battling team One. */
 	private JTextField txtWinningsOne;
+	
+	/** The text displaying gold won for battling team Two. */
 	private JTextField txtWinningsTwo;
+	
+	/** The text displaying gold won for battling team Three. */
 	private JTextField txtWinningsThree;
 
 
 	/**
 	 * Create the application. Calls the generate battles method of the main screen to initialize possible battles.
 	 *
-	 * @param mainscreen the official instance of MainScreen
+	 * @param ofcMainscreen the ofc mainscreen
 	 */
 	public BattleScreen(MainScreen ofcMainscreen) {
 		mainscreen = ofcMainscreen;
@@ -221,20 +270,20 @@ public class BattleScreen {
 		btnExit.setBounds(23, 36, 117, 29);
 		frmBattle.getContentPane().add(btnExit);
 		
-		lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(BattleScreen.class.getResource("/images/viking_helmet.png")));
-		lblNewLabel.setBounds(253, 287, 141, 120);
-		frmBattle.getContentPane().add(lblNewLabel);
+		picTwo = new JLabel("");
+		picTwo.setIcon(new ImageIcon(BattleScreen.class.getResource("/images/viking_helmet.png")));
+		picTwo.setBounds(253, 287, 141, 120);
+		frmBattle.getContentPane().add(picTwo);
 		
-		lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(BattleScreen.class.getResource("/images/sword.png")));
-		lblNewLabel_1.setBounds(32, 287, 155, 128);
-		frmBattle.getContentPane().add(lblNewLabel_1);
+		picOne = new JLabel("");
+		picOne.setIcon(new ImageIcon(BattleScreen.class.getResource("/images/sword.png")));
+		picOne.setBounds(32, 287, 155, 128);
+		frmBattle.getContentPane().add(picOne);
 		
-		lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon(BattleScreen.class.getResource("/images/arrow.png")));
-		lblNewLabel_2.setBounds(457, 287, 150, 120);
-		frmBattle.getContentPane().add(lblNewLabel_2);
+		picThree = new JLabel("");
+		picThree.setIcon(new ImageIcon(BattleScreen.class.getResource("/images/arrow.png")));
+		picThree.setBounds(457, 287, 150, 120);
+		frmBattle.getContentPane().add(picThree);
 		
 		JComboBox<Monster> cBoxTeamOne = new JComboBox<Monster>();
 		cBoxTeamOne.addActionListener(new ActionListener() {
