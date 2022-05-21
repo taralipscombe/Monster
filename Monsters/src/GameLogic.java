@@ -3,13 +3,27 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * 
+ * The class Gamelogic. Takes input from the user to set up the game.
+ *
+ */
 
 public class GameLogic {
+	/**
+	 * playerName  the string name the user sets in the game.
+	 * numDays  the integer number of days the user wants to play. Between 5 and 15
+	 * difficulty  the string 'easy', 'medium', 'hard'
+	 * startingMonster  Type Monster, the first monster in the players team.
+	 * player  Type Player, initialized with the data received from the user input, used to play the game.
+	 */
 	private static String playerName=null;
 	private static int numDays=0;
 	private static String difficulty=null;
 	private static Monster startingMonster=null;
 	private static Player player;
+	
+	/** Method to take user input and set the player's name with 3-15 characters. */
 	
 	static void setName(Scanner input) {
 		while (playerName == null) {
@@ -27,7 +41,7 @@ public class GameLogic {
 		}
 	}
 	
-	
+	/** Method to take user input and set the number of days the player wants to play (integer between 5 and 15) */
 	static void setNumDays(Scanner input) {
 		while (numDays == 0) {
 			System.out.println("How many days do you want to play? (between 5 and 15)");
@@ -46,7 +60,7 @@ public class GameLogic {
 		
 	}
 	
-	
+	/** Method to take user input and sets the difficulty of the game - 1 for Easy, 2 for Medium, 3 for Hard. */
 	static void setDifficulty(Scanner input) {
 		while (difficulty == null) {
 			System.out.println("Please enter your desired difficulty:");
@@ -67,8 +81,7 @@ public class GameLogic {
 		}
 	}
 	
-	// could add all monster options to array to make look nicer?
-	// to change the characteristics of the first monster options?
+	/** Method to take user input and set the player's starting monster from the options provided. */
 	static void setStartingMonster(Scanner input) {
 		while (startingMonster == null) {
 			Monster monsterOptionOne = new Monster("Harry", 33, 20, 53);
@@ -110,8 +123,7 @@ public class GameLogic {
 			}
 	}
 	
-	
-	//When do we close scanner?
+
 	public static void main(String[] args) {
 		
 		Scanner input = new Scanner(System.in);
