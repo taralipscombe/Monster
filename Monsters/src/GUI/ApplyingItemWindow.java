@@ -118,7 +118,6 @@ public class ApplyingItemWindow {
 		}
 		
 		if (monsterTeam.size() >= 2) {
-			JOptionPane.showMessageDialog(frmApplyingItem, "Your Monster Team is looking empty... Purchase more Monsters at the Shop!");
 			
 			JLabel MonPicTwo = new JLabel("");
 			MonPicTwo.setIcon(new ImageIcon(BuyMonster.class.getResource("/images/monster02.png")));
@@ -240,7 +239,7 @@ public class ApplyingItemWindow {
 			public void actionPerformed(ActionEvent e) {
 				Monster chosenMonster = monsterTeam.get(currentlySelected - 1);
 				player.useItem(appliedItem, chosenMonster);
-				JOptionPane.showMessageDialog(null, "You have successfully applied " + appliedItem.getName() + " to " + chosenMonster.getName());
+				JOptionPane.showMessageDialog(frmApplyingItem, "You have successfully applied " + appliedItem.getName() + " to " + chosenMonster.getName());
 				frmApplyingItem.dispose();
 			}
 		});

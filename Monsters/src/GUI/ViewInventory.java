@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -337,7 +338,9 @@ public class ViewInventory {
 	 * Apply current item.
 	 */
 	public void applyCurrentItem() {
-		
+		if (player.getTeam().size() <= 2) {
+			JOptionPane.showMessageDialog(frmInventory, "Your Monster Team is looking empty... Purchase more Monsters at the Shop!");
+		}
 		ApplyingItemWindow applying = new ApplyingItemWindow(player, currentItem);
 		applying.frmApplyingItem.setVisible(true);
 		buttonGroup.clearSelection();

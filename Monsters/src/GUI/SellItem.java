@@ -118,7 +118,7 @@ public class SellItem {
 			}
 		});
 		buttonGroup.add(rdbtnHealingPotion);
-		rdbtnHealingPotion.setBounds(204, 200, 165, 23);
+		rdbtnHealingPotion.setBounds(196, 200, 195, 23);
 		frmSellItem.getContentPane().add(rdbtnHealingPotion);
 		
 		JRadioButton rdbtnExtraLife = new JRadioButton("Extra Life");
