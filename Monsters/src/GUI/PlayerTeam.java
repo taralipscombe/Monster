@@ -20,6 +20,11 @@ import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+/**
+ * 
+ * PlayerTeam The class that creates the window which displays the Player's team
+ *
+ */
 public class PlayerTeam {
 	
 	/** frmPlayerTeam the window frame*/
@@ -214,8 +219,12 @@ public class PlayerTeam {
 		
 	}
 	
-	
-public void displayMonster(String num) {
+	/**
+	 * displayMonster Displays the current chosen Monster in the JFrame on the right side of the window
+	 * 
+	 * @param num The number of the currently selected Monster
+	 */
+	public void displayMonster(String num) {
 		
 		if (num.equals("One")) {
 			txtName.setText(monsterTeam.get(0).getName()); 

@@ -12,7 +12,11 @@ import javax.swing.ImageIcon;
 import java.awt.Color;
 import javax.swing.JTextField;
 
-
+/**
+ * 
+ * SelectMonster The class that creates the window for the Player to select their starting Monster
+ *
+ */
 public class SelectMonster {
 	/** The set up game frame */
 	public JFrame frmChooseYourMonster;
@@ -22,7 +26,7 @@ public class SelectMonster {
 	private String playerName, gameDifficulty, monsterName;
 	/** Number of days for game*/
 	private int time;
-	/** Boolean - true if player is using the monster's default name, false if they have inputted a chosen name*/
+	/** Boolean - true if player is using the monster's default name, false if they have inputed a chosen name*/
 	private boolean defaultName = true;
 	
 	/**
