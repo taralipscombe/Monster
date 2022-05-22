@@ -38,7 +38,7 @@ public class SetupGame {
 	/** The name field. */
 	private JTextField nameField;
 	
-	/** The players name, game difficulty, and inputted name. */
+	/** The players name, game difficulty, and inputed name. */
 	private String name, gameDifficulty, inputName;
 	
 	/** The game time. */
