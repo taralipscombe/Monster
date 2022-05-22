@@ -9,20 +9,38 @@ import java.awt.event.ActionEvent;
 
 
 public class ShopWindow {
-
+	
+	/** player Player of game*/
 	private Player player;
+	
+	/** frmShop window shop view*/
 	public JFrame frmShop;
+	
+	/** btnBuy Buy button*/
 	private JButton btnBuy;
+	
+	/** btnSell sell button*/
 	private JButton btnSell;
+	
+	/** btnExitShop button to go back to MainScreen*/
 	private JButton btnExitShop;
+	
+	/** btnBuyItem button to buy an item*/
 	private JButton btnBuyItem;
+	
+	/** btnBuyMonster button to buy a monster*/
 	private JButton btnBuyMonster;
+	
+	/** btnSellItem button for selling an item*/
 	private JButton btnSellItem;
+	
+	/** btnSellMonster sell monster button*/
 	private JButton btnSellMonster;
 
 
 	/**
 	 * Create the application.
+	 * @param ofcPlayer player of the game
 	 */
 	public ShopWindow(Player ofcPlayer) {
 		player = ofcPlayer;
@@ -137,7 +155,7 @@ public class ShopWindow {
 		
 		
 	}
-	
+	/** buyButtonSelected method for when buy button is pushed, sets buy item and monster buttons to visible, the others to not visible*/
 	public void buyButtonSelected() {
 		btnSellItem.setVisible(false);
 		btnSellMonster.setVisible(false);
@@ -145,7 +163,7 @@ public class ShopWindow {
 		btnBuyMonster.setVisible(true);
 		
 	}
-	
+	/** sellButtonSelected method for when sell button is pushed, sets sell item and monster buttons to visible, the others to not visible*/
 	public void sellButtonSelected() {
 		btnBuyItem.setVisible(false);
 		btnBuyMonster.setVisible(false);
