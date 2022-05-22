@@ -27,7 +27,7 @@ public class SelectMonster {
 	
 	/**
 	 * Create the application.
-	 * 
+	 * monsterOnePic, monsterTwoPic, monsterThreePic, monsterFourPic sourced from https://www.flaticon.com/search?word=monster
 	 * @param name The name of the Monster
 	 * @param gameTime The game time in terms of days
 	 * @param difficulty The chosen level of difficulty 
