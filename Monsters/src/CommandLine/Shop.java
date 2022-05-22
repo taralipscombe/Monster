@@ -40,6 +40,8 @@ public class Shop {
 	}
 	/**
 	 * Takes user input to buy or sell an item at the store. If the player has no items or Monsters available to sell, an error message is printed
+	 * 
+	 * @param input The scanner input
 	 */
 	public void enterStore(Scanner input) {
 		boolean actionRecieved = false;
@@ -90,6 +92,8 @@ public class Shop {
 	/**
 	 * Takes user input to buy an item - items in the shop are printed to the player, and the player enters a number correlating
 	 * to the item they want to buy and checks they have enough gold to buy it, then buys it and adds it to the player's inventory
+	 * 
+	 * @param input The scanner input
 	 */
 	public void buy(Scanner input) {
 		System.out.println("Your current gold: " + player.getgold());
@@ -132,6 +136,8 @@ public class Shop {
 	 * Takes user input to sell an item - items in the player's inventory are printed, and the player enters a number correlating
 	 * to the item they want to sell and calculates the sell back price based on the items current usage, then the item is removed from the player's inventory
 	 * and the player's gold is increased by the sell back price
+	 * 
+	 * @param input The scanner input
 	 */
 	public void sell(Scanner input) {
 		System.out.println("Your current gold: " + player.getgold());
@@ -163,6 +169,8 @@ public class Shop {
 	/**
 	 * Takes user input to sell a monster. Prints all the monsters in the player's team to display to the player and then takes input to chose one to sell. Sell back price
 	 * is determined on how many lives the monster has left. Monster is removed from pleyer's team and gold is increased by sell back price
+	 * 
+	 * @param input The scanner input
 	 */
 	public void sellMonster(Scanner input) {
 		System.out.println("Your current gold: " + player.getgold());
@@ -196,6 +204,8 @@ public class Shop {
 	/**
 	 * Takes user input to buy an monster - 4 monsters are generated randomly to show in the shop, the player inputs an integer corresponding to the monster they want 
 	 * to buy, checks they have enough gold and buys it.
+	 * 
+	 * @param input The scanner input
 	 */
 	public void buyMonster(Scanner input) {
 		

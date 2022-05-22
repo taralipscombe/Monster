@@ -25,10 +25,9 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 
-
 /**
  * 
- * class SetUpGame, initializes the battle monster fighting game 
+ * class SetUpGame Initializes the battle monster fighting game 
  *
  */
 public class SetupGame {
@@ -60,7 +59,7 @@ public class SetupGame {
 	/**
 	 * Launch the application.
 	 * 
-	 * @param args
+	 * @param args The empty parameter for the main method
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
