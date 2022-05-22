@@ -13,7 +13,9 @@ class MonsterGeneratorTest {
 	/**New monster generator*/
 	MonsterGenerator gen;
 	
-	/** Creates instance of monster generator to use in tests*/
+	/** Creates instance of monster generator to use in tests
+	* @throws Exception for exception
+	*/
 	@BeforeEach
 	void setUp() throws Exception {
 		gen = new MonsterGenerator();

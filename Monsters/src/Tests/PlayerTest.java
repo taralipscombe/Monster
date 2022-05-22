@@ -19,7 +19,9 @@ class PlayerTest {
 	/** Item to use in tests*/
 	Item testDamagePotion;
 	
-	/** creating monsters, player and item for tests*/
+	/** creating monsters, player and item for tests
+	* @throws Exception exception
+	*/
 	@BeforeEach
 	void setUp() throws Exception { 
 		startingMonster = new Monster("Tester", 50, 10, 10);

@@ -26,7 +26,7 @@ class ItemTest {
 	
 	/**
 	 * setUp , Creates a monster and the 4 different items to be used in each method
-	 * @throws Exception
+	 * @throws Exception an exception
 	 */
 	@BeforeEach
 	void setUp() throws Exception {

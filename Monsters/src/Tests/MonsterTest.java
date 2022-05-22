@@ -22,7 +22,7 @@ class MonsterTest {
 	
 	/**
 	 * Creates 2 monsters 'Tester' and 'Enemy' to use in the tests
-	 *
+	 * @throws Exception for exception
 	 */
 	@BeforeEach
 	void setUp() throws Exception {
