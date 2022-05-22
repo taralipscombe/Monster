@@ -1,8 +1,14 @@
+package Tests;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import CommandLine.Monster;
+import CommandLine.Player;
+import CommandLine.Item;
 
 class PlayerTest {
 	Player testPlayer;

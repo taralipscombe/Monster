@@ -1,6 +1,11 @@
-import static org.junit.jupiter.api.Assertions.*;
+package Tests;
+
+import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
+
+import CommandLine.Monster;
+import CommandLine.Player;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -12,7 +17,7 @@ class RandomEventTest {
 	Monster monOne, monTwo, monThree, monFour;
 	
 	/**  A team of One Monster. */
-	ArrayList<Monster> testMonsterTeamOne = new ArrayList<Monster>(new Monster("first monster", 30, 25, 55));
+	ArrayList<Monster> testMonsterTeamOne = new ArrayList<Monster>();
 	
 	/**  A team of Two Monsters. */
 	ArrayList<Monster> testMonsterTeamTwo = new ArrayList<Monster>();
@@ -32,11 +37,11 @@ class RandomEventTest {
 	 * @throws exception the exception
 	 */
 	@BeforeEach
-	void Setup() throws exception{
+	void Setup(){
 		//public Monster(String givenName, int givenDamage, int heal, int cost) {
 		
 		monOne = new Monster("first monster", 30, 25, 55);
-		player = new Player("Player", "2", monOne, 5)
+		player = new Player("Player", "2", monOne, 5);
 		monTwo = new Monster("second monster", 35, 20, 55);
 		monThree = new Monster("third monster", 25, 30, 55);
 		monFour = new Monster("fourth monster", 20, 35, 55);
@@ -44,12 +49,5 @@ class RandomEventTest {
 	}
 
 
-	/**
-	 * Test.
-	 */
-	@Test
-	void test() {
-		fail("Not yet implemented");
-	}
 
 }

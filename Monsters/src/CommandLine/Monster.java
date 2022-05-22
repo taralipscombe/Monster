@@ -1,3 +1,5 @@
+package CommandLine;
+
 /**
  * 
  * The class Monster.
