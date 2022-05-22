@@ -119,10 +119,10 @@ public class ViewInventory {
 		
 		
 		txtSellItems = new JTextField();
-		txtSellItems.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 18));
+		txtSellItems.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 22));
 		txtSellItems.setEditable(false);
 		txtSellItems.setText("View Inventory:");
-		txtSellItems.setBounds(197, 20, 157, 26);
+		txtSellItems.setBounds(197, 20, 227, 26);
 		frmInventory.getContentPane().add(txtSellItems);
 		txtSellItems.setColumns(10);
 		

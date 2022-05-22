@@ -100,9 +100,9 @@ public class BuyItem {
 		
 		txtShopBuyingItems = new JTextField();
 		txtShopBuyingItems.setEditable(false);
-		txtShopBuyingItems.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 18));
+		txtShopBuyingItems.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 22));
 		txtShopBuyingItems.setText("Shop Items:");
-		txtShopBuyingItems.setBounds(242, 23, 127, 32);
+		txtShopBuyingItems.setBounds(204, 19, 165, 32);
 		frmBuyItem.getContentPane().add(txtShopBuyingItems);
 		txtShopBuyingItems.setColumns(10);
 
@@ -157,7 +157,7 @@ public class BuyItem {
 				buySelectedItem();
 			}
 		});
-		btnBuyItem.setBounds(429, 302, 147, 29);
+		btnBuyItem.setBounds(395, 302, 209, 29);
 		frmBuyItem.getContentPane().add(btnBuyItem);
 		
 		JPanel panel = new JPanel();

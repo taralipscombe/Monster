@@ -62,7 +62,7 @@ public class PlayerTeam {
 		txtYourCurrentMonster.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 22));
 		txtYourCurrentMonster.setEditable(false);
 		txtYourCurrentMonster.setText("Your Current Monster Team:");
-		txtYourCurrentMonster.setBounds(145, 34, 340, 31);
+		txtYourCurrentMonster.setBounds(115, 31, 384, 31);
 		frmPlayerTeam.getContentPane().add(txtYourCurrentMonster);
 		txtYourCurrentMonster.setColumns(10);
 		

@@ -128,7 +128,7 @@ public class SetupGame {
 		txtrWelcomeToMonster.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 30));
 		txtrWelcomeToMonster.setText("Welcome to Monster Battles!");
 		txtrWelcomeToMonster.setOpaque(false);
-		txtrWelcomeToMonster.setBounds(112, 22, 455, 40);
+		txtrWelcomeToMonster.setBounds(96, 22, 491, 40);
 		frmSetUpGame.getContentPane().add(txtrWelcomeToMonster);
 		
 		JTextArea txtrInputName = new JTextArea();
@@ -153,13 +153,13 @@ public class SetupGame {
 		txtrHowManyDays.setEditable(false);
 		txtrHowManyDays.setText("How many days do you want to play?");
 		txtrHowManyDays.setOpaque(false);
-		txtrHowManyDays.setBounds(161, 115, 345, 29);
+		txtrHowManyDays.setBounds(132, 115, 387, 29);
 		frmSetUpGame.getContentPane().add(txtrHowManyDays);
 		
 		JSlider daysSlider = new JSlider();
 		daysSlider.setFont(new Font("Lucida Grande", Font.BOLD, 14));
 		daysSlider.setBackground(new Color(255, 255, 255));
-		daysSlider.setForeground(new Color(255, 255, 255));
+		daysSlider.setForeground(Color.BLUE);
 		daysSlider.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
 				gameTime = daysSlider.getValue();

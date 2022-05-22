@@ -114,35 +114,35 @@ public class SelectMonster {
 		txtroptionalNameYour.setEditable(false);
 		txtroptionalNameYour.setBackground(Color.RED);
 		txtroptionalNameYour.setForeground(Color.WHITE);
-		txtroptionalNameYour.setFont(new Font("Dialog", Font.BOLD, 11));
+		txtroptionalNameYour.setFont(new Font("Dialog", Font.BOLD, 10));
 		txtroptionalNameYour.setText("(Optional) Name your starting monster and hit enter:");
 		txtroptionalNameYour.setBounds(23, 485, 302, 16);
 		frmChooseYourMonster.getContentPane().add(txtroptionalNameYour);
 		JTextArea optionOneDescription = new JTextArea(optionOneString);
 		optionOneDescription.setOpaque(false);
 		optionOneDescription.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 12));
-		optionOneDescription.setBounds(175, 55, 130, 90);
+		optionOneDescription.setBounds(175, 55, 150, 90);
 		frmChooseYourMonster.getContentPane().add(optionOneDescription);
 		
 		String optionTwoString = monsterOptionTwo.commandLineToString();
 		JTextArea optionTwoDescription = new JTextArea(optionTwoString);
 		optionTwoDescription.setOpaque(false);
 		optionTwoDescription.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 12));
-		optionTwoDescription.setBounds(175, 157, 130, 89);
+		optionTwoDescription.setBounds(175, 157, 150, 89);
 		frmChooseYourMonster.getContentPane().add(optionTwoDescription);
 		
 		String optionThreeString = monsterOptionThree.commandLineToString();
 		JTextArea optionThreeDescription = new JTextArea(optionThreeString);
 		optionThreeDescription.setOpaque(false);
 		optionThreeDescription.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 12));
-		optionThreeDescription.setBounds(174, 258, 130, 94);
+		optionThreeDescription.setBounds(174, 258, 151, 94);
 		frmChooseYourMonster.getContentPane().add(optionThreeDescription);
 		
 		String optionFourString = monsterOptionFour.commandLineToString();
 		JTextArea optionFourDescription = new JTextArea(optionFourString);
 		optionFourDescription.setOpaque(false);
 		optionFourDescription.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 12));
-		optionFourDescription.setBounds(174, 379, 131, 94);
+		optionFourDescription.setBounds(174, 379, 151, 94);
 		frmChooseYourMonster.getContentPane().add(optionFourDescription);
 		
 		chooseName = new JTextField();
@@ -158,22 +158,22 @@ public class SelectMonster {
 		
 		JLabel monsterOnePic = new JLabel("");
 		monsterOnePic.setIcon(new ImageIcon(SelectMonster.class.getResource("/images/monster1.png")));
-		monsterOnePic.setBounds(309, 35, 119, 104);
+		monsterOnePic.setBounds(337, 35, 119, 104);
 		frmChooseYourMonster.getContentPane().add(monsterOnePic);
 		
 		JLabel monsterTwoPic = new JLabel("");
 		monsterTwoPic.setIcon(new ImageIcon(SelectMonster.class.getResource("/images/monster2.png")));
-		monsterTwoPic.setBounds(305, 143, 128, 104);
+		monsterTwoPic.setBounds(328, 142, 128, 104);
 		frmChooseYourMonster.getContentPane().add(monsterTwoPic);
 		
 		JLabel monsterThreePic = new JLabel("");
 		monsterThreePic.setIcon(new ImageIcon(SelectMonster.class.getResource("/images/monster3.png")));
-		monsterThreePic.setBounds(309, 258, 119, 104);
+		monsterThreePic.setBounds(337, 258, 119, 104);
 		frmChooseYourMonster.getContentPane().add(monsterThreePic);
 		
 		JLabel monsterfourPic = new JLabel("");
 		monsterfourPic.setIcon(new ImageIcon(SelectMonster.class.getResource("/images/monster4.png")));
-		monsterfourPic.setBounds(309, 374, 119, 104);
+		monsterfourPic.setBounds(325, 369, 119, 104);
 		frmChooseYourMonster.getContentPane().add(monsterfourPic);
 		
 		/** Sourced from https://www.shutterstock.com/image-vector/retail-store-shelves-red-awning-grocery-503246452 */

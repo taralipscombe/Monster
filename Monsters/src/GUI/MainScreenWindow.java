@@ -66,7 +66,7 @@ public class MainScreenWindow {
 				
 			}
 		});
-		viewStats.setBounds(198, 22, 204, 29);
+		viewStats.setBounds(186, 22, 223, 29);
 		frmMainscreen.getContentPane().add(viewStats);
 		
 		JButton viewTeamProperties = new JButton("View your team's properties");
@@ -136,7 +136,7 @@ public class MainScreenWindow {
 				events.clear();
 			}
 		});
-		sleep.setBounds(242, 227, 117, 29);
+		sleep.setBounds(229, 227, 145, 29);
 		frmMainscreen.getContentPane().add(sleep);
 		
 		JButton endGame = new JButton("End Game");

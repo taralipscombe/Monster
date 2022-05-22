@@ -94,10 +94,10 @@ public class SellItem {
 		frmSellItem.getContentPane().setLayout(null);
 		
 		txtSellItems = new JTextField();
-		txtSellItems.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 18));
+		txtSellItems.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 22));
 		txtSellItems.setEditable(false);
 		txtSellItems.setText("Sell Items:");
-		txtSellItems.setBounds(254, 20, 109, 26);
+		txtSellItems.setBounds(222, 20, 147, 26);
 		frmSellItem.getContentPane().add(txtSellItems);
 		txtSellItems.setColumns(10);
 		

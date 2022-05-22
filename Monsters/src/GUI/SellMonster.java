@@ -91,9 +91,9 @@ public class SellMonster {
 		
 		txtSellMonster = new JTextField();
 		txtSellMonster.setEditable(false);
-		txtSellMonster.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 18));
+		txtSellMonster.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 22));
 		txtSellMonster.setText("Sell Monsters:");
-		txtSellMonster.setBounds(233, 33, 169, 32);
+		txtSellMonster.setBounds(189, 35, 208, 32);
 		frmSellMonster.getContentPane().add(txtSellMonster);
 		txtSellMonster.setColumns(10);
 		
@@ -214,7 +214,7 @@ public class SellMonster {
 				sellSelectedMonster();
 			}
 		});
-		btnSellButton.setBounds(407, 282, 169, 29);
+		btnSellButton.setBounds(396, 282, 198, 29);
 		frmSellMonster.getContentPane().add(btnSellButton);
 		
 		btnReturn = new JButton("Return");

@@ -89,9 +89,9 @@ public class BuyMonster {
 		
 		txtShopMonster = new JTextField();
 		txtShopMonster.setEditable(false);
-		txtShopMonster.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 18));
+		txtShopMonster.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 22));
 		txtShopMonster.setText("Shop Monsters:");
-		txtShopMonster.setBounds(233, 17, 165, 26);
+		txtShopMonster.setBounds(193, 22, 208, 26);
 		frmBuyMonster.getContentPane().add(txtShopMonster);
 		txtShopMonster.setColumns(10);
 		
@@ -179,7 +179,7 @@ public class BuyMonster {
 				buySelectedMonster();
 			}
 		});
-		btnNewButton.setBounds(407, 282, 169, 29);
+		btnNewButton.setBounds(397, 287, 198, 29);
 		frmBuyMonster.getContentPane().add(btnNewButton);
 		
 		JLabel monPicOne = new JLabel("");

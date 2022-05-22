@@ -41,16 +41,17 @@ public class ShopWindow {
 		
 		JTextField txtWelcomeToThe = new JTextField();
 		txtWelcomeToThe.setEditable(false);
-		txtWelcomeToThe.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 18));
+		txtWelcomeToThe.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 22));
 		txtWelcomeToThe.setText("Welcome to the Shop!");
-		txtWelcomeToThe.setBounds(244, 29, 212, 26);
+		txtWelcomeToThe.setBounds(200, 28, 293, 26);
 		frmShop.getContentPane().add(txtWelcomeToThe);
 		txtWelcomeToThe.setColumns(10);
 		
 		JTextField txtWouldYouLike = new JTextField();
+		txtWouldYouLike.setFont(new Font("Dialog", Font.PLAIN, 16));
 		txtWouldYouLike.setEditable(false);
 		txtWouldYouLike.setText("Would you like to Buy or Sell?");
-		txtWouldYouLike.setBounds(244, 79, 205, 26);
+		txtWouldYouLike.setBounds(230, 81, 234, 26);
 		frmShop.getContentPane().add(txtWouldYouLike);
 		txtWouldYouLike.setColumns(10);
 		

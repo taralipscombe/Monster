@@ -119,10 +119,10 @@ public class BattleScreen {
 		frmBattle.getContentPane().setLayout(null);
 		
 		txtSelectATeam = new JTextField();
-		txtSelectATeam.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 18));
+		txtSelectATeam.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 21));
 		txtSelectATeam.setText("Select a Team to Battle:");
 		txtSelectATeam.setEditable(false);
-		txtSelectATeam.setBounds(200, 31, 234, 26);
+		txtSelectATeam.setBounds(176, 31, 302, 26);
 		frmBattle.getContentPane().add(txtSelectATeam);
 		txtSelectATeam.setColumns(10);
 		
