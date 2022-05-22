@@ -42,7 +42,7 @@ public class BattleGenerator {
 	/**
 	 * Generate team. The method generates the team, and returns it for mainscreen to store, and then clears the arrayList.
 	 *
-	 * @return an array list of Monsters 
+	 * @return team an array list of Monsters 
 	 * 
 	 */
 	public ArrayList<Monster> generateTeam() { // generates the team, mainscreen stores the team, then generate team clears the arrayList to null
@@ -60,7 +60,7 @@ public class BattleGenerator {
 	 * Gets the winnings.
 	 *
 	 * @param monsters the enemy Team of monsters, set to battle the player
-	 * @return the winnings the amount of gold awarded to player if battle is won
+	 * @return average the winnings the amount of gold awarded to player if battle is won
 	 */
 	public int getWinnings(ArrayList<Monster> monsters) {
 		int average = 0;
@@ -99,7 +99,7 @@ public class BattleGenerator {
 	 * Creates the enemy. Based on the difficulty chosen by the player, an enemy Monster is randomly generated using helper methods.
 	 * 
 	 *
-	 * @return the monster
+	 * @return enemy the monster
 	 */
 	public static Monster createEnemy() {
 		if (difficulty.equals("1")){
@@ -149,7 +149,7 @@ public class BattleGenerator {
 	 * be given to the Monster
 	 *
 	 * @param potentialName the potential name
-	 * @return true, if successful
+	 * @return true , if successful
 	 */
 	public static boolean checkName(String potentialName) {
 		for(Monster monster : enemyTeam) {
@@ -167,7 +167,7 @@ public class BattleGenerator {
 	 *
 	 * @param min the minimum integer
 	 * @param max the maximum integer
-	 * @return the int the randomly generated integer
+	 * @return randomInt the int the randomly generated integer
 	 */
 	public static int random(int min, int max) {
 	    int range = (max - min) + 1;
