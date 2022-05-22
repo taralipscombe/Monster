@@ -6,22 +6,26 @@ package GUI;
  *
  */
 public class Monster {
-	/**
-	 * name  name of monster
-	 * maxHealth  Maximum health a monster can reach
-	 * damage  integer amount of damage the monster can do to another during battle
-	 * healAmount  how much the monster heals overnight
-	 * currentHealth  the current health of the monster
-	 * lives  amount of lives the monster has left
-	 * price  price of the monster in gold
-	 */
-	
+
+	/**name  name of monster*/
 	private String name;
+	
+	/**maxHealth  Maximum health a monster can reach*/
 	private int maxHealth;
+	
+	/**damage  integer amount of damage the monster can do to another during battle*/
 	private int damage;
+	
+	/**healAmount  how much the monster heals overnight*/
 	private int healAmount;
+	
+	/**currentHealth  the current health of the monster*/
 	private int currentHealth;
+	
+	/**lives  amount of lives the monster has left*/
 	private int lives;
+	
+	/** price  price of the monster in gold*/
 	private int price;
 	
 	public Monster() {
@@ -47,7 +51,7 @@ public class Monster {
 	}
 	
 	/**
-	 * Gets the price.
+	 * getPrice Gets the price.
 	 *
 	 * @return the price
 	 */
@@ -55,7 +59,7 @@ public class Monster {
 		return price;
 	}
 	/**
-	 * Gets the lives.
+	 * getLives Gets the lives.
 	 *
 	 * @return the number of lives
 	 */
@@ -63,19 +67,19 @@ public class Monster {
 		return lives;
 	}
 	/**
-	 * decreases the lives of the Monster by 1
+	 * removeLife decreases the lives of the Monster by 1
 	 */
 	public void removeLife() {
 		lives -= 1;
 	}
 	/**
-	 * increases the lives of the Monster by 1
+	 * addLife , increases the lives of the Monster by 1
 	 */
 	public void addLife() {
 		lives += 1;
 	}
 	/**
-	 * Gets the name of the Monster.
+	 * getName , Gets the name of the Monster.
 	 *
 	 * @return the name
 	 */
@@ -83,14 +87,14 @@ public class Monster {
 		return name;
 	}
 	/**
-	 * Sets the name of the Monster.
+	 *setName ,  Sets the name of the Monster.
 	 */
 	public void setName(String monsterName) {
 		name = monsterName;
 	}
 	
 	/**
-	 * Gets the max health
+	 * getMaxHealth , Gets the max health
 	 *
 	 * @return the max health
 	 */
@@ -98,14 +102,14 @@ public class Monster {
 		return maxHealth;
 	}
 	/**
-	 * Sets the max health.
+	 * setMaxHealth , Sets the max health.
 	 * @param monsterMaxHealth to set it with
 	 */
 	public void setMaxHealth(int monsterMaxHealth) {
 		maxHealth = monsterMaxHealth;
 	}
 	/**
-	 * Gets the damage amount.
+	 * getDamage , Gets the damage amount.
 	 *
 	 * @return the damage
 	 */
@@ -113,14 +117,14 @@ public class Monster {
 		return damage;
 	}
 	/**
-	 * Sets the damage amount
-	 * @param monsterDamage
+	 * setDamage , Sets the damage amount
+	 * @param monsterDamage integer amount
 	 */
 	public void setDamage(int monsterDamage) {
 		damage = monsterDamage;
 	}
 	/**
-	 * Gets the heal amount.
+	 * getHealAmount , Gets the heal amount.
 	 *
 	 * @return the healAmount
 	 */
@@ -128,7 +132,7 @@ public class Monster {
 		return healAmount;
 	}
 	/**
-	 * Sets the heal amount.
+	 * setHealAmount , Sets the heal amount.
 	 *
 	 * @param monsterHealAmount to use to set
 	 */
@@ -136,7 +140,7 @@ public class Monster {
 		healAmount = monsterHealAmount;
 	}
 	/**
-	 * Gets the current health.
+	 * getCurrentHealth , Gets the current health.
 	 *
 	 * @return the current health
 	 */
@@ -144,7 +148,7 @@ public class Monster {
 		return currentHealth;
 	}
 	/**
-	 * Sets the current health.
+	 * setCurrentHealth , Sets the current health.
 	 *
 	 * @param monsterCurrentHealth to use to set with
 	 */
@@ -152,7 +156,8 @@ public class Monster {
 		currentHealth = monsterCurrentHealth;
 	}
 	/**
-	 * decreases the @param monsterOpponent 's health by the damage of the monster
+	 * attack , decreases opponent by monster's damage 
+	 * @param monsterOpponent decreases this health by the damage of the monster
 	 */
 	public void attack(Monster monsterOpponent) {
 		int opponentHealth = monsterOpponent.getCurrentHealth();
@@ -164,7 +169,7 @@ public class Monster {
 		}
 	}
 	/**
-	 * Increases the current health by the heal amount
+	 * heal , Increases the current health by the heal amount
 	 */
 	public void heal() {
 		currentHealth = currentHealth + healAmount;
@@ -173,14 +178,14 @@ public class Monster {
 		}
 	}
 	/**
-	 * Creates a string describing the Monster for the command line
+	 * commandLineToString , Creates a string describing the Monster for the command line
 	 * @return the string
 	 */
 	public String commandLineToString() {
 		return "Name: " + name+"\n"+"Max-Health: " + maxHealth+"\n"+"Current Health: " + currentHealth+"\n"+"Damage: " + damage+"\n"+"Heal Amount: " + healAmount+"\n"+"Lives Remaining: " + lives;
 	}
 	/**
-	 * Creates a simple string describing the Monster
+	 * toString Creates a simple string describing the Monster
 	 * @return the string
 	 */
 	public String toString() {
@@ -191,4 +196,3 @@ public class Monster {
 	
 	
 }
-
