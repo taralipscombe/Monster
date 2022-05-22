@@ -25,6 +25,12 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 
+
+/**
+ * 
+ * class SetUpGame, initializes the battle monster fighting game 
+ *
+ */
 public class SetupGame {
 
 	/** The set up game frame. */
@@ -53,6 +59,8 @@ public class SetupGame {
 
 	/**
 	 * Launch the application.
+	 * 
+	 * @param args
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

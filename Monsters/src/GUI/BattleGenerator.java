@@ -4,13 +4,27 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * 
+ * class BattleGenerator, generates battles based on players team.
+ *
+ */
 public class BattleGenerator {
 	
+	/** ArrayList of the players monsters */
 	private static ArrayList<Monster> monsterTeam;
+	
+	/** String of players difficulty */
 	private static String difficulty;
+	
+	/** ArrayList of the enemy monster team */
 	private static ArrayList<Monster> enemyTeam = new ArrayList<Monster>();
+	
+	/** ArrayList of the potential names for Monsters */
 	private static ArrayList<String> potentialNames = new ArrayList<String>(Arrays.asList("Bewarewolf", "Lunatick", "Clawcerer", "Badboon", 
 			"Artichoker", "Hammer", "Assassin", "Coomba", "Bandit", "Bruiser", "Scythid", "CoffinMan", "Bubbles", "Sparkles", "Spiker"));
+	
+	/** The player of the game */
 	private static Player player;
 	
 	

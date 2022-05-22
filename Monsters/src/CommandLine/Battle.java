@@ -2,6 +2,12 @@ package CommandLine;
 
 import java.util.ArrayList;
 
+
+/** 
+ * 
+ * class Battle
+ *
+ */
 public class Battle {
 	
 	/** The player of the game. */

@@ -13,7 +13,15 @@ import CommandLine.Monster;
  *
  */
 class ItemTest {
+	
+	/** 
+	 * items we are testing
+	 */
 	Item testDamagePotion, testLuckyDip, testHealPotion, testExtraLife;
+	
+	/**
+	 * monster we are testing 
+	 */
 	Monster testMonster;
 	
 	/**

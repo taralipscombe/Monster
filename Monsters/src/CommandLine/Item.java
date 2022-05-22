@@ -7,16 +7,23 @@ package CommandLine;
  */
 
 public class Item {
+	
 	/**
 	 * name  name of item
 	 * property  property of monster that the item enhances - damage or heal amount or number of lives
+	 */
+	private String name, property;
+	
+	/** 
 	 * propertyChange  amount the property is increased by
 	 * usage  how many times the item can be used
+	 */
+	private int propertyChange, usage;
+	
+	/** 
 	 * purchasePrice  how much gold it costs the player to buy the item
 	 * sellbackPrice  starts as the same as the purchasePrice, decreases proportionaly as item is used.
 	 */
-	private String name, property;
-	private int propertyChange, usage;
 	private int purchasePrice, sellbackPrice;
 	
 	/**

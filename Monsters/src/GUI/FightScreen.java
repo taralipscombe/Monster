@@ -92,10 +92,8 @@ public class FightScreen {
 	/**
 	 * Initialize the contents of the frame.
 	 * 
-	 * lblEnemyMon sourced from: https://www.flaticon.com/free-icon/monster_1236160?term=monster&page=1&position=55&page=1
-	 * &position=55&related_id=1236160&origin=search
-	 * lblPlayerMon sourced from: https://www.flaticon.com/free-icon/monster_1236195?term=monster&page=1&position=14&page=1
-	 * &position=14&related_id=1236195&origin=search
+	 * lblEnemyMon sourced from: https://www.flaticon.com/free-icon/monster_1236160?
+	 * lblPlayerMon sourced from: https://www.flaticon.com/free-icon/monster_1236195?
 	 */
 	private void initialize() {
 		frmFight = new JFrame();

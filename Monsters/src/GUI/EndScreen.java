@@ -65,7 +65,7 @@ public class EndScreen {
 		txtGameEnded.setEditable(false);
 		txtGameEnded.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 30));
 		txtGameEnded.setText("GAME ENDED");
-		txtGameEnded.setBounds(206, 39, 224, 35);
+		txtGameEnded.setBounds(206, 39, 239, 35);
 		frmEndScreen.getContentPane().add(txtGameEnded);
 		txtGameEnded.setColumns(10);
 		

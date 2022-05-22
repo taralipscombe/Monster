@@ -45,10 +45,10 @@ public class SelectMonster {
 		frmChooseYourMonster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmChooseYourMonster.getContentPane().setLayout(null);
 		
-		Monster monsterOptionOne = new Monster("Harry", 33, 20, 53);
-		Monster monsterOptionTwo = new Monster("Louis", 45, 4, 49);
-		Monster monsterOptionThree = new Monster("Niall", 19, 35, 54);
-		Monster monsterOptionFour = new Monster("Liam", 13, 10, 23);
+		Monster monsterOptionOne = new Monster("Harry", 30, 20, 50);
+		Monster monsterOptionTwo = new Monster("Louis", 45, 5, 50);
+		Monster monsterOptionThree = new Monster("Niall", 40, 10, 50);
+		Monster monsterOptionFour = new Monster("Liam", 23, 27, 50);
 		
 		JButton chooseOne = new JButton("1");
 		chooseOne.setForeground(new Color(0, 0, 0));

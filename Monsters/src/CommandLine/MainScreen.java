@@ -1,6 +1,5 @@
 package CommandLine;
 
-
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -8,26 +7,34 @@ import java.util.regex.Pattern;
 
 /**
  * 
- * The class Mainscreen. Takes input from the user to play the game.
+ * The class MainScreen. Takes input from the user to play the game.
  *
  */
 public class MainScreen {
+	
+	
 	/**
 	 * battles  Type BattleGenerator
-	 * player  player of the game
-	 * shop  Type Shop of items
-	 * enemyTeamOne, Two, Three enemy teams to battle
-	 *
 	 */
 	private static BattleGenerator battles;
+	
+	/** player  player of the game */
 	private static Player player;
+	
+	/** shop Type Shop of items */
 	private static Shop shop;
+	
+	/** ArrayList of first enemy team  */
 	private static ArrayList<Monster> enemyTeamOne = null;
+	
+	/** ArrayList of second enemy team */
 	private static ArrayList<Monster> enemyTeamTwo = null;
+	
+	/** ArrayList of third enemy team */
 	private static ArrayList<Monster> enemyTeamThree = null;
 	
 	/**
-	 * Instantiates a new MainScreen.
+	 * MainScreen, Instantiates a new MainScreen.
 	 *
 	 * @param thePlayer the player of the game.
 	 */
@@ -39,7 +46,7 @@ public class MainScreen {
 	}
 	
 	/**
-	 * Plays the game for the number of days chosen by the player
+	 * commence, Plays the game for the number of days chosen by the player
 	 */
 	public void commence() {
 		Scanner input = new Scanner(System.in);
@@ -51,7 +58,7 @@ public class MainScreen {
 	}
 	
 	/**
-	 * Gets the player.
+	 * getPlayer, Gets the player.
 	 *
 	 * @return the player
 	 */
@@ -60,7 +67,7 @@ public class MainScreen {
 	}
 	
 	/**
-	 * Gets the enemy team
+	 * getEnemyTeam, Gets the enemy team
 	 * @param num number of monsters wanted in the team
 	 * @return the array list of Monsters
 	 */
@@ -75,7 +82,8 @@ public class MainScreen {
 	}
 	
 	/**
-	 * Generates 3 new battle options
+	 * 
+	 *  generateNewBattles, Generates 3 new battle options
 	 *
 	 */
 	public void generateNewBattles() {
@@ -87,7 +95,7 @@ public class MainScreen {
 		
 	}
 	/**
-	 * Prints the options of playing the game on the mainscreen
+	 * displayOptions, Prints the options of playing the game on the mainscreen
 	 *
 	 */
 	public static void displayOptions() {
@@ -103,7 +111,9 @@ public class MainScreen {
 	}
 	
 	/**
-	 * Takes input integers from the user to choose what actions to take in the game
+	 * nextMove, Takes input integers from the user to choose what actions to take in the game
+	 * 
+	 * @param input the scanner input
 	 */
 	public static void nextMove(Scanner input) {
 		String num = input.nextLine();
@@ -136,21 +146,25 @@ public class MainScreen {
 	}
 	
 	/**
-	 * Prints the player's attributes to show the user.
+	 * viewAttributes, Prints the player's attributes to show the user.
 	 */
 	public static void viewAttributes() {
 		System.out.println("Your current Attributes are: ");
 		System.out.println(player.printAttributes());
 	}
+	
 	/**
-	 * Prints the Monsters in the team array list to show the user.
+	 * viewTeam, Prints the Monsters in the team array list to show the user.
 	 */
 	public static void viewTeam() {
 		System.out.println("Your current Team: ");
 		System.out.println(player.printCurrentTeam());
 	}
+	
 	/**
-	 * Prints the inventory of the player to show the user. Takes input for if the player wants to use an item.
+	 * viewInventory, Prints the inventory of the player to show the user. Takes input for if the player wants to use an item.
+	 * 
+	 * @param input the scanner input
 	 */
 	public static void viewInventory(Scanner input) {
 		System.out.println("Your current Inventory: ");
@@ -179,9 +193,12 @@ public class MainScreen {
 		}
 		}
 	}
+	
+	
 	/**
-	 * Applies the item to a monster chosen by the player with input.
+	 * applyItem, Applies the item to a monster chosen by the player with input.
 	 *
+	 *@param input the scanner input
 	 */
 	public static void applyItem(Scanner input) {
 		boolean selected = true;
@@ -223,7 +240,7 @@ public class MainScreen {
 		}	
 	}
 	/**
-	 * Creates three random options of battles for the player and displays them to the user.
+	 * viewBattles, Creates three random options of battles for the player and displays them to the user.
 	 */
 	public static void viewBattles() {
 		//currently not implemented, use Battle generator class to randomise battles
@@ -283,8 +300,11 @@ public class MainScreen {
 		}
 
 	}
+	
 	/**
-	 * Takes user input from the player to battle, uses the battle class.
+	 * battle, Takes user input from the player to battle, uses the battle class.
+	 * 
+	 * @param input the scanner input
 	 */
 	public static void battle(Scanner input) {
 		// first check if teams have been generated, if not generate that team so there is at three options
@@ -327,7 +347,9 @@ public class MainScreen {
 		
 	}
 	/**
-	 * Takes user input to go through to the shop using the enterStore shop method.
+	 * visitShop, Takes user input to go through to the shop using the enterStore shop method.
+	 * 
+	 * @param input the scanner input
 	 */
 	public static void visitShop(Scanner input) {
 		
@@ -337,7 +359,7 @@ public class MainScreen {
 	
 	
 	/**
-	 * Changes the day to the next, monsters will heal overnight, random event may occur.
+	 * sleep, Changes the day to the next, monsters will heal overnight, random event may occur.
 	 */
 	public static void sleep() {
 		for (Monster monster : player.getTeam()) {
@@ -349,7 +371,7 @@ public class MainScreen {
 		
 	}
 	/**
-	 * Finishes playing the game and prints the stats of the game to show the player.
+	 * endGame, Finishes playing the game and prints the stats of the game to show the player.
 	 */
 	public static void endGame() {
 		player.endGame();

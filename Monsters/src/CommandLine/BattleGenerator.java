@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
+
+/** 
+ * 
+ * class BattleGenerator
+ *
+ */
 public class BattleGenerator {
 	
 	/** The players monster team. */
