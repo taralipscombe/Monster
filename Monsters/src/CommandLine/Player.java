@@ -35,7 +35,7 @@ public class Player {
 	/**
 	 * Instantiates a new player.
 	 *
-	 * @param playerName2 the player name 2
+	 * @param playerName2 the player name
 	 * @param difficulty the difficulty
 	 * @param startingMonster the starting monster
 	 * @param numDays the num days
