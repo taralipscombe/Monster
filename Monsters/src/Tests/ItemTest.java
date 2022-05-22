@@ -4,10 +4,18 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+
+/**
+ * Test for the item class
+ *
+ */
 class ItemTest {
 	Item testDamagePotion, testLuckyDip, testHealPotion, testExtraLife;
 	Monster testMonster;
-
+	
+	/**
+	 * Creates a monster and the 4 different items to be used in each method
+	 */
 	@BeforeEach
 	void setUp() throws Exception {
 		testMonster= new Monster("Tester", 100, 100, 12);
@@ -16,7 +24,9 @@ class ItemTest {
 		testHealPotion= new Item("Magic healing potion" , "heal amount" , 10, 3, 45);
 		testExtraLife = new Item("Extra Life", "lives", 1, 1, 70);
 	}
-
+	/**
+	 * Tests the useItem method
+	 */
 	@Test
 	void testUseItem() {
 		testDamagePotion.useItem(testMonster);
@@ -30,12 +40,18 @@ class ItemTest {
 		assertEquals(4, testMonster.getLives());
 	}
 
+	/**
+	 * Tests the printAttributes method
+	 */
 	@Test
 	void testPrintAttributes() {
 		testDamagePotion.useItem(testMonster);
 		assertEquals("Item name: Magic attack potion\nItem's Property: damage\nItem's current usage: 2", testDamagePotion.printAttributes());
 	}
 	
+	/**
+	 * Tests the toStringMethod
+	 */
 	@Test
 	void testToString() {
 		assertEquals("Lucky Dip gives you a randomly generated item from the shop! Try your luck!", testLuckyDip.toString());
