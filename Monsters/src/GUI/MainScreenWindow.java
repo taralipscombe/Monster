@@ -134,6 +134,15 @@ public class MainScreenWindow {
 					JOptionPane.showMessageDialog(frmMainscreen, event);
 				}
 				events.clear();
+				if (player.getDay() == player.getFinishDay()) {
+					JOptionPane.showMessageDialog(frmMainscreen, "This is your final day - Go Hard or Go Home!");
+				}
+				if (player.getDay() == (player.getFinishDay() + 1)){
+					player.endGame();
+					frmMainscreen.dispose();
+					EndScreen ending = new EndScreen(player);
+					ending.frmEndScreen.setVisible(true);
+				}
 			}
 		});
 		sleep.setBounds(229, 227, 145, 29);
