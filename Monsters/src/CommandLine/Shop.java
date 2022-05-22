@@ -4,11 +4,26 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * 
+ * The class Shop.
+ *
+ */
 public class Shop {
+	/**
+	 * 
+	 * shopItems  array list of items available in the shop
+	 * player  the player of the game
+	 *
+	 */
 	private ArrayList<Item> shopItems=new ArrayList<Item>();
 	private Player player;
-
 	
+	/**
+	 * Instantiates a new Shop.
+	 *
+	 * @param incomingPlayer the player of the game that will be buying or selling
+	 */
 	public Shop(Player incomingPlayer) {
 		player = incomingPlayer;
 		Item attackPotion = new Item("Magic attack potion" , "damage", 15, 3, 60);
@@ -21,7 +36,9 @@ public class Shop {
 		shopItems.add((Item)luckyDip);
 		
 	}
-	
+	/**
+	 * Takes user input to buy or sell an item at the store. If the player has no items or Monsters available to sell, an error message is printed
+	 */
 	public void enterStore(Scanner input) {
 		boolean actionRecieved = false;
 		while(actionRecieved == false) {
@@ -68,6 +85,10 @@ public class Shop {
 		}
 	}
 	
+	/**
+	 * Takes user input to buy an item - items in the shop are printed to the player, and the player enters a number correlating
+	 * to the item they want to buy and checks they have enough gold to buy it, then buys it and adds it to the player's inventory
+	 */
 	public void buy(Scanner input) {
 		System.out.println("Your current gold: " + player.getgold());
 		int i = 1;
@@ -86,7 +107,7 @@ public class Shop {
 		}else {
 			int number = Integer.parseInt(num);
 			if(correctNum||number > arrlength || number < 1) {
-				System.out.println("Error: Invalid input, returning to shop");		//move????	
+				System.out.println("Error: Invalid input, returning to shop");
 			} else {
 				Item purchasedItem = shopItems.get(number-1);
 				if(player.getgold() < purchasedItem.getPurchasePrice()) {
@@ -105,7 +126,11 @@ public class Shop {
 					System.out.println("You have successfully bought " + purchasedItem.getName());
 				}}}
 		}
-	
+	/**
+	 * Takes user input to sell an item - items in the player's inventory are printed, and the player enters a number correlating
+	 * to the item they want to sell and calculates the sell back price based on the items current usage, then the item is removed from the player's inventory
+	 * and the player's gold is increased by the sell back price
+	 */
 	public void sell(Scanner input) {
 		System.out.println("Your current gold: " + player.getgold());
 		int i = 1;
@@ -133,7 +158,10 @@ public class Shop {
 				System.out.println("You have successfully sold " + sellingItem.getName());
 			}
 		}
-	
+	/**
+	 * Takes user input to sell a monster. Prints all the monsters in the player's team to display to the player and then takes input to chose one to sell. Sell back price
+	 * is determined on how many lives the monster has left. Monster is removed from pleyer's team and gold is increased by sell back price
+	 */
 	public void sellMonster(Scanner input) {
 		System.out.println("Your current gold: " + player.getgold());
 		int i = 1;
@@ -163,7 +191,10 @@ public class Shop {
 				System.out.println("You have successfully sold " + sellingMonster.getName());
 			}
 	}
-	
+	/**
+	 * Takes user input to buy an monster - 4 monsters are generated randomly to show in the shop, the player inputs an integer corresponding to the monster they want 
+	 * to buy, checks they have enough gold and buys it.
+	 */
 	public void buyMonster(Scanner input) {
 		
 		MonsterGenerator instanceMonster = new MonsterGenerator();
