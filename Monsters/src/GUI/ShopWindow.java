@@ -7,7 +7,11 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-
+/**
+ * 
+ * ShopWindow The class that generates the Shop Window
+ *
+ */
 public class ShopWindow {
 	
 	/** player Player of game*/

@@ -8,17 +8,18 @@ import java.util.regex.Pattern;
 
 /**
  * 
- * The class Shop.
+ * Shop The class that generates the Shop
  *
  */
 public class Shop {
 	/**
-	 * 
-	 * shopItems  array list of items available in the shop
-	 * player  the player of the game
-	 *
+	 * shopItems  Array list of items available in the shop
 	 */
 	private ArrayList<Item> shopItems=new ArrayList<Item>();
+	
+	/**
+	 * player The player of the game
+	 */
 	private Player player;
 	
 	/**
