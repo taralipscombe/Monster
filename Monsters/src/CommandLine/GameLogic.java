@@ -145,9 +145,9 @@ public class GameLogic {
 
 	/**
 	 * 
-	 * main, initiates the game
+	 * main, Initiates the game when called.
 	 * 
-	 * @param args
+	 * @param args the empty arguments for main
 	 */
 	public static void main(String[] args) {
 		

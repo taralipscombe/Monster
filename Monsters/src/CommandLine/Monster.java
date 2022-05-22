@@ -28,9 +28,6 @@ public class Monster {
 	/** price  price of the monster in gold*/
 	private int price;
 	
-	public Monster() {
-		
-	}
 	
 	/**
 	 * Instantiates a new Monster.
@@ -88,6 +85,8 @@ public class Monster {
 	}
 	/**
 	 *setName ,  Sets the name of the Monster.
+	 *
+	 *@param monsterName The name to set 
 	 */
 	public void setName(String monsterName) {
 		name = monsterName;

@@ -12,6 +12,12 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
+
+/**
+ * 
+ * MainScreenWindow The main window of the Game.
+ *
+ */
 public class MainScreenWindow {
 	/** frmMainscreen  Jframe window*/
 	private JFrame frmMainscreen;
@@ -19,7 +25,7 @@ public class MainScreenWindow {
 	/** player  Player of the game*/
 	private Player player;
 	
-	/** mainscreen  Type MainScreen*/
+	/** mainscreen MainScreen instance used later as parameter*/
 	private MainScreen mainscreen;
 
 	/**
