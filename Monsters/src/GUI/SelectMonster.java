@@ -176,6 +176,7 @@ public class SelectMonster {
 		monsterfourPic.setBounds(309, 374, 119, 104);
 		frmChooseYourMonster.getContentPane().add(monsterfourPic);
 		
+		/** Sourced from https://www.shutterstock.com/image-vector/retail-store-shelves-red-awning-grocery-503246452 */
 		JLabel background = new JLabel("");
 		background.setIcon(new ImageIcon(SelectMonster.class.getResource("/images/shopshelf.png")));
 		background.setBounds(12, -11, 463, 549);
