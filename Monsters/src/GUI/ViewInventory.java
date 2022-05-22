@@ -133,7 +133,7 @@ public class ViewInventory {
 			}
 		});
 		buttonGroup.add(rdbtnAttackPotion);
-		rdbtnAttackPotion.setBounds(24, 200, 168, 23);
+		rdbtnAttackPotion.setBounds(8, 200, 168, 23);
 		frmInventory.getContentPane().add(rdbtnAttackPotion);
 		
 		JRadioButton rdbtnHealingPotion = new JRadioButton("Magic Healing Potion");
@@ -143,7 +143,7 @@ public class ViewInventory {
 			}
 		});
 		buttonGroup.add(rdbtnHealingPotion);
-		rdbtnHealingPotion.setBounds(204, 200, 165, 23);
+		rdbtnHealingPotion.setBounds(180, 200, 193, 23);
 		frmInventory.getContentPane().add(rdbtnHealingPotion);
 		
 		JRadioButton rdbtnExtraLife = new JRadioButton("Extra Life");
@@ -210,7 +210,7 @@ public class ViewInventory {
 		
 		lblItemOne = new JLabel("");
 		lblItemOne.setIcon(new ImageIcon(BuyItem.class.getResource("/images/potion.png")));
-		lblItemOne.setBounds(42, 60, 120, 139);
+		lblItemOne.setBounds(27, 55, 120, 139);
 		frmInventory.getContentPane().add(lblItemOne);
 		
 		lblItemTwo = new JLabel("");
@@ -220,7 +220,7 @@ public class ViewInventory {
 		
 		lblItemThree = new JLabel("");
 		lblItemThree.setIcon(new ImageIcon(BuyItem.class.getResource("/images/heart.png")));
-		lblItemThree.setBounds(129, 211, 147, 164);
+		lblItemThree.setBounds(118, 211, 147, 164);
 		frmInventory.getContentPane().add(lblItemThree);
 		
 		btnApplyItem = new JButton("Apply Item to a Monster:");
@@ -230,7 +230,7 @@ public class ViewInventory {
 			}
 		});
 		btnApplyItem.setVisible(false);
-		btnApplyItem.setBounds(411, 346, 188, 29);
+		btnApplyItem.setBounds(391, 346, 227, 29);
 		frmInventory.getContentPane().add(btnApplyItem);
 		
 		btnReturn = new JButton("Return");

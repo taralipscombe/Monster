@@ -17,7 +17,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class BuyItem.
  */
@@ -115,7 +114,7 @@ public class BuyItem {
 			}
 		});
 		buttonGroup.add(rdbtnAttackPotion);
-		rdbtnAttackPotion.setBounds(24, 200, 168, 23);
+		rdbtnAttackPotion.setBounds(8, 190, 168, 23);
 		frmBuyItem.getContentPane().add(rdbtnAttackPotion);
 		
 		JRadioButton rdbtnHealingPotion = new JRadioButton("Magic Healing Potion");
@@ -126,7 +125,7 @@ public class BuyItem {
 			}
 		});
 		buttonGroup.add(rdbtnHealingPotion);
-		rdbtnHealingPotion.setBounds(204, 200, 165, 23);
+		rdbtnHealingPotion.setBounds(180, 190, 197, 23);
 		frmBuyItem.getContentPane().add(rdbtnHealingPotion);
 		
 		JRadioButton rdbtnExtraLife = new JRadioButton("Extra Life");
@@ -208,12 +207,12 @@ public class BuyItem {
 		
 		itemPicOne = new JLabel("");
 		itemPicOne.setIcon(new ImageIcon(BuyItem.class.getResource("/images/potion.png")));
-		itemPicOne.setBounds(42, 60, 120, 139);
+		itemPicOne.setBounds(36, 54, 120, 139);
 		frmBuyItem.getContentPane().add(itemPicOne);
 		
 		itemPicTwo = new JLabel("");
 		itemPicTwo.setIcon(new ImageIcon(BuyItem.class.getResource("/images/potion_2.png")));
-		itemPicTwo.setBounds(222, 67, 141, 128);
+		itemPicTwo.setBounds(214, 54, 141, 128);
 		frmBuyItem.getContentPane().add(itemPicTwo);
 		
 		itemPicThree = new JLabel("");

@@ -92,8 +92,8 @@ public class ApplyingItemWindow {
 		txtTitle = new JTextField();
 		txtTitle.setEditable(false);
 		txtTitle.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 18));
-		txtTitle.setText("Select Monster to Apply Item too:");
-		txtTitle.setBounds(158, 24, 318, 26);
+		txtTitle.setText("Select Monster to Apply Item to:");
+		txtTitle.setBounds(101, 24, 351, 26);
 		frmApplyingItem.getContentPane().add(txtTitle);
 		txtTitle.setColumns(10);
 		
@@ -244,7 +244,7 @@ public class ApplyingItemWindow {
 				frmApplyingItem.dispose();
 			}
 		});
-		btnApply.setBounds(425, 335, 152, 29);
+		btnApply.setBounds(408, 337, 182, 29);
 		frmApplyingItem.getContentPane().add(btnApply);
 		
 		
