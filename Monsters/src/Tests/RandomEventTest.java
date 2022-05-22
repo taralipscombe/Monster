@@ -41,7 +41,9 @@ class RandomEventTest {
 		
 	}
 	
-	
+	/**
+	 * testCreateRandom Tests the createRandom method
+	 */
 	@Test
 	void testCreateRandom() {
 		double randomDouble = RandomEvent.createRandom();
@@ -50,6 +52,9 @@ class RandomEventTest {
 		
 	}
 	
+	/**
+	 * testRandom Tests the random method
+	 */
 	@Test
 	void testRandom() {
 		int randomInt = RandomEvent.random(25, 60);

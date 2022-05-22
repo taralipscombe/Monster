@@ -8,7 +8,11 @@ import org.junit.jupiter.api.Test;
 
 import CommandLine.MonsterGenerator;
 
-
+/**
+ * 
+ * <MonsterGeneratorTest Testing the MonsterGenerator class
+ *
+ */
 class MonsterGeneratorTest {
 	/**New monster generator*/
 	MonsterGenerator gen;

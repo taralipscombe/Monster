@@ -9,6 +9,11 @@ import CommandLine.Monster;
 import CommandLine.Player;
 import CommandLine.Item;
 
+/**
+ * 
+ * PlayerTest Testing the Player class
+ *
+ */
 class PlayerTest {
 	/** Player to use in tests*/
 	Player testPlayer;

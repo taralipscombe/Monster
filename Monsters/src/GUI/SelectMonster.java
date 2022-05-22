@@ -27,6 +27,10 @@ public class SelectMonster {
 	
 	/**
 	 * Create the application.
+	 * 
+	 * @param name The name of the Monster
+	 * @param gameTime The game time in terms of days
+	 * @param difficulty The chosen level of difficulty 
 	 */
 	public SelectMonster(String name, int gameTime, String difficulty) {
 		playerName = name;
@@ -37,6 +41,12 @@ public class SelectMonster {
 
 	/**
 	 * Initialize the contents of the frame.
+	 * 
+	 * background Sourced from: https://www.shutterstock.com/image-vector/retail-store-shelves-red-awning-grocery-503246452 
+	 * 
+	 * @param name The name of the Player
+	 * @param gameTime The length of the game in terms of days
+	 * @param difficulty The chosen difficulty level of the day
 	 */
 	private void initialize(String name, int gameTime, String difficulty) {
 		frmChooseYourMonster = new JFrame();
@@ -176,7 +186,7 @@ public class SelectMonster {
 		monsterfourPic.setBounds(325, 369, 119, 104);
 		frmChooseYourMonster.getContentPane().add(monsterfourPic);
 		
-		/** Sourced from https://www.shutterstock.com/image-vector/retail-store-shelves-red-awning-grocery-503246452 */
+
 		JLabel background = new JLabel("");
 		background.setIcon(new ImageIcon(SelectMonster.class.getResource("/images/shopshelf.png")));
 		background.setBounds(12, -11, 463, 549);
