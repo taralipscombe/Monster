@@ -25,7 +25,7 @@ class RandomEventTest {
 	
 	/**
 	 * Setup. Sets the monster team variables above.
-	 *
+	 * @throws Exception for exception
 	 */
 	@BeforeEach
 	void Setup() throws Exception{
