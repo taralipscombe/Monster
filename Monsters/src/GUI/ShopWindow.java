@@ -4,7 +4,6 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.JButton;
-import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -35,7 +34,6 @@ public class ShopWindow {
 	 */
 	private void initialize() {
 		frmShop = new JFrame();
-		frmShop.setIconImage(Toolkit.getDefaultToolkit().getImage(ShopWindow.class.getResource("/images/shop_cart.png")));
 		frmShop.setTitle("Shop");
 		frmShop.setBounds(100, 100, 700, 450);
 		frmShop.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -114,9 +114,9 @@ public class SelectMonster {
 		txtroptionalNameYour.setEditable(false);
 		txtroptionalNameYour.setBackground(Color.RED);
 		txtroptionalNameYour.setForeground(Color.WHITE);
-		txtroptionalNameYour.setFont(new Font("Dialog", Font.BOLD, 12));
-		txtroptionalNameYour.setText("(Optional) Name your starting monster:");
-		txtroptionalNameYour.setBounds(23, 485, 260, 21);
+		txtroptionalNameYour.setFont(new Font("Dialog", Font.BOLD, 11));
+		txtroptionalNameYour.setText("(Optional) Name your starting monster and hit enter:");
+		txtroptionalNameYour.setBounds(23, 485, 302, 16);
 		frmChooseYourMonster.getContentPane().add(txtroptionalNameYour);
 		JTextArea optionOneDescription = new JTextArea(optionOneString);
 		optionOneDescription.setOpaque(false);
@@ -152,7 +152,7 @@ public class SelectMonster {
 				defaultName = false;
 			}
 		});
-		chooseName.setBounds(284, 487, 137, 19);
+		chooseName.setBounds(337, 481, 119, 19);
 		frmChooseYourMonster.getContentPane().add(chooseName);
 		chooseName.setColumns(10);
 		
