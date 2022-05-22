@@ -107,6 +107,14 @@ public class MonsterGenerator {
 	    int randomInt = rndm.nextInt(35);
 	    return randomInt;
 	}
-
+	/**
+	 * gets the monsterNames array list
+	 * @return monsterNames 
+	 */
+	public ArrayList<String> getPossibleNamesList() {
+		return monsterNames;
+	}
 }
 
+	
+	
