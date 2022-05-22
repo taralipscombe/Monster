@@ -12,12 +12,17 @@ import javax.swing.ImageIcon;
 import java.awt.Color;
 import javax.swing.JTextField;
 
-public class SelectMonster {
 
+public class SelectMonster {
+	/** The set up game frame */
 	public JFrame frmChooseYourMonster;
+	/** Monster name field*/
 	private JTextField chooseName;
+	/** Players name, difficulty and the Monster's name, if not default*/
 	private String playerName, gameDifficulty, monsterName;
+	/** Number of days for game*/
 	private int time;
+	/** Boolean - true if player is using the monster's default name, false if they have inputted a chosen name*/
 	private boolean defaultName = true;
 	
 	/**
