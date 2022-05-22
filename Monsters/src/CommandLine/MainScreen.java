@@ -60,7 +60,7 @@ public class MainScreen {
 	/**
 	 * getPlayer, Gets the player.
 	 *
-	 * @return the player
+	 * @return player the player
 	 */
 	public Player getPlayer() {
 		return player;
@@ -239,11 +239,13 @@ public class MainScreen {
 			}
 		}	
 	}
+	
+	
 	/**
 	 * viewBattles, Creates three random options of battles for the player and displays them to the user.
 	 */
 	public static void viewBattles() {
-		//currently not implemented, use Battle generator class to randomise battles
+	
 		int i = 0;
 		while (i < 3) {
 			if (i == 0 ) {
@@ -306,11 +308,7 @@ public class MainScreen {
 	 * 
 	 * @param input the scanner input
 	 */
-	public static void battle(Scanner input) {
-		// first check if teams have been generated, if not generate that team so there is at three options
-		// once selected, remove the team from the attribute - battles can only be played once - consider the heal feature?
-		// will have to generate while loop so continues to ask if not correct input
-		
+	public static void battle(Scanner input) {	
 		
 		System.out.println("Select Enemy Team to Battle: ");
 		boolean selected = true;

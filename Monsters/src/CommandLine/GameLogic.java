@@ -143,6 +143,12 @@ public class GameLogic {
 	}
 	
 
+	/**
+	 * 
+	 * main, initiates the game
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		
 		Scanner input = new Scanner(System.in);
