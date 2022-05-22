@@ -113,6 +113,7 @@ public class SetupGame {
 	
 	/**
 	 * Initialize the contents of the window
+	 * 
 	 */
 	private void initialize() {
 		frmSetUpGame = new JFrame();
@@ -265,6 +266,7 @@ public class SetupGame {
 		continueButton.setBounds(261, 285, 117, 29);
 		frmSetUpGame.getContentPane().add(continueButton);
 		
+		/** Sourced from https://www.deviantart.com/nj365/art/mobile-games-background7-434726397 */
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setVerticalAlignment(SwingConstants.TOP);
 		lblNewLabel.setIcon(new ImageIcon(SetupGame.class.getResource("/images/back.jpg")));
