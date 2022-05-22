@@ -10,7 +10,8 @@ Then right-click the source (src) folder and click Import... then click General 
 How to run the JAR file to play the game.;
 
 Ensure Java 17 is installed on the machine;
-In a new Terminal window, open the zip folder by typing "eba82_tli88_Project.zip";
-Type "java -jar eba82_tli88_MonsterFighter.jar;
+In a new Terminal window, open the zip folder by typing "unzip eba82_tli88_Project.zip" 
+Then get into the directory by typing "cd eba82_tli88_Project"
+Then type "java -jar eba82_tli88_MonsterFighter.jar" and play!
 
 Have fun playing!;
