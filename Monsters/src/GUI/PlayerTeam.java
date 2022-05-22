@@ -21,21 +21,41 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class PlayerTeam {
-
+	
+	/** frmPlayerTeam the window frame*/
 	public JFrame frmPlayerTeam;
+	
+	/** player type Player*/
 	private Player player;
+	
+	/** monsterTeam array list of Monsters*/
 	private ArrayList<Monster> monsterTeam;
+	
+	/** txtYourCurrentMonster shows current monster*/
 	private JTextField txtYourCurrentMonster;
+	
+	/** buttonGroup type buttongroup*/
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	
+	/** txtName name*/
 	private JTextField txtName;
+	
+	/** txtDamage integer damage*/
 	private JTextField txtDamage;
+	
+	/** txtHeal heal amount*/
 	private JTextField txtHeal;
+	
+	/** txtLives num of lives*/
 	private JTextField txtLives;
+	
+	/** txtCurrentHealth current health stats*/
 	private JTextField txtCurrentHealth;
 
 
 	/**
 	 * Create the application.
+	 * @param ofcPlayer player of the game
 	 */
 	public PlayerTeam(Player ofcPlayer) {
 		
