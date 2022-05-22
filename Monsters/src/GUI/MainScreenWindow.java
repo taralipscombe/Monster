@@ -13,13 +13,18 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
 public class MainScreenWindow {
-
+	/** frmMainscreen  Jframe window*/
 	private JFrame frmMainscreen;
+	
+	/** player  Player of the game*/
 	private Player player;
+	
+	/** mainscreen  Type MainScreen*/
 	private MainScreen mainscreen;
 
 	/**
 	 * Launch the application.
+	 * @param incomingPlayer Player of the game
 	 */
 	public static void main(Player incomingPlayer) {
 		EventQueue.invokeLater(new Runnable() {
@@ -36,6 +41,7 @@ public class MainScreenWindow {
 
 	/**
 	 * Create the application.
+	 *@param incomingPlayer player of game
 	 */
 	public MainScreenWindow(Player incomingPlayer) {
 		player = incomingPlayer;
@@ -47,7 +53,7 @@ public class MainScreenWindow {
 
 	/**
 	 * Initialize the contents of the frame.
-	 * 
+	 * @param player type Player
 	 * image sourced from: https://findicons.com/search/cartoon-child
 	 */
 	private void initialize(Player player) {
