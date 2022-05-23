@@ -46,7 +46,7 @@ class MonsterGeneratorTest {
 	/** Tests randomHeal method returns integer in the given range*/
 	@Test
 	void testRandomHeal() {
-		assertTrue(gen.randomDamage()>0 && gen.randomDamage()<=35);
+		assertTrue(gen.randomHeal()>0 && gen.randomHeal()<=35);
 	}
 
 }
