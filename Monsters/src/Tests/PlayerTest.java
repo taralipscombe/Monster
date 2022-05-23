@@ -18,8 +18,8 @@ class PlayerTest {
 	/** Player to use in tests*/
 	Player testPlayer;
 	
-	/** Two monsters to use in tests*/
-	Monster startingMonster, testMonster;
+	/** Three monsters to use in tests*/
+	Monster startingMonster, testMonster, testUseItemMonster;
 	
 	/** Item to use in tests*/
 	Item testDamagePotion;
@@ -33,6 +33,7 @@ class PlayerTest {
 		testPlayer = new Player("Emma", "Easy", startingMonster, 10);
 		testDamagePotion = new Item("Magic attack potion" , "damage", 15, 3, 60);
 		testMonster = new Monster("Another", 50, 10, 10);
+		testUseItemMonster = new Monster("UsingItems", 10, 10, 10);
 		
 	}
 
@@ -111,6 +112,17 @@ class PlayerTest {
 	void testDecreaseGold() {
 		testPlayer.decreaseGold(20);
 		assertEquals(180, testPlayer.getgold());
+	}
+	
+	/** Tests useItem method*/
+	@Test
+	void testUseItem() {
+		testPlayer.addItem(testDamagePotion);
+		testPlayer.useItem(testDamagePotion, testUseItemMonster);
+		assertEquals(testUseItemMonster.getDamage(), 25);
+		testPlayer.useItem(testDamagePotion, testUseItemMonster);
+		testPlayer.useItem(testDamagePotion, testUseItemMonster);
+		assertTrue(!testPlayer.getItems().contains(testDamagePotion));
 	}
 
 }
