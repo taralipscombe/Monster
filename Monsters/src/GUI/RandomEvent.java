@@ -17,11 +17,6 @@ public class RandomEvent {
 	/** List of strings stating what (if any) random events occured  */
 	private static ArrayList<String> randomOccured = new ArrayList<String>();
 	
-	//a monster levels up overnight - one gains 15 attack, 40% (
-	// a monster level down overnight - one loses 15 attack, 30% chance
-	// a mosnter leaves, should increase with low lives, still quite low
-	// above average 1.5 lives, only 5% chance, below average 1.5 lives, 20% chance
-	// new monster joins - coudl include zayne, even if not day ten (only once a game), easy = 15%, medium = 10% , hard = 5%
 	
 	/**
 	 * Instantiates a new random event. Sets the player and monster Team attributes
