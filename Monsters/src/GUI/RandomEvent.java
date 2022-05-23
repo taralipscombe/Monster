@@ -43,6 +43,7 @@ public class RandomEvent {
 		levelsUp();
 		levelsDown();
 		leavesOvernight();
+		joinsOvernight();
 		return randomOccured;
 	}
 	
@@ -76,13 +77,13 @@ public class RandomEvent {
 	
 	/**
 	 * Levels up. First clears the random occured attribute so only the most recent events are added.
-	 * If the random integer generated is between 0 and 0.3 (inclusive, a 40% chance), a random monster is selected from
+	 * If the random integer generated is between 0 and 0.2 (inclusive, a 30% chance), a random monster is selected from
 	 *  the monster team and leveled up - its damage increase by 15 units, unless its damage is already above 60.
 	 */
 	public static void levelsUp() {
 		randomOccured.clear();
 		double randomInt = createRandom();
-		if (randomInt < 0.4 && monsterTeam.size() > 0) {
+		if (randomInt < 0.3 && monsterTeam.size() > 0) {
 			int range = monsterTeam.size();
 			Random rndm = new Random();
 			int rndmInt = rndm.nextInt(range);
@@ -118,19 +119,19 @@ public class RandomEvent {
 	
 	
 	/**
-	 * Leaves overnight. Gets the average lives of Monsters in the monster team
-	 * If the average lives is greater than or equal to 1.5, there is a 10% chance a player dies overnight and is removed from the team
+	 * Leaves overnight. Only occurs if player has more than one Monster in team. Gets the average lives of Monsters in the monster team
+	 * If the average lives is greater than or equal to 1.5, there is a 30% chance a player dies overnight and is removed from the team
 	 * If the average lives is instead less than 1.5, there is a 20% chance a player dies overnight and is removed from the team
 	 */
 	public static void leavesOvernight() {
 		double averageLives = 0;
-		if (monsterTeam.size() > 0) {
+		if (monsterTeam.size() > 1) {
 			for (Monster monster : monsterTeam) {
 				averageLives += monster.getLives();
 			}
 			averageLives = averageLives / monsterTeam.size();
 			double randomInt = createRandom();
-			if (averageLives >= 1.5 && randomInt <= 0) {
+			if (averageLives >= 1.5 && randomInt <= 0.2) {
 				Monster leftMonster = monsterLeaves();
 				randomOccured.add("RIP " +  leftMonster.getName() + " has gotten COVID and died! You know have only " + monsterTeam.size() + " monsters left.");
 			
@@ -175,14 +176,17 @@ public class RandomEvent {
 				Random rndm = new Random();
 			    int randomInteger = rndm.nextInt(newMonsters.size());
 				monsterTeam.add(newMonsters.get(randomInteger));
+				randomOccured.add("Congratulations, a new Monster has joined your team! Go see them in 'View your Team Properties'!");
 			} else if (difficulty.equals("2") && randomInt <= 0.1) {
 				Random rndm = new Random();
 			    int randomInteger = rndm.nextInt(newMonsters.size());
 				monsterTeam.add(newMonsters.get(randomInteger));
+				randomOccured.add("Congratulations, a new Monster has joined your team! Go see them in 'View your Team Properties'!");
 			} else if (difficulty.equals("3") && randomInt <= 0.0) {
 				Random rndm = new Random();
 			    int randomInteger = rndm.nextInt(newMonsters.size());
 				monsterTeam.add(newMonsters.get(randomInteger));
+				randomOccured.add("Congratulations, a new Monster has joined your team! Go see them in 'View your Team Properties'!");
 			}
 		}
 		
